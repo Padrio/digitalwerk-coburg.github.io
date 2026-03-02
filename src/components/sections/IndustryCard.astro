@@ -1,0 +1,53 @@
+---
+interface Props {
+  title: string;
+  challenge: string;
+  solutions: string[];
+  icon?: string;
+}
+
+const { title, challenge, solutions, icon } = Astro.props;
+---
+
+<article class="card flex flex-col">
+  {/* Icon / emoji */}
+  {icon && (
+    <div class="mb-4 text-4xl" aria-hidden="true">{icon}</div>
+  )}
+
+  <h3 class="font-display text-xl font-semibold text-primary">{title}</h3>
+
+  {/* Challenge */}
+  <div class="mt-4">
+    <span class="font-display text-small font-semibold uppercase tracking-wider text-accent">
+      Herausforderung:
+    </span>
+    <p class="mt-1 text-neutral-600 leading-relaxed">{challenge}</p>
+  </div>
+
+  {/* Solutions */}
+  <div class="mt-5">
+    <span class="font-display text-small font-semibold uppercase tracking-wider text-accent">
+      Unsere Lösungsansätze:
+    </span>
+    <ul class="mt-2 space-y-2">
+      {solutions.map((solution) => (
+        <li class="flex items-start gap-2 text-neutral-600">
+          <svg
+            class="mt-0.5 h-4 w-4 shrink-0 text-success"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+              clip-rule="evenodd"
+            />
+          </svg>
+          <span class="text-small leading-relaxed">{solution}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</article>

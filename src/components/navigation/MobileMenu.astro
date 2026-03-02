@@ -1,0 +1,142 @@
+---
+import { X, ChevronDown } from 'lucide-astro';
+import { mainNav } from '@data/navigation';
+
+const currentPath = Astro.url.pathname;
+
+function isActive(href: string): boolean {
+  if (href === '/') return currentPath === '/';
+  return currentPath === href || currentPath.startsWith(href + '/');
+}
+---
+
+<!-- Overlay -->
+<div
+  class="fixed inset-0 z-[60] bg-dark/50 backdrop-blur-sm transition-opacity duration-300 [[data-menu-open]_&]:opacity-100 [:not([data-menu-open])_&]:pointer-events-none [:not([data-menu-open])_&]:opacity-0"
+  data-menu-overlay
+  aria-hidden="true"
+></div>
+
+<!-- Drawer -->
+<aside
+  class="fixed inset-y-0 right-0 z-[70] flex w-full max-w-sm flex-col bg-white shadow-2xl transition-transform duration-300 ease-out [[data-menu-open]_&]:translate-x-0 [:not([data-menu-open])_&]:translate-x-full"
+  aria-label="Mobilmenü"
+  role="dialog"
+  aria-modal="true"
+>
+  <!-- Close button -->
+  <div class="flex items-center justify-end p-4">
+    <button
+      type="button"
+      class="inline-flex items-center justify-center rounded-md p-2 text-primary transition-colors hover:bg-neutral-100 hover:text-accent"
+      aria-label="Menü schließen"
+      data-menu-close
+    >
+      <X class="h-6 w-6" />
+    </button>
+  </div>
+
+  <!-- Navigation items -->
+  <nav class="flex-1 overflow-y-auto px-6" aria-label="Mobilnavigation">
+    <ul class="space-y-1">
+      {mainNav.map((item) => (
+        <li>
+          {item.children ? (
+            <details class="group/details">
+              <summary
+                class:list={[
+                  'flex cursor-pointer list-none items-center justify-between rounded-md px-3 py-3 font-display text-base font-semibold transition-colors [&::-webkit-details-marker]:hidden',
+                  isActive(item.href)
+                    ? 'text-accent'
+                    : 'text-primary hover:text-accent',
+                ]}
+              >
+                {item.label}
+                <ChevronDown class="h-5 w-5 shrink-0 transition-transform duration-200 group-open/details:rotate-180" />
+              </summary>
+
+              <ul class="mt-1 space-y-1 border-l-2 border-neutral-100 pl-4 pb-2">
+                <li>
+                  <a
+                    href={item.href}
+                    class:list={[
+                      'block rounded-md px-3 py-2 font-display text-[0.9375rem] font-medium no-underline transition-colors',
+                      isActive(item.href) && currentPath === item.href
+                        ? 'text-accent'
+                        : 'text-neutral-600 hover:text-accent',
+                    ]}
+                    data-menu-link
+                  >
+                    Alle {item.label}
+                  </a>
+                </li>
+                {item.children.map((child) => (
+                  <li>
+                    <a
+                      href={child.href}
+                      class:list={[
+                        'block rounded-md px-3 py-2 font-display text-[0.9375rem] font-medium no-underline transition-colors',
+                        isActive(child.href)
+                          ? 'text-accent'
+                          : 'text-neutral-600 hover:text-accent',
+                      ]}
+                      data-menu-link
+                    >
+                      {child.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </details>
+          ) : (
+            <a
+              href={item.href}
+              class:list={[
+                'block rounded-md px-3 py-3 font-display text-base font-semibold no-underline transition-colors',
+                isActive(item.href)
+                  ? 'text-accent'
+                  : 'text-primary hover:text-accent',
+              ]}
+              data-menu-link
+            >
+              {item.label}
+            </a>
+          )}
+        </li>
+      ))}
+    </ul>
+  </nav>
+
+  <!-- CTA button -->
+  <div class="p-6">
+    <a href="/kontakt" class="btn-primary w-full text-center" data-menu-link>
+      Erstgespräch vereinbaren
+    </a>
+  </div>
+</aside>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const closeMenu = () => {
+      document.body.removeAttribute('data-menu-open');
+    };
+
+    // Close button
+    document.querySelector('[data-menu-close]')?.addEventListener('click', closeMenu);
+
+    // Overlay click
+    document.querySelector('[data-menu-overlay]')?.addEventListener('click', closeMenu);
+
+    // Close on link click
+    document.querySelectorAll('[data-menu-link]').forEach((link) => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && document.body.hasAttribute('data-menu-open')) {
+        closeMenu();
+      }
+    });
+  });
+</script>

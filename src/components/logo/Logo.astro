@@ -1,0 +1,41 @@
+---
+interface Props {
+  variant?: 'full' | 'mark' | 'wordmark';
+  class?: string;
+}
+
+const { variant = 'full', class: className = '' } = Astro.props;
+---
+
+{variant === 'mark' && (
+  <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" class={className} aria-hidden="true">
+    <rect x="4" y="4" width="6" height="40" rx="2" fill="#0f1d3d" />
+    <rect x="14" y="4" width="4" height="40" rx="1" fill="#e8620a" />
+    <rect x="22" y="4" width="4" height="40" rx="1" fill="#e8620a" />
+    <rect x="30" y="4" width="4" height="40" rx="1" fill="#e8620a" />
+    <path d="M10 4h14c11.046 0 20 8.954 20 20s-8.954 20-20 20H10" stroke="#0f1d3d" stroke-width="4" fill="none" />
+  </svg>
+)}
+
+{variant === 'full' && (
+  <a href="/" class:list={["flex items-center gap-3 no-underline", className]} aria-label="Digitalwerk Coburg - Startseite">
+    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 shrink-0" aria-hidden="true">
+      <rect x="4" y="4" width="6" height="40" rx="2" fill="currentColor" class="text-primary" />
+      <rect x="14" y="4" width="4" height="40" rx="1" fill="#e8620a" />
+      <rect x="22" y="4" width="4" height="40" rx="1" fill="#e8620a" />
+      <rect x="30" y="4" width="4" height="40" rx="1" fill="#e8620a" />
+      <path d="M10 4h14c11.046 0 20 8.954 20 20s-8.954 20-20 20H10" stroke="currentColor" stroke-width="4" fill="none" class="text-primary" />
+    </svg>
+    <div class="flex flex-col leading-none">
+      <span class="font-display text-lg font-bold tracking-tight text-primary">Digitalwerk</span>
+      <span class="font-display text-[0.6875rem] font-semibold uppercase tracking-[0.15em] text-accent">Coburg</span>
+    </div>
+  </a>
+)}
+
+{variant === 'wordmark' && (
+  <a href="/" class:list={["flex flex-col leading-none no-underline", className]} aria-label="Digitalwerk Coburg - Startseite">
+    <span class="font-display text-lg font-bold tracking-tight text-primary">Digitalwerk</span>
+    <span class="font-display text-[0.6875rem] font-semibold uppercase tracking-[0.15em] text-accent">Coburg</span>
+  </a>
+)}

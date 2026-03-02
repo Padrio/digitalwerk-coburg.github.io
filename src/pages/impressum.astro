@@ -1,0 +1,75 @@
+---
+import PageLayout from '@layouts/PageLayout.astro';
+import { buildSeoMeta } from '@utils/seo';
+
+const seo = buildSeoMeta({
+  title: 'Impressum',
+  description: 'Impressum von Digitalwerk Coburg. Angaben gemäß § 5 TMG.',
+  noIndex: true,
+});
+---
+
+<PageLayout
+  title={seo.title}
+  description={seo.description}
+  noIndex={seo.noIndex}
+>
+  <section class="section">
+    <div class="container max-w-3xl">
+      <h1>Impressum</h1>
+
+      <h2 class="mt-10">Angaben gemäß § 5 TMG</h2>
+      <p>
+        Pascal [Nachname]<br />
+        Digitalwerk Coburg<br />
+        Musterstraße 1<br />
+        96450 Coburg
+      </p>
+
+      <h2 class="mt-10">Kontakt</h2>
+      <p>
+        Telefon: +49 123 456789<br />
+        E-Mail: hallo@digitalwerk-coburg.de
+      </p>
+
+      <h2 class="mt-10">Umsatzsteuer-ID</h2>
+      <p>
+        Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:<br />
+        DE [Nummer eintragen]
+      </p>
+
+      <h2 class="mt-10">Berufsbezeichnung</h2>
+      <p>
+        Freiberuflicher Webdesigner und Webentwickler<br />
+        Zuständige Kammer: [falls zutreffend]
+      </p>
+
+      <h2 class="mt-10">Redaktionell verantwortlich</h2>
+      <p>
+        Pascal [Nachname]<br />
+        Musterstraße 1<br />
+        96450 Coburg
+      </p>
+
+      <h2 class="mt-10">EU-Streitschlichtung</h2>
+      <p>
+        Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:
+        <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">
+          https://ec.europa.eu/consumers/odr/
+        </a>.<br />
+        Unsere E-Mail-Adresse finden Sie oben im Impressum.
+      </p>
+
+      <h2 class="mt-10">Verbraucherstreitbeilegung / Universalschlichtungsstelle</h2>
+      <p>
+        Ich bin nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer
+        Verbraucherschlichtungsstelle teilzunehmen.
+      </p>
+
+      <p class="mt-10 text-small text-neutral-600">
+        <strong>Hinweis:</strong> Bitte ersetzen Sie die Platzhalter durch Ihre tatsächlichen Angaben,
+        bevor Sie die Website veröffentlichen.
+      </p>
+    </div>
+  </section>
+</PageLayout>

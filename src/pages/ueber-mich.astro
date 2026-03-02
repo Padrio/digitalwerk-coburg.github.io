@@ -1,0 +1,200 @@
+---
+import PageLayout from '@layouts/PageLayout.astro';
+import { buildSeoMeta } from '@utils/seo';
+import { SITE } from '@data/site';
+import JsonLd from '@components/seo/JsonLd.astro';
+import { buildPerson } from '@utils/schema';
+
+import Hero from '@components/sections/Hero.astro';
+import CTA from '@components/ui/CTA.astro';
+
+import { Gem, Eye, Handshake } from 'lucide-astro';
+
+const seo = buildSeoMeta({
+  title: 'Über mich',
+  description:
+    'Pascal – Gründer von Digitalwerk Coburg. Erfahren Sie mehr über meinen Werdegang, meine Werte und warum ich der richtige Digitalpartner für Ihr Unternehmen bin.',
+});
+
+const values = [
+  {
+    icon: Gem,
+    title: 'Qualität',
+    description:
+      'Lieber weniger Projekte, dafür richtig gut. Ich nehme mir die Zeit, die es braucht, um Ergebnisse zu liefern, hinter denen ich voll und ganz stehe. Sauberer Code, durchdachtes Design und eine solide technische Basis sind für mich keine Kür, sondern Pflicht.',
+  },
+  {
+    icon: Eye,
+    title: 'Transparenz',
+    description:
+      'Sie wissen immer, wo Ihr Projekt steht, was als Nächstes passiert und was es kostet. Keine versteckten Gebühren, keine bösen Überraschungen. Festpreise, regelmäßige Updates und ehrliche Kommunikation – so entsteht Vertrauen.',
+  },
+  {
+    icon: Handshake,
+    title: 'Partnerschaft',
+    description:
+      'Ich bin nicht nur Dienstleister, sondern Ihr digitaler Sparringspartner. Mir ist wichtig, dass Sie nicht nur ein fertiges Produkt bekommen, sondern auch verstehen, wie es funktioniert. Langfristige Zusammenarbeit auf Augenhöhe ist mein Ziel.',
+  },
+];
+
+const techStack = [
+  'Astro',
+  'React',
+  'TypeScript',
+  'Tailwind CSS',
+  'Node.js',
+  'WordPress',
+  'Shopify',
+  'Figma',
+  'Supabase',
+  'Git',
+  'Vercel',
+  'Cloudflare',
+];
+---
+
+<PageLayout
+  title={seo.title}
+  description={seo.description}
+  ogImage={seo.ogImage}
+  ogType={seo.ogType}
+>
+  {/* Person JSON-LD */}
+  <JsonLd schema={buildPerson()} />
+
+  {/* 1. Hero */}
+  <Hero
+    variant="centered"
+    badge="Über mich"
+    headline="Hallo, ich bin Pascal"
+    subheadline="Gründer von Digitalwerk Coburg und Ihr persönlicher Ansprechpartner für alle digitalen Fragen."
+  />
+
+  {/* 2. Personal section */}
+  <section class="section">
+    <div class="container">
+      <div class="grid items-start gap-12 lg:grid-cols-2">
+        {/* Left: Photo placeholder */}
+        <div class="flex items-center justify-center">
+          <div class="flex h-80 w-full max-w-md items-center justify-center rounded-2xl bg-neutral-200 text-neutral-500">
+            <span class="font-display text-lg font-medium">Foto folgt</span>
+          </div>
+        </div>
+
+        {/* Right: Story */}
+        <div>
+          <h2 class="font-display text-2xl font-bold text-primary">
+            Warum Digitalwerk?
+          </h2>
+
+          <p class="mt-6 text-neutral-600 leading-relaxed">
+            Seit über zehn Jahren beschäftige ich mich mit Webdesign, Webentwicklung
+            und digitaler Strategie. Angefangen hat alles mit dem Wunsch, Dinge nicht
+            nur schön aussehen zu lassen, sondern sie auch technisch sauber umzusetzen
+            &ndash; Websites, die nicht nur gut aussehen, sondern auch funktionieren,
+            schnell laden und bei Google gefunden werden.
+          </p>
+
+          <p class="mt-4 text-neutral-600 leading-relaxed">
+            Nach Jahren in Agenturen und als Freelancer habe ich Digitalwerk Coburg
+            gegründet, um genau die Zusammenarbeit anzubieten, die ich mir als Kunde
+            selbst wünschen würde: persönlich, transparent und auf Augenhöhe. Kein
+            anonymes Ticket-System, kein Weiterreichen zwischen Abteilungen &ndash;
+            sondern ein fester Ansprechpartner, der Ihr Projekt von der ersten Idee
+            bis zum fertigen Ergebnis begleitet.
+          </p>
+
+          <p class="mt-4 text-neutral-600 leading-relaxed">
+            Ich arbeite bewusst als Einzelunternehmer, weil ich davon überzeugt bin,
+            dass die besten Ergebnisse entstehen, wenn eine Person den gesamten Prozess
+            versteht und verantwortet. Das bedeutet: kurze Entscheidungswege, schnelle
+            Umsetzung und ein Ergebnis, bei dem Design, Technik und Inhalt wie aus
+            einem Guss zusammenpassen.
+          </p>
+
+          <p class="mt-4 text-neutral-600 leading-relaxed">
+            Mein Standort in Coburg ist dabei kein Zufall. Ich kenne die Region, die
+            Menschen und die Herausforderungen lokaler Unternehmen. Ob Handwerksbetrieb,
+            Arztpraxis oder Mittelständler &ndash; ich spreche Ihre Sprache und verstehe,
+            was Sie brauchen, um online erfolgreich zu sein.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* 3. Values */}
+  <section class="section bg-neutral-100">
+    <div class="container">
+      <div class="mx-auto max-w-3xl text-center">
+        <h2>Meine Werte</h2>
+        <p class="mt-4 text-lg text-neutral-600 leading-relaxed">
+          Drei Prinzipien, die jede Zusammenarbeit prägen &ndash; und die
+          dafür sorgen, dass am Ende ein Ergebnis steht, das wirklich passt.
+        </p>
+      </div>
+
+      <div class="mt-12 grid gap-6 md:grid-cols-3">
+        {values.map((v) => {
+          const IconComponent = v.icon;
+          return (
+            <div class="card flex flex-col items-center p-8 text-center">
+              <div class="mb-5 flex h-14 w-14 items-center justify-center rounded-xl bg-accent/10 text-accent">
+                <IconComponent class="h-7 w-7" />
+              </div>
+              <h3 class="font-display text-xl font-semibold text-primary">
+                {v.title}
+              </h3>
+              <p class="mt-3 text-neutral-600 leading-relaxed">
+                {v.description}
+              </p>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  {/* 4. Tech Stack */}
+  <section class="section">
+    <div class="container">
+      <div class="mx-auto max-w-3xl text-center">
+        <h2>Technologien &amp; Tools</h2>
+        <p class="mt-4 text-lg text-neutral-600 leading-relaxed">
+          Ich arbeite mit modernen, bewährten Technologien &ndash; ausgewählt nach
+          den Anforderungen Ihres Projekts, nicht nach persönlichen Vorlieben.
+        </p>
+      </div>
+
+      <div class="mx-auto mt-12 flex max-w-3xl flex-wrap items-center justify-center gap-4">
+        {techStack.map((tech) => (
+          <span class="inline-flex items-center rounded-full border border-neutral-300 bg-white px-5 py-2 font-display text-sm font-medium text-primary shadow-sm">
+            {tech}
+          </span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* 5. Local section */}
+  <section class="section bg-neutral-100">
+    <div class="container">
+      <div class="mx-auto max-w-3xl text-center">
+        <h2>Verwurzelt in Coburg</h2>
+        <p class="mt-6 text-lg text-neutral-600 leading-relaxed">
+          Digitalwerk ist kein anonymes Unternehmen aus der Ferne. Ich arbeite direkt
+          in Coburg, mitten in Oberfranken. Das bedeutet: persönliche Treffen sind
+          jederzeit möglich, ich kenne die Region und verstehe die besonderen
+          Anforderungen lokaler Unternehmen. Ob Stammtisch oder Strategiegespräch
+          &ndash; bei mir bekommen Sie beides.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {/* 6. CTA */}
+  <CTA
+    headline="Lernen wir uns kennen"
+    subline="Sie suchen einen zuverlässigen Digitalpartner in Coburg? Ich freue mich auf ein unverbindliches Erstgespräch."
+  />
+</PageLayout>

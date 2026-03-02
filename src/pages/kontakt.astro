@@ -1,0 +1,135 @@
+---
+import PageLayout from '@layouts/PageLayout.astro';
+import { buildSeoMeta } from '@utils/seo';
+import { SITE } from '@data/site';
+import ContactForm from '@components/ui/ContactForm.astro';
+import Hero from '@components/sections/Hero.astro';
+
+import { Mail, Phone, MapPin, Clock } from 'lucide-astro';
+
+const seo = buildSeoMeta({
+  title: 'Kontakt',
+  description:
+    'Nehmen Sie Kontakt mit Digitalwerk Coburg auf. Kostenloses Erstgespräch vereinbaren oder direkt eine Nachricht senden.',
+});
+---
+
+<PageLayout
+  title={seo.title}
+  description={seo.description}
+  ogImage={seo.ogImage}
+  ogType={seo.ogType}
+>
+  {/* 1. Hero */}
+  <Hero
+    variant="centered"
+    badge="Kontakt"
+    headline="Lassen Sie uns sprechen"
+    subheadline="Ob Frage, Idee oder konkretes Projekt – ich freue mich auf Ihre Nachricht."
+  />
+
+  {/* Sentinel for CTASticky hide */}
+  <div id="cta-sticky-sentinel"></div>
+
+  {/* 2. Contact section: Form + Info */}
+  <section class="section">
+    <div class="container">
+      <div class="grid gap-12 lg:grid-cols-2">
+        {/* Left: Contact Form */}
+        <div>
+          <h2 class="mb-2 font-display text-2xl font-bold text-primary">
+            Schreiben Sie mir
+          </h2>
+          <p class="mb-8 text-neutral-600 leading-relaxed">
+            Füllen Sie das Formular aus und ich melde mich innerhalb von 24 Stunden
+            bei Ihnen. Alle Felder mit * sind Pflichtfelder.
+          </p>
+          <ContactForm />
+        </div>
+
+        {/* Right: Contact info */}
+        <div class="flex flex-col gap-6">
+          <h2 class="font-display text-2xl font-bold text-primary">
+            Kontaktdaten
+          </h2>
+
+          {/* Email card */}
+          <div class="card flex items-start gap-4 p-6">
+            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent">
+              <Mail class="h-6 w-6" />
+            </div>
+            <div>
+              <h3 class="font-display text-sm font-semibold text-primary">E-Mail</h3>
+              <a
+                href={`mailto:${SITE.email}`}
+                class="mt-1 block text-neutral-600 transition-colors hover:text-accent"
+              >
+                {SITE.email}
+              </a>
+            </div>
+          </div>
+
+          {/* Phone card */}
+          <div class="card flex items-start gap-4 p-6">
+            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent">
+              <Phone class="h-6 w-6" />
+            </div>
+            <div>
+              <h3 class="font-display text-sm font-semibold text-primary">Telefon</h3>
+              <a
+                href={`tel:${SITE.phone}`}
+                class="mt-1 block text-neutral-600 transition-colors hover:text-accent"
+              >
+                {SITE.phone}
+              </a>
+            </div>
+          </div>
+
+          {/* Location card */}
+          <div class="card flex items-start gap-4 p-6">
+            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent">
+              <MapPin class="h-6 w-6" />
+            </div>
+            <div>
+              <h3 class="font-display text-sm font-semibold text-primary">Standort</h3>
+              <p class="mt-1 text-neutral-600">
+                {SITE.address.street}<br />
+                {SITE.address.zip} {SITE.address.city}<br />
+                {SITE.address.region}
+              </p>
+            </div>
+          </div>
+
+          {/* 24h response badge */}
+          <div class="flex items-center gap-3 rounded-[var(--radius-card)] border border-success/30 bg-success/10 p-5">
+            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-success/20 text-success">
+              <Clock class="h-5 w-5" />
+            </div>
+            <div>
+              <p class="font-display text-sm font-semibold text-success">
+                Antwort innerhalb von 24 Stunden
+              </p>
+              <p class="mt-0.5 text-small text-neutral-600">
+                In der Regel melde ich mich sogar schneller.
+              </p>
+            </div>
+          </div>
+
+          {/* Calendly placeholder */}
+          <div class="card p-6">
+            <h3 class="font-display text-sm font-semibold text-primary">
+              Erstgespräch direkt buchen
+            </h3>
+            <p class="mt-2 text-small text-neutral-600 leading-relaxed">
+              Sie möchten direkt einen Termin vereinbaren? Demnächst können Sie hier
+              bequem online einen passenden Zeitslot für ein 30-minütiges Erstgespräch
+              auswählen. Bis dahin schreiben Sie mir einfach eine Nachricht über das
+              Formular oder per E-Mail &ndash; ich melde mich zeitnah mit
+              Terminvorschlägen.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</PageLayout>

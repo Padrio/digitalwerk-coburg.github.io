@@ -1,0 +1,109 @@
+---
+import PageLayout from '@layouts/PageLayout.astro';
+import { getServiceBySlug } from '@data/services';
+import { serviceFaqs } from '@data/faqs';
+import { buildSeoMeta } from '@utils/seo';
+import { buildService, buildFaqPage } from '@utils/schema';
+import JsonLd from '@components/seo/JsonLd.astro';
+import Hero from '@components/sections/Hero.astro';
+import FAQ from '@components/sections/FAQ.astro';
+import CTA from '@components/ui/CTA.astro';
+import { CheckCircle } from 'lucide-astro';
+
+const service = getServiceBySlug('webdesign')!;
+const faqs = serviceFaqs['webdesign'] || [];
+
+const seo = buildSeoMeta({
+  title: 'Webdesign Coburg',
+  description:
+    'Professionelles Webdesign aus Coburg: Individuelle, moderne Websites, die Vertrauen aufbauen und Kunden gewinnen. Responsive, schnell und SEO-optimiert.',
+});
+---
+
+<PageLayout title={seo.title} description={seo.description}>
+  <JsonLd schema={buildService({ name: service.shortTitle, description: service.description, url: service.href })} />
+  <JsonLd schema={buildFaqPage(faqs)} />
+
+  <!-- Hero -->
+  <Hero
+    badge={service.shortTitle}
+    headline={service.title}
+    subheadline={service.description}
+    primaryCta={{ text: 'Jetzt anfragen', href: '/kontakt' }}
+  />
+
+  <!-- Features -->
+  <section class="section">
+    <div class="container">
+      <span class="section-label">Was Sie bekommen</span>
+      <h2 class="mb-12">Leistungen im Detail</h2>
+
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {service.features.map((feature, index) => (
+          <div class="card">
+            <span class="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10 font-display text-lg font-bold text-accent">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            <h3 class="mb-2">{feature.title}</h3>
+            <p class="text-neutral-600 leading-relaxed">{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- USPs -->
+  <section class="section bg-neutral-100">
+    <div class="container">
+      <div class="mx-auto max-w-3xl">
+        <span class="section-label">Warum Digitalwerk</span>
+        <h2 class="mb-10">Ihre Vorteile</h2>
+
+        <ul class="space-y-4">
+          {service.usps.map((usp) => (
+            <li class="flex items-start gap-3">
+              <CheckCircle class="mt-0.5 h-6 w-6 shrink-0 text-success" />
+              <span class="text-lg">{usp}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Deliverables -->
+  <section class="section">
+    <div class="container">
+      <div class="mx-auto max-w-3xl">
+        <span class="section-label">Lieferumfang</span>
+        <h2 class="mb-4">Das ist im Paket enthalten</h2>
+
+        <span class="mb-8 inline-block rounded-full bg-accent/10 px-4 py-1.5 font-display text-sm font-semibold text-accent">
+          {service.price}
+        </span>
+
+        <ul class="space-y-3">
+          {service.deliverables.map((item) => (
+            <li class="flex items-start gap-3">
+              <CheckCircle class="mt-0.5 h-5 w-5 shrink-0 text-accent" />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section bg-neutral-100">
+    <div class="container">
+      <FAQ title={`Häufige Fragen zu ${service.shortTitle}`} items={faqs} />
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <CTA
+    headline="Bereit für Ihre neue Website?"
+    subline="Lassen Sie uns gemeinsam eine Website gestalten, die Ihr Unternehmen professionell präsentiert und neue Kunden gewinnt."
+  />
+</PageLayout>

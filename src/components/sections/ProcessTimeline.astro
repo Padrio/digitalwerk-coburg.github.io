@@ -1,0 +1,82 @@
+---
+interface Step {
+  number: number;
+  title: string;
+  description: string;
+  icon?: string;
+}
+
+interface Props {
+  steps: Step[];
+  variant?: 'compact' | 'full';
+}
+
+const { steps, variant = 'full' } = Astro.props;
+const displaySteps = variant === 'compact' ? steps.slice(0, 3) : steps;
+---
+
+<div class="process-timeline">
+  {/* Desktop: horizontal timeline */}
+  <div class="hidden md:block">
+    <div class="relative">
+      {/* Connecting line */}
+      <div
+        class="absolute left-0 right-0 top-6 h-0.5 bg-neutral-100"
+        aria-hidden="true"
+        style={`left: calc(100% / ${displaySteps.length} / 2); right: calc(100% / ${displaySteps.length} / 2);`}
+      ></div>
+
+      <div class={`grid grid-cols-${displaySteps.length} gap-6`}
+        style={`display: grid; grid-template-columns: repeat(${displaySteps.length}, minmax(0, 1fr)); gap: 1.5rem;`}
+      >
+        {displaySteps.map((step) => (
+          <div class="relative flex flex-col items-center text-center">
+            {/* Number badge */}
+            <div class="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-accent font-display text-lg font-bold text-white shadow-md shadow-accent/20">
+              {step.number}
+            </div>
+
+            <h3 class="mt-5 font-display text-lg font-semibold text-primary">
+              {step.title}
+            </h3>
+
+            <p class="mt-2 text-small text-neutral-600 leading-relaxed">
+              {step.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  {/* Mobile: vertical timeline */}
+  <div class="md:hidden">
+    <div class="relative ml-6">
+      {/* Vertical connecting line */}
+      <div
+        class="absolute bottom-0 left-0 top-0 w-0.5 bg-neutral-100"
+        aria-hidden="true"
+      ></div>
+
+      <div class="space-y-10">
+        {displaySteps.map((step) => (
+          <div class="relative flex items-start gap-5 pl-8">
+            {/* Number badge */}
+            <div class="absolute -left-6 flex h-12 w-12 items-center justify-center rounded-full bg-accent font-display text-lg font-bold text-white shadow-md shadow-accent/20">
+              {step.number}
+            </div>
+
+            <div>
+              <h3 class="font-display text-lg font-semibold text-primary">
+                {step.title}
+              </h3>
+              <p class="mt-2 text-small text-neutral-600 leading-relaxed">
+                {step.description}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</div>

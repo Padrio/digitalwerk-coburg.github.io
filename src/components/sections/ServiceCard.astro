@@ -1,0 +1,69 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  href: string;
+  features?: string[];
+}
+
+const { title, description, href, features } = Astro.props;
+---
+
+<article class="card group relative flex flex-col">
+  {/* Icon slot area */}
+  <div class="mb-5 flex h-14 w-14 items-center justify-center rounded-xl bg-accent/10 text-accent transition-colors group-hover:bg-accent group-hover:text-white">
+    <slot name="icon">
+      {/* Fallback if no icon is provided */}
+      <div class="h-7 w-7 rounded-full bg-accent/30"></div>
+    </slot>
+  </div>
+
+  <h3 class="font-display text-xl font-semibold text-primary">{title}</h3>
+
+  <p class="mt-3 text-neutral-600 leading-relaxed">{description}</p>
+
+  {features && features.length > 0 && (
+    <ul class="mt-4 space-y-2" aria-label={`Funktionen von ${title}`}>
+      {features.map((feature) => (
+        <li class="flex items-start gap-2 text-small text-neutral-600">
+          <svg
+            class="mt-0.5 h-4 w-4 shrink-0 text-success"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+              clip-rule="evenodd"
+            />
+          </svg>
+          {feature}
+        </li>
+      ))}
+    </ul>
+  )}
+
+  <div class="mt-auto pt-6">
+    <span class="btn-link">
+      Mehr erfahren
+      <svg
+        class="h-4 w-4 transition-transform group-hover:translate-x-1"
+        viewBox="0 0 20 20"
+        fill="currentColor"
+        aria-hidden="true"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+          clip-rule="evenodd"
+        />
+      </svg>
+    </span>
+  </div>
+
+  {/* Full-card overlay link */}
+  <a href={href} class="absolute inset-0 z-10" aria-label={`${title} — Mehr erfahren`}>
+    <span class="sr-only">Mehr erfahren über {title}</span>
+  </a>
+</article>

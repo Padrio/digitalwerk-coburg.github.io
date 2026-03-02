@@ -1,0 +1,71 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Header from '@components/navigation/Header.astro';
+import Footer from '@components/footer/Footer.astro';
+import Breadcrumbs from '@components/navigation/Breadcrumbs.astro';
+import ScrollToTop from '@components/ui/ScrollToTop.astro';
+import CTASticky from '@components/ui/CTASticky.astro';
+import WhatsAppButton from '@components/ui/WhatsAppButton.astro';
+import CookieBanner from '@components/ui/CookieBanner.astro';
+import JsonLd from '@components/seo/JsonLd.astro';
+import { buildBreadcrumbs } from '@utils/seo';
+import { buildBreadcrumbList, buildLocalBusiness } from '@utils/schema';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  noIndex?: boolean;
+  ogImage?: string;
+  ogType?: string;
+  showBreadcrumbs?: boolean;
+}
+
+const {
+  title,
+  description,
+  canonical,
+  noIndex,
+  ogImage,
+  ogType,
+  showBreadcrumbs = true,
+} = Astro.props;
+
+const breadcrumbItems = buildBreadcrumbs(Astro.url.pathname);
+const isHome = Astro.url.pathname === '/';
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={canonical}
+  noIndex={noIndex}
+  ogImage={ogImage}
+  ogType={ogType}
+>
+  <slot name="head" slot="head" />
+
+  <Header />
+
+  {showBreadcrumbs && !isHome && (
+    <div class="container py-4">
+      <Breadcrumbs items={breadcrumbItems} />
+    </div>
+  )}
+
+  <main class="flex-1">
+    <slot />
+  </main>
+
+  <Footer />
+
+  <ScrollToTop />
+  <CTASticky />
+  <WhatsAppButton />
+  <CookieBanner />
+
+  <JsonLd schema={buildLocalBusiness()} />
+  {showBreadcrumbs && !isHome && (
+    <JsonLd schema={buildBreadcrumbList(breadcrumbItems)} />
+  )}
+</BaseLayout>

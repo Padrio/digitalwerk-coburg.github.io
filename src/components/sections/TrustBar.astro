@@ -1,0 +1,27 @@
+---
+const trustItems = [
+  '10+ Jahre Erfahrung',
+  '100% aus Coburg',
+  'DSGVO-konform',
+  'Persönlicher Kontakt',
+];
+---
+
+<div class="bg-primary py-4">
+  <div class="container">
+    <ul
+      class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3"
+      aria-label="Vertrauensindikatoren"
+    >
+      {trustItems.map((item) => (
+        <li class="flex items-center gap-2 font-display text-small font-medium text-white">
+          <span
+            class="inline-block h-2 w-2 shrink-0 rounded-full bg-accent"
+            aria-hidden="true"
+          ></span>
+          {item}
+        </li>
+      ))}
+    </ul>
+  </div>
+</div>

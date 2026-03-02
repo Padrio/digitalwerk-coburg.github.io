@@ -1,0 +1,115 @@
+---
+import PageLayout from '@layouts/PageLayout.astro';
+import { buildSeoMeta } from '@utils/seo';
+import { services } from '@data/services';
+import Hero from '@components/sections/Hero.astro';
+import CTA from '@components/ui/CTA.astro';
+
+import { Palette, Code, Brain, Search } from 'lucide-astro';
+
+const seo = buildSeoMeta({
+  title: 'Leistungen',
+  description:
+    'Webdesign, Webentwicklung, KI-Beratung und SEO aus Coburg. Entdecken Sie meine digitalen Dienstleistungen für Ihr Unternehmen in Oberfranken.',
+});
+
+const iconMap: Record<string, any> = {
+  palette: Palette,
+  code: Code,
+  brain: Brain,
+  search: Search,
+};
+---
+
+<PageLayout
+  title={seo.title}
+  description={seo.description}
+  ogImage={seo.ogImage}
+  ogType={seo.ogType}
+>
+  {/* 1. Hero */}
+  <Hero
+    variant="centered"
+    badge="Leistungen"
+    headline="Meine Leistungen"
+    subheadline="Von der ersten Idee bis zur fertigen Lösung – ich unterstütze Sie mit maßgeschneiderten digitalen Dienstleistungen."
+  />
+
+  {/* 2. Service cards (large format, 2-column grid) */}
+  <section class="section">
+    <div class="container">
+      <div class="grid gap-8 md:grid-cols-2">
+        {services.map((s) => {
+          const IconComponent = iconMap[s.icon];
+          return (
+            <article class="card relative flex flex-col p-8">
+              {/* Header */}
+              <div class="mb-6 flex items-start gap-4">
+                <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent">
+                  {IconComponent && <IconComponent class="h-7 w-7" />}
+                </div>
+                <div>
+                  <h2 class="font-display text-xl font-semibold text-primary">
+                    {s.title}
+                  </h2>
+                  <span class="mt-1 inline-block rounded-full bg-accent/10 px-3 py-0.5 font-display text-small font-semibold text-accent">
+                    {s.price}
+                  </span>
+                </div>
+              </div>
+
+              {/* Description */}
+              <p class="text-neutral-600 leading-relaxed">
+                {s.description}
+              </p>
+
+              {/* Features list */}
+              <div class="mt-6">
+                <h3 class="mb-3 font-display text-sm font-semibold uppercase tracking-wider text-primary">
+                  Leistungsumfang
+                </h3>
+                <ul class="space-y-2">
+                  {s.features.map((f) => (
+                    <li class="flex items-start gap-2 text-small text-neutral-600">
+                      <svg
+                        class="mt-0.5 h-4 w-4 shrink-0 text-success"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                          clip-rule="evenodd"
+                        />
+                      </svg>
+                      <span>
+                        <strong class="text-neutral-900">{f.title}</strong> &ndash; {f.description}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Footer: deliverables count + CTA */}
+              <div class="mt-auto flex flex-wrap items-center justify-between gap-4 border-t border-neutral-100 pt-6 mt-8">
+                <span class="text-small text-neutral-600">
+                  {s.deliverables.length} Leistungen inklusive
+                </span>
+                <a href={s.href} class="btn-primary text-sm">
+                  Mehr erfahren
+                </a>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  {/* 3. CTA */}
+  <CTA
+    headline="Bereit für Ihren digitalen Auftritt?"
+    subline="Lassen Sie uns in einem kostenlosen Erstgespräch herausfinden, welche Leistung am besten zu Ihrem Unternehmen passt."
+  />
+</PageLayout>

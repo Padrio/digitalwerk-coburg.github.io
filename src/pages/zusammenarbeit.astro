@@ -1,0 +1,130 @@
+---
+import PageLayout from '@layouts/PageLayout.astro';
+import { buildSeoMeta } from '@utils/seo';
+import { processSteps } from '@data/process-steps';
+import { industries } from '@data/industries';
+import JsonLd from '@components/seo/JsonLd.astro';
+import { buildHowTo } from '@utils/schema';
+
+import Hero from '@components/sections/Hero.astro';
+import ProcessTimeline from '@components/sections/ProcessTimeline.astro';
+import CTA from '@components/ui/CTA.astro';
+
+import { Wrench, Utensils, HeartPulse, Building2, Flame } from 'lucide-astro';
+
+const seo = buildSeoMeta({
+  title: 'Zusammenarbeit',
+  description:
+    'So läuft eine Zusammenarbeit mit Digitalwerk Coburg ab. Von der ersten Idee bis zum fertigen Projekt – transparent, persönlich und effizient.',
+});
+
+const industryIconMap: Record<string, any> = {
+  wrench: Wrench,
+  utensils: Utensils,
+  'heart-pulse': HeartPulse,
+  'building-2': Building2,
+  flame: Flame,
+};
+
+const howToSteps = processSteps.map((step) => ({
+  name: step.title,
+  text: step.description,
+}));
+---
+
+<PageLayout
+  title={seo.title}
+  description={seo.description}
+  ogImage={seo.ogImage}
+  ogType={seo.ogType}
+>
+  {/* HowTo JSON-LD */}
+  <JsonLd schema={buildHowTo(howToSteps)} />
+
+  {/* 1. Hero */}
+  <Hero
+    variant="centered"
+    badge="Zusammenarbeit"
+    headline="So arbeiten wir zusammen"
+    subheadline="Vom ersten Kennenlernen bis zur langfristigen Betreuung – hier erfahren Sie, wie ein Projekt mit Digitalwerk Coburg abläuft. Transparent, persönlich und immer mit dem Ziel, das bestmögliche Ergebnis für Ihr Unternehmen zu erreichen."
+  />
+
+  {/* 2. Full ProcessTimeline */}
+  <section class="section">
+    <div class="container">
+      <div class="mx-auto max-w-3xl text-center">
+        <span class="section-label justify-center">Der Prozess</span>
+        <h2>6 Schritte zu Ihrem digitalen Erfolg</h2>
+        <p class="mt-4 text-lg text-neutral-600 leading-relaxed">
+          Jedes Projekt durchläuft klar definierte Phasen. So wissen Sie jederzeit,
+          wo wir stehen und was als Nächstes kommt.
+        </p>
+      </div>
+
+      <div class="mt-14">
+        <ProcessTimeline steps={processSteps} variant="full" />
+      </div>
+    </div>
+  </section>
+
+  {/* 3. Industries */}
+  <section class="section bg-neutral-100">
+    <div class="container">
+      <div class="mx-auto max-w-3xl text-center">
+        <span class="section-label justify-center">Branchenlösungen</span>
+        <h2>Für wen ich arbeite</h2>
+        <p class="mt-4 text-lg text-neutral-600 leading-relaxed">
+          Jede Branche hat eigene Anforderungen. Ich kenne die Herausforderungen
+          regionaler Unternehmen und entwickle Lösungen, die genau darauf zugeschnitten sind.
+        </p>
+      </div>
+
+      <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {industries.map((ind) => {
+          const IconComponent = industryIconMap[ind.icon];
+          return (
+            <article class="card flex flex-col p-6">
+              <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent">
+                {IconComponent && <IconComponent class="h-6 w-6" />}
+              </div>
+
+              <h3 class="font-display text-lg font-semibold text-primary">
+                {ind.title}
+              </h3>
+
+              <p class="mt-2 text-small text-neutral-600 leading-relaxed">
+                {ind.challenge}
+              </p>
+
+              <ul class="mt-4 space-y-2">
+                {ind.solutions.map((sol) => (
+                  <li class="flex items-start gap-2 text-small text-neutral-600">
+                    <svg
+                      class="mt-0.5 h-4 w-4 shrink-0 text-success"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                    {sol}
+                  </li>
+                ))}
+              </ul>
+            </article>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  {/* 4. CTA */}
+  <CTA
+    headline="Klingt gut? Dann lassen Sie uns starten."
+    subline="Der erste Schritt ist ein unverbindliches Erstgespräch. Erzählen Sie mir von Ihrem Vorhaben – ich freue mich darauf."
+  />
+</PageLayout>

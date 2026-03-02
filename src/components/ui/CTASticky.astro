@@ -1,0 +1,38 @@
+---
+/**
+ * Sticky mobile CTA bar that hides when the footer/contact section is visible.
+ * Place a <div id="cta-sticky-sentinel"></div> at the top of your footer or contact section.
+ */
+---
+
+<div
+  id="cta-sticky-bar"
+  class="fixed inset-x-0 bottom-0 z-40 bg-primary px-4 py-3 shadow-[0_-2px_10px_rgba(0,0,0,0.15)] md:hidden transition-transform duration-300"
+>
+  <a
+    href="/kontakt"
+    class="btn-primary w-full text-center"
+  >
+    Jetzt Erstgespr&auml;ch vereinbaren
+  </a>
+</div>
+
+<script>
+  const bar = document.getElementById("cta-sticky-bar");
+  const sentinel = document.getElementById("cta-sticky-sentinel");
+
+  if (bar && sentinel) {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          bar.classList.add("translate-y-full");
+        } else {
+          bar.classList.remove("translate-y-full");
+        }
+      },
+      { threshold: 0 }
+    );
+
+    observer.observe(sentinel);
+  }
+</script>

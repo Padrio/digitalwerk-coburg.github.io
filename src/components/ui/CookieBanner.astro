@@ -1,0 +1,44 @@
+---
+/**
+ * Minimal cookie banner for technically necessary cookies only.
+ * Uses localStorage to remember dismissal.
+ */
+---
+
+<div
+  id="cookie-banner"
+  class="fixed inset-x-0 bottom-0 z-50 hidden"
+  role="alert"
+>
+  <div class="bg-neutral-100 border-t border-neutral-300 px-4 py-3">
+    <div class="mx-auto flex max-w-[var(--spacing-container)] flex-col items-center justify-between gap-3 sm:flex-row">
+      <p class="text-small text-neutral-900 text-center sm:text-left">
+        Diese Website verwendet ausschlie&szlig;lich technisch notwendige Cookies.
+      </p>
+      <button
+        id="cookie-dismiss"
+        type="button"
+        class="shrink-0 cursor-pointer rounded-[var(--radius-btn)] bg-neutral-900 px-5 py-2 text-small font-semibold text-white transition-colors duration-200 hover:bg-primary-light"
+      >
+        Verstanden
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const STORAGE_KEY = "dw-cookie-dismissed";
+  const banner = document.getElementById("cookie-banner");
+  const dismissBtn = document.getElementById("cookie-dismiss");
+
+  if (banner && !localStorage.getItem(STORAGE_KEY)) {
+    banner.classList.remove("hidden");
+    banner.classList.add("block");
+  }
+
+  dismissBtn?.addEventListener("click", () => {
+    localStorage.setItem(STORAGE_KEY, "true");
+    banner?.classList.add("hidden");
+    banner?.classList.remove("block");
+  });
+</script>

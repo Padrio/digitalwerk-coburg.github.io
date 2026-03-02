@@ -1,0 +1,31 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import CookieBanner from '@components/ui/CookieBanner.astro';
+import JsonLd from '@components/seo/JsonLd.astro';
+import { buildLocalBusiness } from '@utils/schema';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  noIndex?: boolean;
+  ogImage?: string;
+}
+
+const { title, description, canonical, noIndex, ogImage } = Astro.props;
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={canonical}
+  noIndex={noIndex}
+  ogImage={ogImage}
+>
+  <main>
+    <slot />
+  </main>
+
+  <CookieBanner />
+  <JsonLd schema={buildLocalBusiness()} />
+</BaseLayout>

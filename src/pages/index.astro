@@ -1,0 +1,183 @@
+---
+import PageLayout from '@layouts/PageLayout.astro';
+import { buildSeoMeta } from '@utils/seo';
+import { services } from '@data/services';
+import { processSteps } from '@data/process-steps';
+import { testimonials } from '@data/testimonials';
+import { globalFaqs } from '@data/faqs';
+import JsonLd from '@components/seo/JsonLd.astro';
+import { buildPerson } from '@utils/schema';
+
+import Hero from '@components/sections/Hero.astro';
+import TrustBar from '@components/sections/TrustBar.astro';
+import ServiceCard from '@components/sections/ServiceCard.astro';
+import ProcessTimeline from '@components/sections/ProcessTimeline.astro';
+import TestimonialCard from '@components/sections/TestimonialCard.astro';
+import LocalSection from '@components/sections/LocalSection.astro';
+import FAQ from '@components/sections/FAQ.astro';
+import CTA from '@components/ui/CTA.astro';
+
+import { Palette, Code, Brain, Search } from 'lucide-astro';
+
+const seo = buildSeoMeta({
+  title: 'Digitalwerk Coburg',
+  description:
+    'Ihr zuverlässiger Digitalpartner aus Coburg für Webdesign, Webentwicklung, SEO und KI-Beratung. Persönlich. Regional. Ergebnisorientiert.',
+});
+
+const iconMap: Record<string, any> = {
+  palette: Palette,
+  code: Code,
+  brain: Brain,
+  search: Search,
+};
+---
+
+<PageLayout
+  title={seo.title}
+  description={seo.description}
+  ogImage={seo.ogImage}
+  ogType={seo.ogType}
+  showBreadcrumbs={false}
+>
+  {/* 1. Hero */}
+  <Hero
+    variant="centered"
+    badge="Digitale Lösungen aus Coburg"
+    headline="Digitale Lösungen. Solide gebaut."
+    subheadline="Ihr zuverlässiger Digitalpartner aus der Region. Ich helfe Unternehmen in Coburg und Oberfranken, online sichtbar zu werden und digital zu wachsen."
+    primaryCta={{ text: 'Erstgespräch vereinbaren', href: '/kontakt' }}
+    secondaryCta={{ text: 'Leistungen entdecken', href: '/leistungen' }}
+    stats={[
+      { value: '10+', label: 'Jahre Erfahrung' },
+      { value: '50+', label: 'Projekte' },
+      { value: '100%', label: 'Aus Coburg' },
+    ]}
+  />
+
+  {/* 2. TrustBar */}
+  <TrustBar />
+
+  {/* 3. Services */}
+  <section class="section">
+    <div class="container">
+      <div class="mx-auto max-w-3xl text-center">
+        <span class="section-label justify-center">Leistungen</span>
+        <h2>Was ich für Sie tun kann</h2>
+        <p class="mt-4 text-lg text-neutral-600 leading-relaxed">
+          Von der ersten Idee bis zum laufenden Betrieb &ndash; ich begleite Sie mit
+          maßgeschneiderten digitalen Lösungen, die wirklich zu Ihrem Unternehmen passen.
+        </p>
+      </div>
+
+      <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {services.map((s) => {
+          const IconComponent = iconMap[s.icon];
+          return (
+            <ServiceCard
+              title={s.shortTitle}
+              description={s.description}
+              href={s.href}
+              features={s.features.slice(0, 3).map((f) => f.title)}
+            >
+              {IconComponent && (
+                <IconComponent slot="icon" class="h-7 w-7" />
+              )}
+            </ServiceCard>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  {/* 4. About Teaser */}
+  <section class="section bg-neutral-100">
+    <div class="container">
+      <div class="mx-auto max-w-3xl text-center">
+        <span class="section-label justify-center">Über mich</span>
+        <h2>Der Mensch hinter Digitalwerk</h2>
+        <p class="mt-6 text-lg text-neutral-600 leading-relaxed">
+          Ich bin Pascal &ndash; Entwickler, Gestalter und Gründer von Digitalwerk Coburg.
+          Was mich antreibt: Technik so einsetzen, dass sie Menschen und Unternehmen
+          wirklich weiterbringt. Kein Agentur-Overhead, kein Fachjargon, sondern ein
+          persönlicher Ansprechpartner, der Ihr Projekt von Anfang bis Ende betreut.
+        </p>
+        <div class="mt-8">
+          <a href="/ueber-mich" class="btn-outline">
+            Mehr über mich erfahren
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* 5. Process Teaser */}
+  <section class="section">
+    <div class="container">
+      <div class="mx-auto max-w-3xl text-center">
+        <span class="section-label justify-center">So arbeiten wir zusammen</span>
+        <h2>In 6 Schritten zu Ihrer neuen Website</h2>
+        <p class="mt-4 text-lg text-neutral-600 leading-relaxed">
+          Transparente Abläufe und klare Kommunikation &ndash; damit Sie jederzeit wissen,
+          wo Ihr Projekt steht.
+        </p>
+      </div>
+
+      <div class="mt-12">
+        <ProcessTimeline steps={processSteps} variant="compact" />
+      </div>
+
+      <div class="mt-10 text-center">
+        <a href="/zusammenarbeit" class="btn-outline">
+          Alle 6 Schritte ansehen
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {/* 6. Testimonials */}
+  <section class="section bg-neutral-100">
+    <div class="container">
+      <div class="mx-auto max-w-3xl text-center">
+        <span class="section-label justify-center">Kundenstimmen</span>
+        <h2>Was meine Kunden sagen</h2>
+        <p class="mt-4 text-lg text-neutral-600 leading-relaxed">
+          Zufriedene Kunden sind die beste Referenz. Hier erfahren Sie, wie die
+          Zusammenarbeit mit Digitalwerk Coburg in der Praxis aussieht.
+        </p>
+      </div>
+
+      <div class="mt-12 grid gap-6 md:grid-cols-3">
+        {testimonials.map((t) => (
+          <TestimonialCard
+            name={t.name}
+            role={t.role}
+            company={t.company}
+            quote={t.quote}
+            rating={t.rating}
+            initials={t.initials}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* 7. LocalSection */}
+  <LocalSection />
+
+  {/* 8. FAQ */}
+  <section class="section">
+    <div class="container">
+      <FAQ title="Häufig gestellte Fragen" items={globalFaqs} />
+    </div>
+  </section>
+
+  {/* 9. CTA */}
+  <CTA
+    headline="Bereit für Ihren digitalen Auftritt?"
+    subline="Lassen Sie uns in einem kostenlosen Erstgespräch herausfinden, wie ich Ihnen helfen kann."
+  />
+
+  {/* Person JSON-LD */}
+  <JsonLd schema={buildPerson()} />
+</PageLayout>

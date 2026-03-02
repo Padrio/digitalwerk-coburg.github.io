@@ -1,0 +1,105 @@
+---
+import Logo from '@components/logo/Logo.astro';
+import { ChevronDown, Menu } from 'lucide-astro';
+import { mainNav } from '@data/navigation';
+import MobileMenu from './MobileMenu.astro';
+
+const currentPath = Astro.url.pathname;
+
+function isActive(href: string): boolean {
+  if (href === '/') return currentPath === '/';
+  return currentPath === href || currentPath.startsWith(href + '/');
+}
+---
+
+<header
+  class="sticky top-0 z-50 w-full border-b border-neutral-100 bg-white/90 backdrop-blur-md"
+  transition:persist
+>
+  <div class="container flex h-18 items-center justify-between">
+    <!-- Logo -->
+    <Logo variant="full" />
+
+    <!-- Desktop navigation -->
+    <nav class="hidden items-center gap-1 lg:flex" aria-label="Hauptnavigation">
+      {mainNav.map((item) => (
+        item.children ? (
+          <div class="group relative">
+            <a
+              href={item.href}
+              class:list={[
+                'inline-flex items-center gap-1 rounded-md px-3 py-2 font-display text-[0.9375rem] font-medium no-underline transition-colors',
+                isActive(item.href)
+                  ? 'text-accent'
+                  : 'text-primary hover:text-accent',
+              ]}
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              {item.label}
+              <ChevronDown class="h-4 w-4 transition-transform group-hover:rotate-180" />
+            </a>
+
+            {/* Dropdown panel */}
+            <div class="invisible absolute left-0 top-full z-50 pt-2 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
+              <div class="min-w-56 rounded-card border border-neutral-100 bg-white p-2 shadow-lg shadow-primary/5">
+                {item.children.map((child) => (
+                  <a
+                    href={child.href}
+                    class:list={[
+                      'block rounded-md px-4 py-2.5 font-display text-[0.9375rem] font-medium no-underline transition-colors',
+                      isActive(child.href)
+                        ? 'bg-accent/5 text-accent'
+                        : 'text-neutral-900 hover:bg-neutral-100 hover:text-accent',
+                    ]}
+                  >
+                    {child.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        ) : (
+          <a
+            href={item.href}
+            class:list={[
+              'rounded-md px-3 py-2 font-display text-[0.9375rem] font-medium no-underline transition-colors',
+              isActive(item.href)
+                ? 'text-accent'
+                : 'text-primary hover:text-accent',
+            ]}
+          >
+            {item.label}
+          </a>
+        )
+      ))}
+    </nav>
+
+    <!-- Right side: CTA + mobile hamburger -->
+    <div class="flex items-center gap-4">
+      <a href="/kontakt" class="btn-primary hidden lg:inline-flex">
+        Erstgespräch vereinbaren
+      </a>
+
+      <button
+        type="button"
+        class="inline-flex items-center justify-center rounded-md p-2 text-primary transition-colors hover:bg-neutral-100 hover:text-accent lg:hidden"
+        aria-label="Menü öffnen"
+        data-menu-toggle
+      >
+        <Menu class="h-6 w-6" />
+      </button>
+    </div>
+  </div>
+</header>
+
+<MobileMenu />
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const toggle = document.querySelector('[data-menu-toggle]');
+    toggle?.addEventListener('click', () => {
+      document.body.setAttribute('data-menu-open', '');
+    });
+  });
+</script>

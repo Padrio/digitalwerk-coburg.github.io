@@ -1,0 +1,54 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  noIndex?: boolean;
+  ogImage?: string;
+  ogType?: string;
+}
+
+const {
+  title,
+  description,
+  canonical,
+  noIndex = false,
+  ogImage = '/og-image.jpg',
+  ogType = 'website',
+} = Astro.props;
+
+const canonicalUrl = canonical || new URL(Astro.url.pathname, Astro.site).href;
+const ogImageUrl = new URL(ogImage, Astro.site).href;
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalUrl} />
+{noIndex && <meta name="robots" content="noindex, nofollow" />}
+<meta name="generator" content={Astro.generator} />
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+<!-- Open Graph -->
+<meta property="og:type" content={ogType} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:image" content={ogImageUrl} />
+<meta property="og:locale" content="de_DE" />
+<meta property="og:site_name" content="Digitalwerk Coburg" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImageUrl} />
+
+<!-- Sitemap -->
+<link rel="sitemap" href="/sitemap-index.xml" />
+
+<!-- Theme -->
+<meta name="theme-color" content="#0f1d3d" />

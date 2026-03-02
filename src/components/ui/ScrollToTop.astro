@@ -1,0 +1,32 @@
+---
+import { ChevronUp } from "lucide-astro";
+---
+
+<button
+  id="scroll-to-top"
+  type="button"
+  aria-label="Nach oben scrollen"
+  class="fixed bottom-6 right-6 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-accent text-white shadow-lg transition-all duration-300 hover:bg-accent-hover hover:shadow-xl hover:-translate-y-0.5 cursor-pointer opacity-0 pointer-events-none"
+>
+  <ChevronUp class="h-5 w-5" />
+</button>
+
+<script>
+  const btn = document.getElementById("scroll-to-top") as HTMLButtonElement;
+
+  const handleScroll = () => {
+    if (window.scrollY > 400) {
+      btn.classList.remove("opacity-0", "pointer-events-none");
+      btn.classList.add("opacity-100", "pointer-events-auto");
+    } else {
+      btn.classList.remove("opacity-100", "pointer-events-auto");
+      btn.classList.add("opacity-0", "pointer-events-none");
+    }
+  };
+
+  window.addEventListener("scroll", handleScroll, { passive: true });
+
+  btn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+</script>

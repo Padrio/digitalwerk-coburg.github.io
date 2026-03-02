@@ -1,0 +1,36 @@
+---
+import '@styles/global.css';
+import BaseHead from '@components/seo/BaseHead.astro';
+import { ClientRouter } from 'astro:transitions';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  noIndex?: boolean;
+  ogImage?: string;
+  ogType?: string;
+}
+
+const { title, description, canonical, noIndex, ogImage, ogType } = Astro.props;
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <BaseHead
+      title={title}
+      description={description}
+      canonical={canonical}
+      noIndex={noIndex}
+      ogImage={ogImage}
+      ogType={ogType}
+    />
+    <slot name="head" />
+    <ClientRouter />
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <slot />
+    <slot name="scripts" />
+  </body>
+</html>
