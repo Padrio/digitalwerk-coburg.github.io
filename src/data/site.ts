@@ -49,12 +49,12 @@ export const SITE: SiteConfig = {
     country: 'DE',
   },
   social: {
-    linkedIn: '',
+    linkedIn: 'https://www.linkedin.com/in/pascal-krason-b74028326/',
     instagram: '',
-    github: '',
+    github: 'https://github.com/Padrio',
   },
   owner: {
-    name: 'Pascal',
+    name: 'Pascal Krason',
     role: 'Gründer & Entwickler',
   },
 };

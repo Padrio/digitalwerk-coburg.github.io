@@ -1,6 +1,7 @@
 ---
 import PageLayout from '@layouts/PageLayout.astro';
 import { buildSeoMeta } from '@utils/seo';
+import { SITE } from '@data/site';
 
 const seo = buildSeoMeta({
   title: 'Datenschutzerklärung',
@@ -82,12 +83,12 @@ const seo = buildSeoMeta({
         Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:
       </p>
       <p class="mt-4">
-        Pascal [Nachname]<br />
-        Digitalwerk Coburg<br />
-        Musterstraße 1<br />
-        96450 Coburg<br /><br />
-        Telefon: +49 123 456789<br />
-        E-Mail: hallo@digitalwerk-coburg.de
+        {SITE.owner.name}<br />
+        {SITE.name}<br />
+        Schubertstr. 24<br />
+        58762 Altena<br /><br />
+        Telefon: {SITE.phone}<br />
+        E-Mail: <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
       </p>
 
       <h3 class="mt-6">Speicherdauer</h3>

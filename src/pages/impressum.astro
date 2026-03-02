@@ -1,6 +1,7 @@
 ---
 import PageLayout from '@layouts/PageLayout.astro';
 import { buildSeoMeta } from '@utils/seo';
+import { SITE } from '@data/site';
 
 const seo = buildSeoMeta({
   title: 'Impressum',
@@ -20,35 +21,28 @@ const seo = buildSeoMeta({
 
       <h2 class="mt-10">Angaben gemäß § 5 TMG</h2>
       <p>
-        Pascal [Nachname]<br />
-        Digitalwerk Coburg<br />
-        Musterstraße 1<br />
-        96450 Coburg
+        {SITE.owner.name}<br />
+        {SITE.name}<br />
+        Schubertstr. 24<br />
+        58762 Altena
       </p>
 
       <h2 class="mt-10">Kontakt</h2>
       <p>
-        Telefon: +49 123 456789<br />
-        E-Mail: hallo@digitalwerk-coburg.de
-      </p>
-
-      <h2 class="mt-10">Umsatzsteuer-ID</h2>
-      <p>
-        Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:<br />
-        DE [Nummer eintragen]
+        Telefon: {SITE.phone}<br />
+        E-Mail: <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
       </p>
 
       <h2 class="mt-10">Berufsbezeichnung</h2>
       <p>
-        Freiberuflicher Webdesigner und Webentwickler<br />
-        Zuständige Kammer: [falls zutreffend]
+        Freiberuflicher Webdesigner und Webentwickler
       </p>
 
       <h2 class="mt-10">Redaktionell verantwortlich</h2>
       <p>
-        Pascal [Nachname]<br />
-        Musterstraße 1<br />
-        96450 Coburg
+        {SITE.owner.name}<br />
+        Schubertstr. 24<br />
+        58762 Altena
       </p>
 
       <h2 class="mt-10">EU-Streitschlichtung</h2>
@@ -64,11 +58,6 @@ const seo = buildSeoMeta({
       <p>
         Ich bin nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer
         Verbraucherschlichtungsstelle teilzunehmen.
-      </p>
-
-      <p class="mt-10 text-small text-neutral-600">
-        <strong>Hinweis:</strong> Bitte ersetzen Sie die Platzhalter durch Ihre tatsächlichen Angaben,
-        bevor Sie die Website veröffentlichen.
       </p>
     </div>
   </section>
