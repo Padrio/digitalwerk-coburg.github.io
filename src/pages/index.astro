@@ -18,6 +18,9 @@ import FAQ from '@components/sections/FAQ.astro';
 import CTA from '@components/ui/CTA.astro';
 
 import { Palette, Code, Brain, Search } from 'lucide-astro';
+import NetworkPattern from '@components/decorative/NetworkPattern.astro';
+import IsometricBlocks from '@components/decorative/IsometricBlocks.astro';
+import GridPattern from '@components/decorative/GridPattern.astro';
 
 const seo = buildSeoMeta({
   title: 'Digitalwerk Coburg',
@@ -59,8 +62,9 @@ const iconMap: Record<string, any> = {
   <TrustBar />
 
   {/* 3. Services */}
-  <section class="section">
-    <div class="container">
+  <section class="section relative overflow-hidden">
+    <NetworkPattern variant="dark" class="absolute -right-20 top-0 h-[500px] w-[500px] opacity-30" />
+    <div class="container relative z-10">
       <div class="mx-auto max-w-3xl text-center">
         <span class="section-label justify-center">Leistungen</span>
         <h2>Was ich für Sie tun kann</h2>
@@ -91,21 +95,27 @@ const iconMap: Record<string, any> = {
   </section>
 
   {/* 4. About Teaser */}
-  <section class="section bg-neutral-100">
-    <div class="container">
-      <div class="mx-auto max-w-3xl text-center">
-        <span class="section-label justify-center">Über mich</span>
-        <h2>Der Mensch hinter Digitalwerk</h2>
-        <p class="mt-6 text-lg text-neutral-600 leading-relaxed">
-          Ich bin Pascal &ndash; Entwickler, Gestalter und Gründer von Digitalwerk Coburg.
-          Was mich antreibt: Technik so einsetzen, dass sie Menschen und Unternehmen
-          wirklich weiterbringt. Kein Agentur-Overhead, kein Fachjargon, sondern ein
-          persönlicher Ansprechpartner, der Ihr Projekt von Anfang bis Ende betreut.
-        </p>
-        <div class="mt-8">
-          <a href="/ueber-mich" class="btn-outline">
-            Mehr über mich erfahren
-          </a>
+  <section class="section relative bg-neutral-100 overflow-hidden">
+    <GridPattern variant="dots" class="absolute inset-0" />
+    <div class="container relative z-10">
+      <div class="grid items-center gap-12 lg:grid-cols-2">
+        <div>
+          <span class="section-label">Über mich</span>
+          <h2>Der Mensch hinter Digitalwerk</h2>
+          <p class="mt-6 text-lg text-neutral-600 leading-relaxed">
+            Ich bin Pascal &ndash; Entwickler, Gestalter und Gründer von Digitalwerk Coburg.
+            Was mich antreibt: Technik so einsetzen, dass sie Menschen und Unternehmen
+            wirklich weiterbringt. Kein Agentur-Overhead, kein Fachjargon, sondern ein
+            persönlicher Ansprechpartner, der Ihr Projekt von Anfang bis Ende betreut.
+          </p>
+          <div class="mt-8">
+            <a href="/ueber-mich" class="btn-outline">
+              Mehr über mich erfahren
+            </a>
+          </div>
+        </div>
+        <div class="flex items-center justify-center">
+          <IsometricBlocks class="w-full max-w-sm" />
         </div>
       </div>
     </div>
@@ -136,8 +146,9 @@ const iconMap: Record<string, any> = {
   </section>
 
   {/* 6. Testimonials */}
-  <section class="section bg-neutral-100">
-    <div class="container">
+  <section class="section relative bg-neutral-100 overflow-hidden">
+    <GridPattern variant="dots" class="absolute inset-0" />
+    <div class="container relative z-10">
       <div class="mx-auto max-w-3xl text-center">
         <span class="section-label justify-center">Kundenstimmen</span>
         <h2>Was meine Kunden sagen</h2>

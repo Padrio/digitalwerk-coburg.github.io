@@ -6,6 +6,7 @@ import ContactForm from '@components/ui/ContactForm.astro';
 import Hero from '@components/sections/Hero.astro';
 
 import { Mail, Phone, MapPin, Clock } from 'lucide-astro';
+import NetworkPattern from '@components/decorative/NetworkPattern.astro';
 
 const seo = buildSeoMeta({
   title: 'Kontakt',
@@ -32,8 +33,9 @@ const seo = buildSeoMeta({
   <div id="cta-sticky-sentinel"></div>
 
   {/* 2. Contact section: Form + Info */}
-  <section class="section">
-    <div class="container">
+  <section class="section relative overflow-hidden">
+    <NetworkPattern variant="dark" class="absolute -right-20 bottom-0 h-[400px] w-[400px] opacity-20" />
+    <div class="container relative z-10">
       <div class="grid gap-12 lg:grid-cols-2">
         {/* Left: Contact Form */}
         <div>

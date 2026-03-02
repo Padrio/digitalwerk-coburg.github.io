@@ -9,6 +9,8 @@ import Hero from '@components/sections/Hero.astro';
 import CTA from '@components/ui/CTA.astro';
 
 import { Gem, Eye, Handshake } from 'lucide-astro';
+import IsometricBlocks from '@components/decorative/IsometricBlocks.astro';
+import GridPattern from '@components/decorative/GridPattern.astro';
 
 const seo = buildSeoMeta({
   title: 'Über mich',
@@ -74,11 +76,9 @@ const techStack = [
   <section class="section">
     <div class="container">
       <div class="grid items-start gap-12 lg:grid-cols-2">
-        {/* Left: Photo placeholder */}
+        {/* Left: Visual */}
         <div class="flex items-center justify-center">
-          <div class="flex h-80 w-full max-w-md items-center justify-center rounded-2xl bg-neutral-200 text-neutral-500">
-            <span class="font-display text-lg font-medium">Foto folgt</span>
-          </div>
+          <IsometricBlocks class="w-full max-w-md" />
         </div>
 
         {/* Right: Story */}
@@ -124,8 +124,9 @@ const techStack = [
   </section>
 
   {/* 3. Values */}
-  <section class="section bg-neutral-100">
-    <div class="container">
+  <section class="section relative bg-neutral-100 overflow-hidden">
+    <GridPattern variant="dots" class="absolute inset-0" />
+    <div class="container relative z-10">
       <div class="mx-auto max-w-3xl text-center">
         <h2>Meine Werte</h2>
         <p class="mt-4 text-lg text-neutral-600 leading-relaxed">

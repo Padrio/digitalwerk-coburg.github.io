@@ -11,6 +11,7 @@ import ProcessTimeline from '@components/sections/ProcessTimeline.astro';
 import CTA from '@components/ui/CTA.astro';
 
 import { Wrench, Utensils, HeartPulse, Building2, Flame } from 'lucide-astro';
+import GridPattern from '@components/decorative/GridPattern.astro';
 
 const seo = buildSeoMeta({
   title: 'Zusammenarbeit',
@@ -68,8 +69,9 @@ const howToSteps = processSteps.map((step) => ({
   </section>
 
   {/* 3. Industries */}
-  <section class="section bg-neutral-100">
-    <div class="container">
+  <section class="section relative bg-neutral-100 overflow-hidden">
+    <GridPattern variant="dots" class="absolute inset-0" />
+    <div class="container relative z-10">
       <div class="mx-auto max-w-3xl text-center">
         <span class="section-label justify-center">Branchenlösungen</span>
         <h2>Für wen ich arbeite</h2>

@@ -1,4 +1,6 @@
 ---
+import NetworkPattern from '@components/decorative/NetworkPattern.astro';
+
 interface Props {
   headline: string;
   subline: string;
@@ -15,6 +17,9 @@ const {
 ---
 
 <section class="section relative overflow-hidden bg-gradient-to-br from-primary to-primary-light">
+  <!-- Decorative network pattern -->
+  <NetworkPattern variant="light" class="absolute inset-0 h-full w-full opacity-70" />
+
   <!-- Decorative radial glow -->
   <div
     class="pointer-events-none absolute -top-24 -right-24 h-96 w-96 rounded-full opacity-20"

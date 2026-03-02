@@ -224,6 +224,30 @@
   }
 }
 
+/* ─── Image utilities ─── */
+
+@utility rounded-card {
+  border-radius: var(--radius-card);
+}
+
+@utility image-shadow {
+  box-shadow: 0 4px 20px rgba(15, 29, 61, 0.08);
+}
+
+@utility image-duotone {
+  filter: grayscale(40%) contrast(1.1) brightness(0.9);
+  mix-blend-mode: normal;
+}
+
+@utility image-desaturated {
+  filter: saturate(0.7) contrast(1.05);
+}
+
+@utility image-monochrome-navy {
+  filter: grayscale(100%) contrast(1.1) brightness(0.8);
+  mix-blend-mode: luminosity;
+}
+
 @utility display-text {
   font-family: var(--font-display);
   font-size: clamp(2.5rem, 5vw, 4rem);

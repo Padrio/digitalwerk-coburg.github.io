@@ -1,0 +1,42 @@
+---
+/**
+ * Geometric grid/dot pattern for subtle section backgrounds.
+ * Tileable, uses brand colors. Rendered as inline SVG for performance.
+ */
+interface Props {
+  class?: string;
+  variant?: 'dots' | 'lines';
+}
+
+const { class: className = '', variant = 'dots' } = Astro.props;
+---
+
+{variant === 'dots' ? (
+  <svg
+    class:list={['pointer-events-none', className]}
+    width="100%"
+    height="100%"
+    aria-hidden="true"
+  >
+    <defs>
+      <pattern id="dot-grid" x="0" y="0" width="32" height="32" patternUnits="userSpaceOnUse">
+        <circle cx="1" cy="1" r="1" fill="rgba(15, 29, 61, 0.07)" />
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#dot-grid)" />
+  </svg>
+) : (
+  <svg
+    class:list={['pointer-events-none', className]}
+    width="100%"
+    height="100%"
+    aria-hidden="true"
+  >
+    <defs>
+      <pattern id="line-grid" x="0" y="0" width="48" height="48" patternUnits="userSpaceOnUse">
+        <path d="M 48 0 L 0 0 0 48" fill="none" stroke="rgba(15, 29, 61, 0.05)" stroke-width="1" />
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#line-grid)" />
+  </svg>
+)}

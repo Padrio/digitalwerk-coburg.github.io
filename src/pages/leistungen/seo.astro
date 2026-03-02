@@ -9,6 +9,7 @@ import Hero from '@components/sections/Hero.astro';
 import FAQ from '@components/sections/FAQ.astro';
 import CTA from '@components/ui/CTA.astro';
 import { CheckCircle } from 'lucide-astro';
+import GridPattern from '@components/decorative/GridPattern.astro';
 
 const service = getServiceBySlug('seo')!;
 const faqs = serviceFaqs['seo'] || [];
@@ -53,8 +54,9 @@ const seo = buildSeoMeta({
   </section>
 
   <!-- USPs -->
-  <section class="section bg-neutral-100">
-    <div class="container">
+  <section class="section relative bg-neutral-100 overflow-hidden">
+    <GridPattern variant="dots" class="absolute inset-0" />
+    <div class="container relative z-10">
       <div class="mx-auto max-w-3xl">
         <span class="section-label">Warum Digitalwerk</span>
         <h2 class="mb-10">Ihre Vorteile</h2>

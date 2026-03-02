@@ -6,6 +6,7 @@ import Hero from '@components/sections/Hero.astro';
 import CTA from '@components/ui/CTA.astro';
 
 import { Palette, Code, Brain, Search } from 'lucide-astro';
+import NetworkPattern from '@components/decorative/NetworkPattern.astro';
 
 const seo = buildSeoMeta({
   title: 'Leistungen',
@@ -36,8 +37,9 @@ const iconMap: Record<string, any> = {
   />
 
   {/* 2. Service cards (large format, 2-column grid) */}
-  <section class="section">
-    <div class="container">
+  <section class="section relative overflow-hidden">
+    <NetworkPattern variant="dark" class="absolute -left-20 top-10 h-[400px] w-[400px] opacity-25" />
+    <div class="container relative z-10">
       <div class="grid gap-8 md:grid-cols-2">
         {services.map((s) => {
           const IconComponent = iconMap[s.icon];

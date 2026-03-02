@@ -1,4 +1,6 @@
 ---
+import GridPattern from '@components/decorative/GridPattern.astro';
+
 const servedAreas = [
   'Coburg',
   'Bamberg',
@@ -11,8 +13,9 @@ const servedAreas = [
 ];
 ---
 
-<section class="section bg-neutral-100">
-  <div class="container">
+<section class="section relative bg-neutral-100 overflow-hidden">
+  <GridPattern variant="dots" class="absolute inset-0" />
+  <div class="container relative z-10">
     <div class="mx-auto max-w-3xl text-center">
       <span class="section-label justify-center">Regional verwurzelt</span>
 

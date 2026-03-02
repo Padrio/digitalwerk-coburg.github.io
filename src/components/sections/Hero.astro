@@ -1,4 +1,8 @@
 ---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import HexPattern from '@components/decorative/HexPattern.astro';
+
 interface Props {
   headline: string;
   subheadline: string;
@@ -7,6 +11,7 @@ interface Props {
   badge?: string;
   stats?: Array<{ value: string; label: string }>;
   variant?: 'centered' | 'split';
+  backgroundImage?: ImageMetadata;
 }
 
 const {
@@ -17,6 +22,7 @@ const {
   badge,
   stats,
   variant = 'centered',
+  backgroundImage,
 } = Astro.props;
 ---
 
@@ -24,6 +30,21 @@ const {
   class="relative min-h-[85vh] flex items-center overflow-hidden"
   style="background: linear-gradient(135deg, #0a1128, #0f1d3d, #1e3a6e);"
 >
+  {/* Background image with navy overlay */}
+  {backgroundImage && (
+    <Image
+      src={backgroundImage}
+      alt=""
+      widths={[960, 1440, 1920]}
+      sizes="100vw"
+      class="absolute inset-0 h-full w-full object-cover opacity-20 image-desaturated"
+      loading="eager"
+    />
+  )}
+
+  {/* Geometric hex pattern overlay */}
+  <HexPattern class="absolute inset-0 h-full w-full opacity-60" />
+
   {/* Decorative orange radial glow */}
   <div
     class="pointer-events-none absolute right-[-10%] top-[20%] h-[500px] w-[500px] rounded-full opacity-15"
