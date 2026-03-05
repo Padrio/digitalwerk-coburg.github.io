@@ -17,7 +17,7 @@ export const globalFaqs: FAQ[] = [
   {
     question: 'Wie läuft eine Zusammenarbeit mit Digitalwerk Coburg ab?',
     answer:
-      'Alles beginnt mit einem kostenlosen Erstgespräch, in dem wir Ihre Ziele und Anforderungen besprechen. Danach erhalten Sie ein transparentes Angebot mit Festpreis. Nach Ihrer Zusage arbeite ich in klar definierten Phasen – von Konzept über Umsetzung bis zum Launch. Dabei halten wir regelmäßig Rücksprache, damit das Ergebnis genau zu Ihnen passt.',
+      'Alles beginnt mit einem kostenlosen Erstgespräch, in dem wir Ihre Ziele und Anforderungen besprechen. Danach erhalten Sie ein transparentes Angebot, das genau auf Ihr Projekt zugeschnitten ist. Nach Ihrer Zusage arbeite ich in klar definierten Phasen – von Konzept über Umsetzung bis zum Launch. Dabei halten wir regelmäßig Rücksprache, damit das Ergebnis genau zu Ihnen passt.',
   },
   {
     question: 'Arbeiten Sie nur mit Unternehmen aus Coburg?',
@@ -37,7 +37,7 @@ export const globalFaqs: FAQ[] = [
   {
     question: 'Bieten Sie auch Wartung und Support nach dem Launch an?',
     answer:
-      'Ja. Nach dem Launch unterstütze ich Sie mit regelmäßiger Wartung, Sicherheitsupdates und technischem Support. Dafür gibt es flexible Wartungsverträge ab 150 € pro Monat. Im ersten Monat nach Launch ist der Support bei jedem Projekt inklusive.',
+      'Ja. Nach dem Launch unterstütze ich Sie mit regelmäßiger Wartung, Sicherheitsupdates und technischem Support. Dafür gibt es flexible Wartungsverträge, die wir individuell auf Ihren Bedarf abstimmen. Im ersten Monat nach Launch ist der Support bei jedem Projekt inklusive.',
   },
   {
     question: 'Muss ich technisches Vorwissen mitbringen?',
@@ -63,7 +63,7 @@ export const serviceFaqs: ServiceFAQs = {
     {
       question: 'Was kostet ein professionelles Webdesign?',
       answer:
-        'Eine individuelle Unternehmenswebsite beginnt bei 2.500 €. Der endgültige Preis hängt vom Umfang ab – etwa der Anzahl der Seiten, besonderen Funktionen und ob ein CMS benötigt wird. Im Erstgespräch klären wir Ihre Anforderungen und Sie erhalten ein verbindliches Festpreisangebot.',
+        'Die Kosten für eine professionelle Website hängen von Ihren individuellen Anforderungen ab – etwa dem Umfang, besonderen Funktionen und ob ein CMS benötigt wird. Im kostenlosen Erstgespräch klären wir, was Sie brauchen, und Sie erhalten ein verbindliches Angebot, das transparent und fair kalkuliert ist.',
     },
     {
       question: 'Ist meine neue Website auch für Mobilgeräte optimiert?',
@@ -119,7 +119,7 @@ export const serviceFaqs: ServiceFAQs = {
     {
       question: 'Was kostet ein KI-Beratungsprojekt?',
       answer:
-        'Eine Potenzialanalyse mit konkreten Handlungsempfehlungen beginnt bei 1.200 €. Wenn daraus eine Umsetzung folgt – etwa ein Chatbot oder eine Automatisierung – hängen die Kosten vom Umfang ab. Sie erhalten immer vorab ein transparentes Angebot.',
+        'Das hängt davon ab, welche Ziele Sie verfolgen und wie umfangreich die Umsetzung ist. Ob Potenzialanalyse, Chatbot-Entwicklung oder Prozessautomatisierung – im Erstgespräch besprechen wir Ihr Vorhaben und Sie erhalten ein transparentes Angebot, das zu Ihrem Unternehmen passt.',
     },
     {
       question: 'Wie schnell sehe ich Ergebnisse?',

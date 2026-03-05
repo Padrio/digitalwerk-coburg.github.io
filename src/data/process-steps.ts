@@ -21,7 +21,7 @@ export const processSteps: ProcessStep[] = [
     number: 2,
     title: 'Konzept',
     description:
-      'Auf Basis unseres Gesprächs erstelle ich ein detailliertes Konzept mit Struktur, Inhalten und technischem Ansatz. Sie erhalten ein transparentes Festpreisangebot – ohne versteckte Kosten oder Überraschungen.',
+      'Auf Basis unseres Gesprächs erstelle ich ein detailliertes Konzept mit Struktur, Inhalten und technischem Ansatz. Sie erhalten ein transparentes Angebot, das auf Ihr Projekt zugeschnitten ist – ohne versteckte Kosten oder Überraschungen.',
     icon: 'lightbulb',
   },
   {

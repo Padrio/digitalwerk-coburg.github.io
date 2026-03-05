@@ -40,7 +40,7 @@ export const SITE: SiteConfig = {
   description:
     'Ihr zuverlässiger Digitalpartner aus Coburg für Webdesign, Webentwicklung, SEO und KI-Beratung. Persönlich. Regional. Ergebnisorientiert.',
   email: 'hallo@digitalwerk-coburg.de',
-  phone: '+49 123 456789',
+  phone: '+49 (0) 174 660 3656',
   address: {
     street: 'Musterstraße 1',
     zip: '96450',

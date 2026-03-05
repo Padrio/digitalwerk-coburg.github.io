@@ -80,9 +80,12 @@ const seo = buildSeoMeta({
         <span class="section-label">Lieferumfang</span>
         <h2 class="mb-4">Das ist im Paket enthalten</h2>
 
-        <span class="mb-8 inline-block rounded-full bg-accent/10 px-4 py-1.5 font-display text-sm font-semibold text-accent">
-          {service.price}
+        <span class="mb-4 inline-block rounded-full bg-accent/10 px-4 py-1.5 font-display text-sm font-semibold text-accent">
+          {service.ctaText}
         </span>
+        <a href="/kontakt" class="mb-8 inline-block text-sm font-semibold text-accent hover:underline">
+          Jetzt Angebot besprechen &rarr;
+        </a>
 
         <ul class="space-y-3">
           {service.deliverables.map((item) => (

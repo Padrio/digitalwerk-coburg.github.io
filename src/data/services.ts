@@ -16,7 +16,7 @@ export interface Service {
   icon: string;
   features: ServiceFeature[];
   usps: string[];
-  price: string;
+  ctaText?: string;
   deliverables: string[];
   href: string;
 }
@@ -74,9 +74,9 @@ export const services: Service[] = [
       'Kein Baukasten – individuell entwickelt mit modernen Technologien',
       'Persönliche Betreuung von Konzept bis Launch',
       'Performance-Scores über 90 bei Google PageSpeed',
-      'Festpreis ohne versteckte Kosten',
+      'Transparentes Angebot ohne versteckte Kosten',
     ],
-    price: 'ab 2.500 €',
+    ctaText: 'Individuell für Ihr Unternehmen',
     deliverables: [
       'Konzept & Wireframes',
       'Individuelles UI-Design (Figma)',
@@ -146,7 +146,7 @@ export const services: Service[] = [
       'Erfahrung mit komplexen Integrationen und Schnittstellen',
       'Transparente Entwicklung mit regelmäßigen Updates',
     ],
-    price: 'ab 4.000 €',
+    ctaText: 'Zugeschnitten auf Ihre Anforderungen',
     deliverables: [
       'Technisches Konzept & Architektur',
       'Frontend-Entwicklung',
@@ -207,7 +207,7 @@ export const services: Service[] = [
       'Verständliche Erklärungen ohne Fachjargon',
       'Unabhängige Beratung – keine Bindung an einen KI-Anbieter',
     ],
-    price: 'ab 1.200 €',
+    ctaText: 'Passend zu Ihrem Bedarf',
     deliverables: [
       'KI-Potenzialanalyse für Ihr Unternehmen',
       'Priorisierte Anwendungsfälle mit Aufwand-Nutzen-Bewertung',
@@ -271,7 +271,7 @@ export const services: Service[] = [
       'Verständliche Berichte statt SEO-Fachchinesisch',
       'Kombination aus technischem Know-how und Texter-Erfahrung',
     ],
-    price: 'ab 500 €/Monat',
+    ctaText: 'Flexibel & monatlich anpassbar',
     deliverables: [
       'SEO-Audit Ihrer bestehenden Website',
       'Keyword-Recherche & Strategie',

@@ -54,9 +54,11 @@ const iconMap: Record<string, any> = {
                   <h2 class="font-display text-xl font-semibold text-primary">
                     {s.title}
                   </h2>
-                  <span class="mt-1 inline-block rounded-full bg-accent/10 px-3 py-0.5 font-display text-small font-semibold text-accent">
-                    {s.price}
-                  </span>
+                  {s.ctaText && (
+                    <span class="mt-1 inline-block rounded-full bg-accent/10 px-3 py-0.5 font-display text-small font-semibold text-accent">
+                      {s.ctaText}
+                    </span>
+                  )}
                 </div>
               </div>
 
