@@ -42,7 +42,7 @@ export const SITE: SiteConfig = {
   email: 'hallo@digitalwerk-coburg.de',
   phone: '+49 (0) 174 660 3656',
   address: {
-    street: 'Musterstraße 1',
+    street: 'Von-Mayer-Straße 25',
     zip: '96450',
     city: 'Coburg',
     region: 'Oberfranken',

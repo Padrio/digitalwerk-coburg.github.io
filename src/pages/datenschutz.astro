@@ -85,8 +85,8 @@ const seo = buildSeoMeta({
       <p class="mt-4">
         {SITE.owner.name}<br />
         {SITE.name}<br />
-        Schubertstr. 24<br />
-        58762 Altena<br /><br />
+        {SITE.address.street}<br />
+        {SITE.address.zip} {SITE.address.city}<br /><br />
         Telefon: {SITE.phone}<br />
         E-Mail: <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
       </p>

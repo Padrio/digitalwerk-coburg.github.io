@@ -23,8 +23,8 @@ const seo = buildSeoMeta({
       <p>
         {SITE.owner.name}<br />
         {SITE.name}<br />
-        Schubertstr. 24<br />
-        58762 Altena
+        {SITE.address.street}<br />
+        {SITE.address.zip} {SITE.address.city}
       </p>
 
       <h2 class="mt-10">Kontakt</h2>
@@ -41,8 +41,8 @@ const seo = buildSeoMeta({
       <h2 class="mt-10">Redaktionell verantwortlich</h2>
       <p>
         {SITE.owner.name}<br />
-        Schubertstr. 24<br />
-        58762 Altena
+        {SITE.address.street}<br />
+        {SITE.address.zip} {SITE.address.city}
       </p>
 
       <h2 class="mt-10">EU-Streitschlichtung</h2>
