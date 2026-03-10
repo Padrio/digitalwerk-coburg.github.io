@@ -28,6 +28,7 @@ export const mainNav: NavItem[] = [
   },
   { label: 'Zusammenarbeit', href: '/zusammenarbeit' },
   { label: 'Über mich', href: '/ueber-mich' },
+  { label: 'Blog', href: '/blog' },
   { label: 'Kontakt', href: '/kontakt' },
 ];
 
@@ -48,6 +49,7 @@ export const footerNav: FooterNavGroup[] = [
     items: [
       { label: 'Über mich', href: '/ueber-mich' },
       { label: 'Zusammenarbeit', href: '/zusammenarbeit' },
+      { label: 'Blog', href: '/blog' },
       { label: 'Kontakt', href: '/kontakt' },
     ],
   },

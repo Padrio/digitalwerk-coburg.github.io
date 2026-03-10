@@ -1,0 +1,137 @@
+---
+import { getCollection, render } from 'astro:content';
+import PageLayout from '@layouts/PageLayout.astro';
+import JsonLd from '@components/seo/JsonLd.astro';
+import CTA from '@components/ui/CTA.astro';
+import { buildSeoMeta } from '@utils/seo';
+import { buildBlogPosting, buildFaqPage } from '@utils/schema';
+import { SITE } from '@data/site';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => data.draft !== true);
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const seo = buildSeoMeta({
+  title: post.data.title,
+  description: post.data.description,
+  ogType: 'article',
+  ogImage: post.data.heroImage,
+});
+
+const blogPostingSchema = buildBlogPosting({
+  title: post.data.title,
+  description: post.data.description,
+  pubDate: post.data.pubDate,
+  updatedDate: post.data.updatedDate,
+  url: `${SITE.url}/blog/${post.id}`,
+  heroImage: post.data.heroImage,
+});
+
+const formattedPubDate = post.data.pubDate.toLocaleDateString('de-DE', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+
+const formattedUpdateDate = post.data.updatedDate?.toLocaleDateString('de-DE', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<PageLayout
+  title={seo.title}
+  description={seo.description}
+  ogImage={seo.ogImage}
+  ogType={seo.ogType}
+>
+  <JsonLd schema={blogPostingSchema} />
+  {post.data.faqs.length > 0 && <JsonLd schema={buildFaqPage(post.data.faqs)} />}
+
+  <article class="section">
+    <div class="container">
+      {/* Article header */}
+      <header class="mx-auto max-w-[42rem] mb-12">
+        <div class="flex flex-wrap items-center gap-3 text-small text-neutral-600">
+          <time datetime={post.data.pubDate.toISOString()}>
+            {formattedPubDate}
+          </time>
+          {formattedUpdateDate && (
+            <>
+              <span aria-hidden="true">&middot;</span>
+              <span>Aktualisiert am {formattedUpdateDate}</span>
+            </>
+          )}
+        </div>
+
+        <h1 class="mt-4">{post.data.title}</h1>
+
+        <p class="mt-4 text-lg text-neutral-600 leading-relaxed">
+          {post.data.description}
+        </p>
+
+        {post.data.tags && post.data.tags.length > 0 && (
+          <div class="mt-6 flex flex-wrap gap-2">
+            {post.data.tags.map((tag: string) => (
+              <span class="inline-block rounded-full bg-neutral-100 px-3 py-0.5 text-xs font-medium text-neutral-600">
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
+      </header>
+
+      {/* Hero image */}
+      {post.data.heroImage && (
+        <div class="mx-auto max-w-[42rem] mb-12">
+          <img
+            src={post.data.heroImage}
+            alt={post.data.title}
+            class="w-full rounded-card image-shadow"
+            loading="eager"
+            decoding="async"
+          />
+        </div>
+      )}
+
+      {/* Markdown content */}
+      <div class="prose">
+        <Content />
+      </div>
+
+      {/* Author box */}
+      <div class="mx-auto mt-16 max-w-[42rem] rounded-card border border-neutral-100 p-6 flex items-center gap-5">
+        <div
+          class="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-accent/10 text-accent font-display font-bold text-xl"
+          aria-hidden="true"
+        >
+          PK
+        </div>
+        <div>
+          <p class="font-display font-semibold text-primary">
+            {SITE.owner.name}
+          </p>
+          <p class="text-small text-neutral-600">
+            {SITE.owner.role} bei {SITE.name}.{' '}
+            <a href="/ueber-mich" class="text-accent hover:underline">
+              Mehr erfahren &rarr;
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <CTA
+    headline="Fragen zum Thema?"
+    subline="Ich berate Sie gerne persönlich. Vereinbaren Sie ein kostenloses Erstgespräch und wir besprechen, wie ich Ihnen weiterhelfen kann."
+  />
+</PageLayout>
