@@ -6,6 +6,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Freelancer portfolio website for **Digitalwerk Coburg** (digitalwerk-coburg.de). Built with Astro 5, Tailwind CSS 4, and TypeScript. German-language site targeting the Coburg/Oberfranken region.
 
+## Git-Regeln
+
+- Kein `Co-Authored-By`-Tag in Commits — niemals Claude als Co-Author angeben.
+
 ## Commands
 
 ```bash

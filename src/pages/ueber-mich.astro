@@ -8,14 +8,14 @@ import { buildPerson } from '@utils/schema';
 import Hero from '@components/sections/Hero.astro';
 import CTA from '@components/ui/CTA.astro';
 
-import { Gem, Eye, Handshake } from 'lucide-astro';
+import { Gem, Eye, Handshake, Briefcase, GraduationCap, Rocket, Users, Building2 } from 'lucide-astro';
 import IsometricBlocks from '@components/decorative/IsometricBlocks.astro';
 import GridPattern from '@components/decorative/GridPattern.astro';
 
 const seo = buildSeoMeta({
   title: 'Über mich',
   description:
-    'Pascal – Gründer von Digitalwerk Coburg. Erfahren Sie mehr über meinen Werdegang, meine Werte und warum ich der richtige Digitalpartner für Ihr Unternehmen bin.',
+    'Pascal Krason – Gründer von Digitalwerk Coburg. Über 10 Jahre Erfahrung in Webentwicklung und digitaler Strategie, von CHECK24 bis zur eigenen Unternehmensgründung.',
 });
 
 const values = [
@@ -45,13 +45,54 @@ const techStack = [
   'TypeScript',
   'Tailwind CSS',
   'Node.js',
+  'Laravel',
   'WordPress',
   'Shopify',
+  'Docker',
+  'Kubernetes',
   'Figma',
   'Supabase',
   'Git',
   'Vercel',
   'Cloudflare',
+];
+
+const milestones = [
+  {
+    icon: GraduationCap,
+    year: '2014–2017',
+    title: 'Ausbildung zum Anwendungsentwickler',
+    description:
+      'Fundierte Grundlage in Softwareentwicklung und IT-Infrastruktur – der Startpunkt meiner digitalen Karriere.',
+  },
+  {
+    icon: Building2,
+    year: '2017–2019',
+    title: 'Entwickler bei CHECK24',
+    description:
+      'Als Entwickler bei Deutschlands größtem Vergleichsportal habe ich an der Plattform mitgearbeitet, die täglich Millionen Nutzer bedient – und dabei gelernt, was es bedeutet, digitale Produkte zu bauen, die wirklich funktionieren.',
+  },
+  {
+    icon: Rocket,
+    year: '2019–2023',
+    title: 'Gründung eigene E-Commerce-Marke',
+    description:
+      'Mit AP Supplements habe ich eine eigene Marke aufgebaut – vom Online-Shop über Logistik bis zum Marketing. Diese Erfahrung als Unternehmer hilft mir heute, die Perspektive meiner Kunden wirklich zu verstehen.',
+  },
+  {
+    icon: Users,
+    year: '2022–2024',
+    title: 'Software Engineer & Teamleitung',
+    description:
+      'Bei PohlMedia habe ich SaaS-Produkte entwickelt, ein Entwicklerteam geleitet und Projekte im Gesundheitswesen und Industrieumfeld verantwortet.',
+  },
+  {
+    icon: Briefcase,
+    year: 'Seit 2024',
+    title: 'Gründung Digitalwerk Coburg',
+    description:
+      'Persönliche Digitalberatung für Unternehmen in der Region Coburg und Oberfranken. Die Summe meiner Erfahrungen – gebündelt in einem Angebot, das auf Ihre Bedürfnisse zugeschnitten ist.',
+  },
 ];
 ---
 
@@ -68,11 +109,35 @@ const techStack = [
   <Hero
     variant="centered"
     badge="Über mich"
-    headline="Hallo, ich bin Pascal"
-    subheadline="Gründer von Digitalwerk Coburg und Ihr persönlicher Ansprechpartner für alle digitalen Fragen."
+    headline="Hallo, ich bin Pascal Krason"
+    subheadline="Gründer von Digitalwerk Coburg – über 10 Jahre Erfahrung in Webentwicklung und digitaler Strategie. Ihr persönlicher Ansprechpartner für alle digitalen Fragen."
   />
 
-  {/* 2. Personal section */}
+  {/* 2. Zahlen/Fakten */}
+  <section class="border-y border-neutral-200 bg-white py-10">
+    <div class="container">
+      <div class="grid grid-cols-2 gap-8 md:grid-cols-4">
+        <div class="text-center">
+          <p class="font-display text-3xl font-bold text-accent">10+</p>
+          <p class="mt-1 text-sm text-neutral-600">Jahre Erfahrung</p>
+        </div>
+        <div class="text-center">
+          <p class="font-display text-3xl font-bold text-accent">2</p>
+          <p class="mt-1 text-sm text-neutral-600">eigene Unternehmen gegründet</p>
+        </div>
+        <div class="text-center">
+          <p class="font-display text-3xl font-bold text-accent">4+</p>
+          <p class="mt-1 text-sm text-neutral-600">Branchen betreut</p>
+        </div>
+        <div class="text-center">
+          <p class="font-display text-3xl font-bold text-accent">Coburg</p>
+          <p class="mt-1 text-sm text-neutral-600">Standort in Oberfranken</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* 3. Personal section */}
   <section class="section">
     <div class="container">
       <div class="grid items-start gap-12 lg:grid-cols-2">
@@ -88,19 +153,27 @@ const techStack = [
           </h2>
 
           <p class="mt-6 text-neutral-600 leading-relaxed">
-            Seit über zehn Jahren beschäftige ich mich mit Webdesign, Webentwicklung
-            und digitaler Strategie. Angefangen hat alles mit dem Wunsch, Dinge nicht
-            nur schön aussehen zu lassen, sondern sie auch technisch sauber umzusetzen
-            &ndash; Websites, die nicht nur gut aussehen, sondern auch funktionieren,
-            schnell laden und bei Google gefunden werden.
+            Seit über zehn Jahren beschäftige ich mich professionell mit Webentwicklung,
+            Webdesign und digitaler Strategie. Mein Weg hat mich von der Ausbildung zum
+            Anwendungsentwickler über eine Position bei CHECK24 &ndash; Deutschlands größtem
+            Vergleichsportal &ndash; bis hin zur Gründung eigener Unternehmen geführt.
+            Dabei habe ich in Unternehmen unterschiedlicher Größe gearbeitet: vom Startup
+            bis zum Konzern mit Millionen täglicher Nutzer.
           </p>
 
           <p class="mt-4 text-neutral-600 leading-relaxed">
-            Nach Jahren in Agenturen und als Freelancer habe ich Digitalwerk Coburg
-            gegründet, um genau die Zusammenarbeit anzubieten, die ich mir als Kunde
-            selbst wünschen würde: persönlich, transparent und auf Augenhöhe. Kein
-            anonymes Ticket-System, kein Weiterreichen zwischen Abteilungen &ndash;
-            sondern ein fester Ansprechpartner, der Ihr Projekt von der ersten Idee
+            Diese Erfahrung bringe ich in jedes Projekt ein. Als ehemaliger Gründer einer
+            eigenen E-Commerce-Marke weiß ich aus erster Hand, welche Herausforderungen
+            Unternehmer täglich meistern. Ich verstehe nicht nur die technische Seite,
+            sondern auch die unternehmerische &ndash; was funktioniert, was Kunden
+            überzeugt und wo Budgets sinnvoll eingesetzt sind.
+          </p>
+
+          <p class="mt-4 text-neutral-600 leading-relaxed">
+            Digitalwerk Coburg habe ich gegründet, um genau die Zusammenarbeit anzubieten,
+            die ich mir als Kunde selbst wünschen würde: persönlich, transparent und auf
+            Augenhöhe. Kein anonymes Ticket-System, kein Weiterreichen zwischen Abteilungen
+            &ndash; sondern ein fester Ansprechpartner, der Ihr Projekt von der ersten Idee
             bis zum fertigen Ergebnis begleitet.
           </p>
 
@@ -123,7 +196,46 @@ const techStack = [
     </div>
   </section>
 
-  {/* 3. Values */}
+  {/* 4. Mein Werdegang */}
+  <section class="section bg-neutral-100">
+    <div class="container">
+      <div class="mx-auto max-w-3xl text-center">
+        <h2>Mein Werdegang</h2>
+        <p class="mt-4 text-lg text-neutral-600 leading-relaxed">
+          Von der Ausbildung über Deutschlands größtes Vergleichsportal bis zur eigenen
+          Unternehmensgründung &ndash; die wichtigsten Stationen meiner beruflichen Laufbahn.
+        </p>
+      </div>
+
+      <div class="mx-auto mt-12 max-w-3xl">
+        <div class="relative space-y-8 before:absolute before:left-6 before:top-0 before:h-full before:w-px before:bg-neutral-300 md:before:left-8">
+          {milestones.map((m) => {
+            const IconComponent = m.icon;
+            return (
+              <div class="relative flex gap-5 md:gap-6">
+                <div class="relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white shadow-md ring-1 ring-neutral-200 md:h-16 md:w-16">
+                  <IconComponent class="h-5 w-5 text-accent md:h-6 md:w-6" />
+                </div>
+                <div class="pt-1">
+                  <span class="inline-block rounded-full bg-accent/10 px-3 py-0.5 font-display text-small font-semibold text-accent">
+                    {m.year}
+                  </span>
+                  <h3 class="mt-2 font-display text-lg font-semibold text-primary">
+                    {m.title}
+                  </h3>
+                  <p class="mt-1 text-neutral-600 leading-relaxed">
+                    {m.description}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* 5. Values */}
   <section class="section relative bg-neutral-100 overflow-hidden">
     <GridPattern variant="dots" class="absolute inset-0" />
     <div class="container relative z-10">
@@ -156,7 +268,7 @@ const techStack = [
     </div>
   </section>
 
-  {/* 4. Tech Stack */}
+  {/* 6. Tech Stack */}
   <section class="section">
     <div class="container">
       <div class="mx-auto max-w-3xl text-center">
@@ -177,7 +289,7 @@ const techStack = [
     </div>
   </section>
 
-  {/* 5. Local section */}
+  {/* 7. Local section */}
   <section class="section bg-neutral-100">
     <div class="container">
       <div class="mx-auto max-w-3xl text-center">
@@ -193,7 +305,7 @@ const techStack = [
     </div>
   </section>
 
-  {/* 6. CTA */}
+  {/* 8. CTA */}
   <CTA
     headline="Lernen wir uns kennen"
     subline="Sie suchen einen zuverlässigen Digitalpartner in Coburg? Ich freue mich auf ein unverbindliches Erstgespräch."

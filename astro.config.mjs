@@ -6,6 +6,9 @@ export default defineConfig({
   site: 'https://digitalwerk-coburg.de',
   output: 'static',
   trailingSlash: 'never',
+  build: {
+    format: 'file',
+  },
   i18n: {
     defaultLocale: 'de',
     locales: ['de'],
