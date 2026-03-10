@@ -9,7 +9,6 @@ import type {
   FAQPage,
   BreadcrumbList,
   HowTo,
-  BlogPosting,
   WithContext,
 } from 'schema-dts';
 
@@ -38,15 +37,6 @@ export interface BreadcrumbInput {
 export interface HowToStep {
   name: string;
   text: string;
-}
-
-export interface BlogPostInput {
-  title: string;
-  description: string;
-  pubDate: Date;
-  updatedDate?: Date;
-  url: string;
-  heroImage?: string;
 }
 
 // ---------------------------------------------------------------------------
@@ -180,35 +170,5 @@ export function buildHowTo(steps: HowToStep[]): WithContext<HowTo> {
       name: step.name,
       text: step.text,
     })),
-  };
-}
-
-/**
- * BlogPosting schema for individual blog articles.
- */
-export function buildBlogPosting(post: BlogPostInput): WithContext<BlogPosting> {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
-    headline: post.title,
-    description: post.description,
-    datePublished: post.pubDate.toISOString(),
-    ...(post.updatedDate ? { dateModified: post.updatedDate.toISOString() } : {}),
-    author: {
-      '@type': 'Person',
-      name: SITE.owner.name,
-      jobTitle: SITE.owner.role,
-      url: `${SITE.url}/ueber-mich`,
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: SITE.name,
-      url: SITE.url,
-    },
-    ...(post.heroImage ? { image: `${SITE.url}${post.heroImage}` } : {}),
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': post.url,
-    },
   };
 }
