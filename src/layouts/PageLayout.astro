@@ -8,7 +8,7 @@ import CTASticky from '@components/ui/CTASticky.astro';
 import WhatsAppButton from '@components/ui/WhatsAppButton.astro';
 import CookieBanner from '@components/ui/CookieBanner.astro';
 import JsonLd from '@components/seo/JsonLd.astro';
-import { buildBreadcrumbs } from '@utils/seo';
+import { buildBreadcrumbs, type BreadcrumbItem } from '@utils/seo';
 import { buildBreadcrumbList, buildLocalBusiness } from '@utils/schema';
 
 interface Props {
@@ -19,6 +19,7 @@ interface Props {
   ogImage?: string;
   ogType?: string;
   showBreadcrumbs?: boolean;
+  breadcrumbs?: BreadcrumbItem[];
 }
 
 const {
@@ -29,10 +30,12 @@ const {
   ogImage,
   ogType,
   showBreadcrumbs = true,
+  breadcrumbs,
 } = Astro.props;
 
-const breadcrumbItems = buildBreadcrumbs(Astro.url.pathname);
-const isHome = Astro.url.pathname === '/';
+const breadcrumbItems = breadcrumbs ?? buildBreadcrumbs(Astro.url.pathname);
+const cleanPathname = Astro.url.pathname.replace(/\.html$/, '').replace(/\/index$/, '') || '/';
+const isHome = cleanPathname === '/';
 ---
 
 <BaseLayout

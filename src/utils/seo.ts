@@ -85,12 +85,14 @@ function segmentToLabel(segment: string): string {
  * ```
  */
 export function buildBreadcrumbs(pathname: string): BreadcrumbItem[] {
-  const segments = pathname.split('/').filter(Boolean);
+  let clean = pathname.replace(/\.html$/, '');
+  clean = clean.replace(/\/index$/, '') || '/';
+  const segments = clean.split('/').filter(Boolean);
 
   const crumbs: BreadcrumbItem[] = [{ label: 'Startseite', href: '/' }];
 
   segments.forEach((segment, index) => {
-    const href = '/' + segments.slice(0, index + 1).join('/') + '/';
+    const href = '/' + segments.slice(0, index + 1).join('/');
     crumbs.push({ label: segmentToLabel(segment), href });
   });
 
