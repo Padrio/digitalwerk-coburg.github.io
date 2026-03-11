@@ -9,7 +9,7 @@ import WhatsAppButton from '@components/ui/WhatsAppButton.astro';
 import CookieBanner from '@components/ui/CookieBanner.astro';
 import JsonLd from '@components/seo/JsonLd.astro';
 import { buildBreadcrumbs, type BreadcrumbItem } from '@utils/seo';
-import { buildBreadcrumbList, buildLocalBusiness } from '@utils/schema';
+import { buildBreadcrumbList, buildLocalBusiness, buildWebSite } from '@utils/schema';
 
 interface Props {
   title: string;
@@ -20,6 +20,8 @@ interface Props {
   ogType?: string;
   showBreadcrumbs?: boolean;
   breadcrumbs?: BreadcrumbItem[];
+  articlePublishedTime?: string;
+  articleModifiedTime?: string;
 }
 
 const {
@@ -31,6 +33,8 @@ const {
   ogType,
   showBreadcrumbs = true,
   breadcrumbs,
+  articlePublishedTime,
+  articleModifiedTime,
 } = Astro.props;
 
 const breadcrumbItems = breadcrumbs ?? buildBreadcrumbs(Astro.url.pathname);
@@ -45,6 +49,8 @@ const isHome = cleanPathname === '/';
   noIndex={noIndex}
   ogImage={ogImage}
   ogType={ogType}
+  articlePublishedTime={articlePublishedTime}
+  articleModifiedTime={articleModifiedTime}
 >
   <slot name="head" slot="head" />
 
@@ -68,6 +74,7 @@ const isHome = cleanPathname === '/';
   <CookieBanner />
 
   <JsonLd schema={buildLocalBusiness()} />
+  <JsonLd schema={buildWebSite()} />
   {showBreadcrumbs && !isHome && (
     <JsonLd schema={buildBreadcrumbList(breadcrumbItems)} />
   )}

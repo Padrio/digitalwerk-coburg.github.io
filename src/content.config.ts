@@ -6,6 +6,7 @@ const blog = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
+    summary: z.string().optional(),
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
     heroImage: z.string().optional(),
@@ -23,8 +24,15 @@ const wissen = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
+    summary: z.string().optional(),
     category: z.string(),
     related: z.array(z.string()).default([]),
+    pubDate: z.coerce.date().optional(),
+    updatedDate: z.coerce.date().optional(),
+    faqs: z.array(z.object({
+      question: z.string(),
+      answer: z.string(),
+    })).default([]),
   }),
 });
 

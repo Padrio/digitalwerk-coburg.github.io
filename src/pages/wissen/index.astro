@@ -1,0 +1,76 @@
+---
+import { getCollection } from 'astro:content';
+import PageLayout from '@layouts/PageLayout.astro';
+import { buildSeoMeta } from '@utils/seo';
+import Hero from '@components/sections/Hero.astro';
+import CTA from '@components/ui/CTA.astro';
+
+const seo = buildSeoMeta({
+  title: 'Wissen — Glossar digitaler Fachbegriffe',
+  description:
+    'Verständliche Erklärungen digitaler Fachbegriffe: Webdesign, SEO, CMS, Responsive Design und mehr. Praxisnah erklärt für Unternehmer und Entscheider.',
+});
+
+const allEntries = await getCollection('wissen');
+const entries = allEntries.sort((a, b) => a.data.title.localeCompare(b.data.title, 'de'));
+
+const categories = [...new Set(entries.map((e) => e.data.category))].sort((a, b) =>
+  a.localeCompare(b, 'de'),
+);
+---
+
+<PageLayout
+  title={seo.title}
+  description={seo.description}
+  ogImage={seo.ogImage}
+  ogType={seo.ogType}
+>
+  <Hero
+    variant="centered"
+    badge="Wissen"
+    headline="Digitale Fachbegriffe verständlich erklärt"
+    subheadline="Von Webdesign über SEO bis KI — hier finden Sie praxisnahe Erklärungen ohne Fachchinesisch. Für Unternehmer, die fundierte Entscheidungen treffen möchten."
+  />
+
+  <section class="section">
+    <div class="container">
+      {entries.length > 0 ? (
+        <>
+          {categories.map((category) => {
+            const categoryEntries = entries.filter((e) => e.data.category === category);
+            return (
+              <div class="mb-12">
+                <h2 class="mb-6">{category}</h2>
+                <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                  {categoryEntries.map((entry) => (
+                    <a
+                      href={`/wissen/${entry.id}`}
+                      class="card block no-underline"
+                    >
+                      <h3 class="text-primary mb-2">{entry.data.title}</h3>
+                      <p class="text-neutral-600 text-sm line-clamp-3">
+                        {entry.data.description}
+                      </p>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+        </>
+      ) : (
+        <div class="mx-auto max-w-2xl text-center py-16">
+          <p class="text-lg text-neutral-600 leading-relaxed">
+            Das Glossar wird aktuell aufgebaut. Bald finden Sie hier verständliche Erklärungen
+            zu den wichtigsten digitalen Fachbegriffen. Schauen Sie in Kürze wieder vorbei!
+          </p>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <CTA
+    headline="Fachbegriffe sind nicht Ihr Ding?"
+    subline="Kein Problem. In einem kostenlosen Erstgespräch erkläre ich Ihnen alles, was Sie für Ihr Digitalprojekt wissen müssen — verständlich und ohne Fachchinesisch."
+  />
+</PageLayout>

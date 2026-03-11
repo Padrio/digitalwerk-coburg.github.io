@@ -3,7 +3,7 @@ import PageLayout from '@layouts/PageLayout.astro';
 import { buildSeoMeta } from '@utils/seo';
 import { SITE } from '@data/site';
 import JsonLd from '@components/seo/JsonLd.astro';
-import { buildPerson } from '@utils/schema';
+import { buildPerson, buildProfilePage } from '@utils/schema';
 
 import Hero from '@components/sections/Hero.astro';
 import CTA from '@components/ui/CTA.astro';
@@ -102,8 +102,9 @@ const milestones = [
   ogImage={seo.ogImage}
   ogType={seo.ogType}
 >
-  {/* Person JSON-LD */}
+  {/* Person & ProfilePage JSON-LD */}
   <JsonLd schema={buildPerson()} />
+  <JsonLd schema={buildProfilePage()} />
 
   {/* 1. Hero */}
   <Hero

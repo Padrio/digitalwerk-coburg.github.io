@@ -55,6 +55,7 @@ const LABEL_MAP: Record<string, string> = {
   'ueber-mich': 'Über mich',
   kontakt: 'Kontakt',
   blog: 'Blog',
+  wissen: 'Wissen',
   impressum: 'Impressum',
   datenschutz: 'Datenschutz',
 };

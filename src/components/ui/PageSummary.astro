@@ -1,0 +1,11 @@
+---
+interface Props {
+  summary: string;
+}
+
+const { summary } = Astro.props;
+---
+
+<aside class="page-summary" role="note" aria-label="Zusammenfassung">
+  <p><strong>Zusammenfassung:</strong> {summary}</p>
+</aside>

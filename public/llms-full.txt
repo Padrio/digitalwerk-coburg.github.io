@@ -1,0 +1,86 @@
+# Digitalwerk Coburg — Vollständige Übersicht
+
+> Digitale Lösungen. Solide gebaut.
+
+Digitalwerk Coburg ist ein Freelancer-Unternehmen für Webdesign, Webentwicklung, SEO und KI-Beratung mit Sitz in Coburg, Oberfranken (Bayern). Gegründet 2024 von Pascal Krason, Fachinformatiker für Anwendungsentwicklung mit über 10 Jahren Berufserfahrung in der Softwareentwicklung, unter anderem bei CHECK24.
+
+Die Zielgruppe sind Geschäftsinhaber, Handwerker, Praxen, Gastronomen und mittelständische Unternehmen in der Region Coburg, Oberfranken und dem angrenzenden Südthüringen. Digitalwerk bietet persönliche Beratung und individuelle Umsetzung — keine Baukastensysteme, keine Massenware.
+
+---
+
+## Leistungen im Detail
+
+### Webdesign (https://digitalwerk-coburg.de/leistungen/webdesign)
+Professionelles Webdesign aus Coburg: Individuelle, moderne Websites, die Vertrauen aufbauen und Kunden gewinnen. Responsive, schnell und SEO-optimiert. Jede Website wird individuell gestaltet — kein WordPress-Template, kein Baukastensystem. Mobile-First-Ansatz, Lighthouse-Score 95+, WCAG 2.1 AA Accessibility. Typischer Projektumfang: 5-Seiten-Unternehmenswebsite bis komplexe Webauftritte mit CMS.
+
+### Webentwicklung (https://digitalwerk-coburg.de/leistungen/webentwicklung)
+Individuelle Webentwicklung aus Coburg: Leistungsstarke Webanwendungen mit modernen Technologien. Sauberer Code, API-Anbindungen und langfristig wartbare Lösungen. Technologien: TypeScript, React, Astro, Node.js. Individualsoftware, Dashboards, Online-Buchungssysteme, Schnittstellen zu bestehenden Systemen.
+
+### SEO / Suchmaschinenoptimierung (https://digitalwerk-coburg.de/leistungen/seo)
+SEO aus Coburg: Suchmaschinenoptimierung für lokale Sichtbarkeit. Keyword-Recherche, technisches SEO, lokales SEO und monatliches Reporting. Schwerpunkt auf Local SEO für Unternehmen in Coburg und Oberfranken. Google Business Profile Optimierung, strukturierte Daten (Schema.org), Content-Strategie.
+
+### KI-Beratung (https://digitalwerk-coburg.de/leistungen/ki-beratung)
+KI-Beratung aus Coburg: Künstliche Intelligenz praxisnah einsetzen. Potenzialanalyse, Chatbot-Entwicklung, Automatisierung und Team-Schulungen für Unternehmen. Fokus auf pragmatische KI-Integration im Mittelstand — keine Science-Fiction, sondern messbare Effizienzgewinne.
+
+---
+
+## Über den Gründer
+
+Pascal Krason ist Fachinformatiker für Anwendungsentwicklung und Gründer von Digitalwerk Coburg. Über 10 Jahre Berufserfahrung in der Softwareentwicklung, unter anderem bei CHECK24. Spezialisiert auf Webdesign, Webentwicklung, SEO und KI-Beratung für den Mittelstand in Oberfranken.
+
+- LinkedIn: https://www.linkedin.com/in/pascal-krason-b74028326/
+- GitHub: https://github.com/Padrio
+- Über-mich-Seite: https://digitalwerk-coburg.de/ueber-mich
+
+---
+
+## Zusammenarbeit (https://digitalwerk-coburg.de/zusammenarbeit)
+
+So läuft eine Zusammenarbeit mit Digitalwerk Coburg ab: Von der ersten Idee bis zum fertigen Projekt — transparent, persönlich und effizient. Kostenlose Erstberatung, Konzeptphase, Umsetzung, Qualitätssicherung, Launch und optionale Betreuung.
+
+---
+
+## Blog (https://digitalwerk-coburg.de/blog)
+
+Fachartikel zu Webdesign, SEO, Digitalisierung und KI für den Mittelstand. Praxisnahe Tipps und aktuelle Informationen für Unternehmer in Oberfranken.
+
+## Wissen / Glossar (https://digitalwerk-coburg.de/wissen)
+
+Verständliche Erklärungen digitaler Fachbegriffe: Webdesign, SEO, CMS, Responsive Design und mehr. Zielgruppengerecht für Nicht-Techniker aufbereitet.
+
+---
+
+## Kontakt
+
+- Name: Pascal Krason
+- Unternehmen: Digitalwerk Coburg
+- E-Mail: hallo@digitalwerk-coburg.de
+- Telefon: +49 (0) 174 660 3656
+- Adresse: Von-Mayer-Straße 25, 96450 Coburg, Bayern
+- Region: Coburg, Oberfranken, Bayern (Einzugsgebiet ca. 50 km)
+- Website: https://digitalwerk-coburg.de
+- Erstberatung: Kostenlos und unverbindlich — https://digitalwerk-coburg.de/kontakt
+
+---
+
+## Expertise-Bereiche
+
+- Webdesign & UI/UX Design
+- Webentwicklung & Individualsoftware
+- Suchmaschinenoptimierung (SEO)
+- Local SEO & Google Business Profile
+- KI-Beratung & Automatisierung
+- Responsive Design & Mobile First
+- Barrierefreies Webdesign (WCAG 2.1 AA)
+- Content-Strategie
+- Schema.org / Strukturierte Daten
+- TypeScript, React, Astro, Node.js
+
+## Branchen
+
+- Handwerk (Schreinerei, Elektrik, Sanitär)
+- Gesundheitswesen (Arztpraxen, Physiotherapie, Zahnarzt)
+- Gastronomie & Hotellerie
+- Einzelhandel & lokaler Handel
+- Dienstleister & Freiberufler
+- Mittelständische Unternehmen

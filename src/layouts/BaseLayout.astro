@@ -10,9 +10,11 @@ interface Props {
   noIndex?: boolean;
   ogImage?: string;
   ogType?: string;
+  articlePublishedTime?: string;
+  articleModifiedTime?: string;
 }
 
-const { title, description, canonical, noIndex, ogImage, ogType } = Astro.props;
+const { title, description, canonical, noIndex, ogImage, ogType, articlePublishedTime, articleModifiedTime } = Astro.props;
 ---
 
 <!doctype html>
@@ -25,6 +27,8 @@ const { title, description, canonical, noIndex, ogImage, ogType } = Astro.props;
       noIndex={noIndex}
       ogImage={ogImage}
       ogType={ogType}
+      articlePublishedTime={articlePublishedTime}
+      articleModifiedTime={articleModifiedTime}
     />
     <slot name="head" />
     <ClientRouter />

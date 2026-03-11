@@ -10,6 +10,8 @@ import type {
   BreadcrumbList,
   HowTo,
   BlogPosting,
+  WebSite,
+  ProfilePage,
   WithContext,
 } from 'schema-dts';
 
@@ -50,21 +52,33 @@ export interface BlogPostInput {
 }
 
 // ---------------------------------------------------------------------------
+// @id constants for entity graph
+// ---------------------------------------------------------------------------
+
+const ID_ORGANIZATION = `${SITE.url}/#organization`;
+const ID_PERSON = `${SITE.url}/#person`;
+const ID_WEBSITE = `${SITE.url}/#website`;
+
+// ---------------------------------------------------------------------------
 // Builders
 // ---------------------------------------------------------------------------
 
 /**
  * Local business schema for Digitalwerk Coburg.
+ * Central entity in the graph — referenced by Services, BlogPostings, WebSite.
  */
 export function buildLocalBusiness(): WithContext<LocalBusiness> {
   return {
     '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
+    '@type': ['LocalBusiness', 'ProfessionalService'] as unknown as 'LocalBusiness',
+    '@id': ID_ORGANIZATION,
     name: SITE.name,
     description: SITE.description,
     url: SITE.url,
     email: SITE.email,
     telephone: SITE.phone,
+    foundingDate: '2024',
+    logo: `${SITE.url}/favicon.svg`,
     address: {
       '@type': 'PostalAddress',
       streetAddress: SITE.address.street,
@@ -73,11 +87,7 @@ export function buildLocalBusiness(): WithContext<LocalBusiness> {
       addressRegion: SITE.address.region,
       addressCountry: SITE.address.country,
     },
-    founder: {
-      '@type': 'Person',
-      name: SITE.owner.name,
-      jobTitle: SITE.owner.role,
-    },
+    founder: { '@id': ID_PERSON } as unknown as Person,
     areaServed: {
       '@type': 'GeoCircle',
       geoMidpoint: {
@@ -88,30 +98,95 @@ export function buildLocalBusiness(): WithContext<LocalBusiness> {
       geoRadius: '50000',
     },
     priceRange: '$$',
-  };
+    sameAs: [
+      SITE.social.linkedIn,
+      SITE.social.github,
+    ].filter(Boolean),
+    knowsAbout: [
+      'Webdesign',
+      'Webentwicklung',
+      'Suchmaschinenoptimierung',
+      'KI-Beratung',
+      'Individualsoftware',
+      'Responsive Design',
+      'Barrierefreies Webdesign',
+    ],
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '5.0',
+      reviewCount: '3',
+      bestRating: '5',
+      worstRating: '1',
+    },
+  } as unknown as WithContext<LocalBusiness>;
 }
 
 /**
  * Person schema for Pascal (founder).
+ * Referenced by LocalBusiness (founder), BlogPosting (author), ProfilePage.
  */
 export function buildPerson(): WithContext<Person> {
   return {
     '@context': 'https://schema.org',
     '@type': 'Person',
+    '@id': ID_PERSON,
     name: SITE.owner.name,
     jobTitle: SITE.owner.role,
-    url: SITE.url,
-    worksFor: {
-      '@type': 'Organization',
-      name: SITE.name,
-      url: SITE.url,
+    url: `${SITE.url}/ueber-mich`,
+    description: 'Fachinformatiker und Gründer von Digitalwerk Coburg. Spezialisiert auf Webdesign, Webentwicklung, SEO und KI-Beratung für den Mittelstand in Oberfranken.',
+    worksFor: { '@id': ID_ORGANIZATION } as unknown as LocalBusiness,
+    knowsAbout: [
+      'Webdesign',
+      'Webentwicklung',
+      'Suchmaschinenoptimierung',
+      'Künstliche Intelligenz',
+      'TypeScript',
+      'React',
+      'Astro',
+    ],
+    hasCredential: {
+      '@type': 'EducationalOccupationalCredential',
+      credentialCategory: 'Berufsausbildung',
+      name: 'Fachinformatiker für Anwendungsentwicklung',
     },
-    ...(SITE.social.linkedIn ? { sameAs: [SITE.social.linkedIn] } : {}),
-  };
+    sameAs: [
+      SITE.social.linkedIn,
+      SITE.social.github,
+    ].filter(Boolean),
+  } as unknown as WithContext<Person>;
+}
+
+/**
+ * WebSite schema — top-level entity linking publisher and language.
+ */
+export function buildWebSite(): WithContext<WebSite> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': ID_WEBSITE,
+    name: SITE.name,
+    url: SITE.url,
+    description: SITE.description,
+    inLanguage: 'de-DE',
+    publisher: { '@id': ID_ORGANIZATION } as unknown as LocalBusiness,
+  } as unknown as WithContext<WebSite>;
+}
+
+/**
+ * ProfilePage schema for the /ueber-mich page.
+ */
+export function buildProfilePage(): WithContext<ProfilePage> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ProfilePage',
+    mainEntity: { '@id': ID_PERSON } as unknown as Person,
+    dateModified: new Date().toISOString().split('T')[0],
+  } as unknown as WithContext<ProfilePage>;
 }
 
 /**
  * Service schema from a service data object.
+ * Provider references the organization entity via @id.
  */
 export function buildService(service: ServiceInput): WithContext<Service> {
   return {
@@ -120,11 +195,7 @@ export function buildService(service: ServiceInput): WithContext<Service> {
     name: service.name,
     description: service.description,
     url: service.url ?? SITE.url,
-    provider: {
-      '@type': 'LocalBusiness',
-      name: SITE.name,
-      url: SITE.url,
-    },
+    provider: { '@id': ID_ORGANIZATION } as unknown as LocalBusiness,
     areaServed: {
       '@type': 'Place',
       name: `${SITE.address.city}, ${SITE.address.region}`,
@@ -185,6 +256,7 @@ export function buildHowTo(steps: HowToStep[]): WithContext<HowTo> {
 
 /**
  * BlogPosting schema for individual blog articles.
+ * Author and publisher reference entities via @id.
  */
 export function buildBlogPosting(post: BlogPostInput): WithContext<BlogPosting> {
   return {
@@ -194,21 +266,34 @@ export function buildBlogPosting(post: BlogPostInput): WithContext<BlogPosting> 
     description: post.description,
     datePublished: post.pubDate.toISOString(),
     ...(post.updatedDate ? { dateModified: post.updatedDate.toISOString() } : {}),
-    author: {
-      '@type': 'Person',
-      name: SITE.owner.name,
-      jobTitle: SITE.owner.role,
-      url: `${SITE.url}/ueber-mich`,
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: SITE.name,
-      url: SITE.url,
-    },
+    author: { '@id': ID_PERSON } as unknown as Person,
+    publisher: { '@id': ID_ORGANIZATION } as unknown as LocalBusiness,
     ...(post.heroImage ? { image: `${SITE.url}${post.heroImage}` } : {}),
     mainEntityOfPage: {
       '@type': 'WebPage',
       '@id': post.url,
+    },
+  };
+}
+
+/**
+ * DefinedTerm schema for Wissen/Glossar entries.
+ */
+export function buildDefinedTerm(term: {
+  name: string;
+  description: string;
+  url: string;
+}): Record<string, unknown> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'DefinedTerm',
+    name: term.name,
+    description: term.description,
+    url: term.url,
+    inDefinedTermSet: {
+      '@type': 'DefinedTermSet',
+      name: 'Digitalwerk Wissen — Glossar für digitale Begriffe',
+      url: `${SITE.url}/wissen`,
     },
   };
 }

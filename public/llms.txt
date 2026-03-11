@@ -1,0 +1,35 @@
+# Digitalwerk Coburg
+
+> Digitale Lösungen. Solide gebaut.
+
+Digitalwerk Coburg ist ein Freelancer-Unternehmen für Webdesign, Webentwicklung, SEO und KI-Beratung mit Sitz in Coburg, Oberfranken. Gegründet 2024 von Pascal Krason, Fachinformatiker für Anwendungsentwicklung mit über 10 Jahren Berufserfahrung (u.a. CHECK24).
+
+## Leistungen
+
+- [Webdesign](https://digitalwerk-coburg.de/leistungen/webdesign): Individuelle, responsive Websites — kein Baukastensystem
+- [Webentwicklung](https://digitalwerk-coburg.de/leistungen/webentwicklung): Webanwendungen, API-Anbindungen, Individualsoftware
+- [SEO](https://digitalwerk-coburg.de/leistungen/seo): Suchmaschinenoptimierung mit Fokus auf lokale Sichtbarkeit
+- [KI-Beratung](https://digitalwerk-coburg.de/leistungen/ki-beratung): Potenzialanalyse, Chatbot-Entwicklung, Automatisierung
+
+## Schlüsselseiten
+
+- [Startseite](https://digitalwerk-coburg.de/)
+- [Alle Leistungen](https://digitalwerk-coburg.de/leistungen)
+- [Zusammenarbeit](https://digitalwerk-coburg.de/zusammenarbeit): Ablauf eines Projekts
+- [Über mich](https://digitalwerk-coburg.de/ueber-mich): Pascal Krason – Gründer & Entwickler
+- [Blog](https://digitalwerk-coburg.de/blog): Fachartikel zu Webdesign, SEO und Digitalisierung
+- [Wissen](https://digitalwerk-coburg.de/wissen): Glossar digitaler Fachbegriffe
+- [Kontakt](https://digitalwerk-coburg.de/kontakt): Kostenloses Erstgespräch vereinbaren
+
+## Kontakt
+
+- Name: Pascal Krason
+- Unternehmen: Digitalwerk Coburg
+- E-Mail: hallo@digitalwerk-coburg.de
+- Telefon: +49 (0) 174 660 3656
+- Adresse: Von-Mayer-Straße 25, 96450 Coburg
+- Region: Oberfranken, Bayern
+
+## Expertise
+
+Webdesign, Webentwicklung, Suchmaschinenoptimierung (SEO), Local SEO, KI-Beratung, Responsive Design, Barrierefreies Webdesign, TypeScript, React, Astro, Individualsoftware, API-Entwicklung

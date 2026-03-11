@@ -3,6 +3,7 @@ import { getCollection, render } from 'astro:content';
 import PageLayout from '@layouts/PageLayout.astro';
 import JsonLd from '@components/seo/JsonLd.astro';
 import CTA from '@components/ui/CTA.astro';
+import PageSummary from '@components/ui/PageSummary.astro';
 import { buildSeoMeta } from '@utils/seo';
 import { buildBlogPosting, buildFaqPage } from '@utils/schema';
 import { SITE } from '@data/site';
@@ -52,6 +53,8 @@ const formattedUpdateDate = post.data.updatedDate?.toLocaleDateString('de-DE', {
   description={seo.description}
   ogImage={seo.ogImage}
   ogType={seo.ogType}
+  articlePublishedTime={post.data.pubDate.toISOString()}
+  articleModifiedTime={post.data.updatedDate?.toISOString()}
 >
   <JsonLd schema={blogPostingSchema} />
   {post.data.faqs.length > 0 && <JsonLd schema={buildFaqPage(post.data.faqs)} />}
@@ -100,6 +103,11 @@ const formattedUpdateDate = post.data.updatedDate?.toLocaleDateString('de-DE', {
             decoding="async"
           />
         </div>
+      )}
+
+      {/* Summary box (GEO) */}
+      {post.data.summary && (
+        <PageSummary summary={post.data.summary} />
       )}
 
       {/* Markdown content */}

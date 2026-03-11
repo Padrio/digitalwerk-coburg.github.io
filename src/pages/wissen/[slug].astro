@@ -1,0 +1,91 @@
+---
+import { getCollection, render } from 'astro:content';
+import PageLayout from '@layouts/PageLayout.astro';
+import JsonLd from '@components/seo/JsonLd.astro';
+import PageSummary from '@components/ui/PageSummary.astro';
+import CTA from '@components/ui/CTA.astro';
+import { buildSeoMeta } from '@utils/seo';
+import { buildDefinedTerm, buildFaqPage } from '@utils/schema';
+import { SITE } from '@data/site';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('wissen');
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+const seo = buildSeoMeta({
+  title: entry.data.title,
+  description: entry.data.description,
+});
+
+const definedTermSchema = buildDefinedTerm({
+  name: entry.data.title,
+  description: entry.data.description,
+  url: `${SITE.url}/wissen/${entry.id}`,
+});
+
+const relatedEntries = entry.data.related.length > 0
+  ? (await getCollection('wissen')).filter((e) => entry.data.related.includes(e.id))
+  : [];
+---
+
+<PageLayout
+  title={seo.title}
+  description={seo.description}
+  ogImage={seo.ogImage}
+  ogType={seo.ogType}
+>
+  <JsonLd schema={definedTermSchema} />
+  {entry.data.faqs && entry.data.faqs.length > 0 && (
+    <JsonLd schema={buildFaqPage(entry.data.faqs)} />
+  )}
+
+  <article class="section">
+    <div class="container">
+      <header class="mx-auto max-w-[42rem] mb-12">
+        <span class="section-label">Wissen</span>
+        <h1 class="mt-4">{entry.data.title}</h1>
+        <p class="mt-4 text-lg text-neutral-600 leading-relaxed">
+          {entry.data.description}
+        </p>
+      </header>
+
+      {entry.data.summary && (
+        <PageSummary summary={entry.data.summary} />
+      )}
+
+      <div class="prose">
+        <Content />
+      </div>
+
+      {relatedEntries.length > 0 && (
+        <aside class="mx-auto mt-16 max-w-[42rem]">
+          <h2 class="text-lg font-display font-semibold text-primary mb-4">
+            Verwandte Begriffe
+          </h2>
+          <div class="flex flex-wrap gap-3">
+            {relatedEntries.map((related) => (
+              <a
+                href={`/wissen/${related.id}`}
+                class="inline-block rounded-full border border-neutral-100 px-4 py-1.5 text-sm font-medium text-neutral-600 no-underline transition-colors hover:border-accent hover:text-accent"
+              >
+                {related.data.title}
+              </a>
+            ))}
+          </div>
+        </aside>
+      )}
+    </div>
+  </article>
+
+  <CTA
+    headline="Noch Fragen?"
+    subline="Ich erkläre Ihnen gerne persönlich, was diese Begriffe für Ihr Projekt bedeuten. Vereinbaren Sie ein kostenloses Erstgespräch."
+  />
+</PageLayout>
