@@ -3,9 +3,14 @@ import { getCollection, render } from 'astro:content';
 import PageLayout from '@layouts/PageLayout.astro';
 import JsonLd from '@components/seo/JsonLd.astro';
 import PageSummary from '@components/ui/PageSummary.astro';
+import FAQ from '@components/sections/FAQ.astro';
 import CTA from '@components/ui/CTA.astro';
 import { buildSeoMeta } from '@utils/seo';
-import { buildDefinedTerm, buildFaqPage } from '@utils/schema';
+import {
+  buildDefinedTerm,
+  buildFaqPage,
+  buildBreadcrumbList,
+} from '@utils/schema';
 import { SITE } from '@data/site';
 
 export async function getStaticPaths() {
@@ -45,6 +50,13 @@ const relatedEntries = entry.data.related.length > 0
   {entry.data.faqs && entry.data.faqs.length > 0 && (
     <JsonLd schema={buildFaqPage(entry.data.faqs)} />
   )}
+  <JsonLd
+    schema={buildBreadcrumbList([
+      { label: 'Startseite', href: '/' },
+      { label: 'Wissen', href: '/wissen' },
+      { label: entry.data.title, href: `/wissen/${entry.id}` },
+    ])}
+  />
 
   <article class="section">
     <div class="container">
@@ -63,6 +75,12 @@ const relatedEntries = entry.data.related.length > 0
       <div class="prose">
         <Content />
       </div>
+
+      {entry.data.faqs && entry.data.faqs.length > 0 && (
+        <div class="mx-auto mt-16 max-w-[42rem]">
+          <FAQ title="Häufige Fragen" items={entry.data.faqs} />
+        </div>
+      )}
 
       {relatedEntries.length > 0 && (
         <aside class="mx-auto mt-16 max-w-[42rem]">
