@@ -17,5 +17,8 @@
     "lucide-astro": "^0.556.0",
     "schema-dts": "^1.1.5",
     "tailwindcss": "^4.2.1"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-darwin-arm64": "^4.60.3"
   }
 }

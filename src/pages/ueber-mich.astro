@@ -1,7 +1,7 @@
 ---
 import PageLayout from '@layouts/PageLayout.astro';
 import { buildSeoMeta } from '@utils/seo';
-import { SITE } from '@data/site';
+import { SITE, PROFILE_LAST_MODIFIED } from '@data/site';
 import JsonLd from '@components/seo/JsonLd.astro';
 import { buildPerson, buildProfilePage } from '@utils/schema';
 
@@ -13,9 +13,9 @@ import IsometricBlocks from '@components/decorative/IsometricBlocks.astro';
 import GridPattern from '@components/decorative/GridPattern.astro';
 
 const seo = buildSeoMeta({
-  title: 'Über mich',
+  title: 'Pascal Krason — Webentwickler & Webdesigner Coburg',
   description:
-    'Pascal Krason – Gründer von Digitalwerk Coburg. Über 10 Jahre Erfahrung in Webentwicklung und digitaler Strategie, von CHECK24 bis zur eigenen Unternehmensgründung.',
+    'Pascal Krason, Fachinformatiker aus Coburg. 10+ Jahre Erfahrung von CHECK24 bis Digitalwerk. Persönlicher Ansprechpartner für Webdesign, SEO und KI-Beratung.',
 });
 
 const values = [
@@ -103,8 +103,8 @@ const milestones = [
   ogType={seo.ogType}
 >
   {/* Person & ProfilePage JSON-LD */}
-  <JsonLd schema={buildPerson()} />
-  <JsonLd schema={buildProfilePage()} />
+  <JsonLd schema={buildPerson(PROFILE_LAST_MODIFIED)} />
+  <JsonLd schema={buildProfilePage(PROFILE_LAST_MODIFIED)} />
 
   {/* 1. Hero */}
   <Hero

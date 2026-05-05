@@ -15,7 +15,7 @@ const {
   description,
   canonical,
   noIndex = false,
-  ogImage = '/og-image.jpg',
+  ogImage = '/og-image.webp',
   ogType = 'website',
   articlePublishedTime,
   articleModifiedTime,
@@ -30,7 +30,11 @@ const ogImageUrl = new URL(ogImage, Astro.site).href;
 <title>{title}</title>
 <meta name="description" content={description} />
 <link rel="canonical" href={canonicalUrl} />
-{noIndex && <meta name="robots" content="noindex, nofollow" />}
+{noIndex ? (
+  <meta name="robots" content="noindex, nofollow" />
+) : (
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+)}
 <meta name="generator" content={Astro.generator} />
 
 <!-- Author & Geo -->

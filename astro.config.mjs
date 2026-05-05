@@ -14,7 +14,7 @@ export default defineConfig({
     locales: ['de'],
   },
   prefetch: {
-    defaultStrategy: 'hover',
+    defaultStrategy: 'viewport',
   },
   integrations: [
     sitemap({

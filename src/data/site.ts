@@ -33,6 +33,12 @@ export interface SiteConfig {
   owner: Owner;
 }
 
+/**
+ * Last manual update of /ueber-mich content.
+ * Bump when adjusting profile, role, or biography text.
+ */
+export const PROFILE_LAST_MODIFIED = new Date('2026-05-05T00:00:00Z');
+
 export const SITE: SiteConfig = {
   url: 'https://digitalwerk-coburg.de',
   name: 'Digitalwerk Coburg',

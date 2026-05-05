@@ -125,7 +125,7 @@ export function buildLocalBusiness(): WithContext<LocalBusiness> {
  * Person schema for Pascal (founder).
  * Referenced by LocalBusiness (founder), BlogPosting (author), ProfilePage.
  */
-export function buildPerson(): WithContext<Person> {
+export function buildPerson(modifiedDate?: Date): WithContext<Person> {
   return {
     '@context': 'https://schema.org',
     '@type': 'Person',
@@ -153,6 +153,7 @@ export function buildPerson(): WithContext<Person> {
       SITE.social.linkedIn,
       SITE.social.github,
     ].filter(Boolean),
+    ...(modifiedDate ? { dateModified: modifiedDate.toISOString() } : {}),
   } as unknown as WithContext<Person>;
 }
 
@@ -175,12 +176,12 @@ export function buildWebSite(): WithContext<WebSite> {
 /**
  * ProfilePage schema for the /ueber-mich page.
  */
-export function buildProfilePage(): WithContext<ProfilePage> {
+export function buildProfilePage(modifiedDate?: Date): WithContext<ProfilePage> {
   return {
     '@context': 'https://schema.org',
     '@type': 'ProfilePage',
     mainEntity: { '@id': ID_PERSON } as unknown as Person,
-    dateModified: new Date().toISOString().split('T')[0],
+    ...(modifiedDate ? { dateModified: modifiedDate.toISOString() } : {}),
   } as unknown as WithContext<ProfilePage>;
 }
 
@@ -201,6 +202,39 @@ export function buildService(service: ServiceInput): WithContext<Service> {
       name: `${SITE.address.city}, ${SITE.address.region}`,
     },
   };
+}
+
+/**
+ * Local-Service-Schema for city landing pages.
+ * Combines Service with City + AdministrativeArea for stronger local relevance.
+ */
+export function buildLocalService(input: {
+  name: string;
+  description: string;
+  url: string;
+  city: string;
+  region: string;
+  priceRange?: string;
+}): WithContext<Service> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: input.name,
+    description: input.description,
+    url: input.url,
+    provider: { '@id': ID_ORGANIZATION } as unknown as LocalBusiness,
+    areaServed: {
+      '@type': 'City',
+      name: input.city,
+      containedInPlace: {
+        '@type': 'AdministrativeArea',
+        name: input.region,
+      },
+    },
+    ...(input.priceRange
+      ? { offers: { '@type': 'Offer', priceRange: input.priceRange } }
+      : {}),
+  } as unknown as WithContext<Service>;
 }
 
 /**
