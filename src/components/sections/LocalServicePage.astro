@@ -1,0 +1,201 @@
+---
+import type { LocalServiceData } from '@data/local-services';
+import { processSteps } from '@data/process-steps';
+
+import Hero from '@components/sections/Hero.astro';
+import ProcessTimeline from '@components/sections/ProcessTimeline.astro';
+import FAQ from '@components/sections/FAQ.astro';
+import CTA from '@components/ui/CTA.astro';
+import PageSummary from '@components/ui/PageSummary.astro';
+import Reveal from '@components/ui/Reveal.astro';
+
+import GridPattern from '@components/decorative/GridPattern.astro';
+import HexPattern from '@components/decorative/HexPattern.astro';
+
+import { CheckCircle2, MapPin, ArrowRight, Sparkles } from 'lucide-astro';
+
+interface Props {
+  data: LocalServiceData;
+}
+
+const { data } = Astro.props;
+---
+
+{/* 1. Hero */}
+<Hero
+  variant="centered"
+  badge={data.heroBadge}
+  headline={data.heroHeadline}
+  subheadline={data.heroSubheadline}
+  primaryCta={{ text: 'Kostenloses Erstgespräch', href: '/kontakt' }}
+  secondaryCta={{ text: data.baseServiceLabel, href: data.baseServicePath }}
+/>
+
+{/* 2. Page Summary (GEO-optimiert) */}
+<section class="section pb-0">
+  <div class="container">
+    <PageSummary summary={data.summary} />
+  </div>
+</section>
+
+{/* 3. Local Trust Section */}
+<section class="section">
+  <div class="container">
+    <div class="mx-auto max-w-3xl">
+      <span class="section-label">Lokaler Vorteil</span>
+      <h2 class="mb-8">{data.trustHeadline}</h2>
+      <ul class="space-y-4">
+        {data.trustPoints.map((point, i) => (
+          <Reveal delay={i * 80}>
+            <li class="flex items-start gap-3">
+              <CheckCircle2 class="mt-1 h-5 w-5 shrink-0 text-success" />
+              <span class="text-lg leading-relaxed">{point}</span>
+            </li>
+          </Reveal>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
+
+{/* 4. USPs */}
+<section class="section relative overflow-hidden bg-neutral-100">
+  <GridPattern variant="dots" class="absolute inset-0" />
+  <div class="container relative z-10">
+    <div class="mx-auto max-w-3xl text-center">
+      <span class="section-label justify-center">Warum Digitalwerk Coburg</span>
+      <h2>Was Sie von einem Webdesigner aus Coburg erwarten dürfen</h2>
+    </div>
+
+    <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {data.uniqueSelling.map((usp, i) => (
+        <Reveal delay={i * 90}>
+          <div class="card h-full">
+            <span class="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10 font-display text-lg font-bold text-accent">
+              {String(i + 1).padStart(2, '0')}
+            </span>
+            <h3 class="mb-2">{usp.title}</h3>
+            <p class="text-neutral-600 leading-relaxed">{usp.description}</p>
+          </div>
+        </Reveal>
+      ))}
+    </div>
+  </div>
+</section>
+
+{/* 5. Pricing Tabelle */}
+<section class="section">
+  <div class="container">
+    <div class="mx-auto max-w-3xl">
+      <span class="section-label">Preise</span>
+      <h2 class="mb-4">{data.pricingHeadline}</h2>
+      <p class="mb-10 text-lg text-neutral-600 leading-relaxed">{data.pricingIntro}</p>
+
+      <div class="overflow-x-auto rounded-card border border-neutral-100 shadow-sm">
+        <table class="w-full text-left text-[0.95rem]">
+          <thead>
+            <tr class="bg-neutral-100">
+              <th scope="col" class="px-4 py-4 font-display font-semibold text-primary">Leistung</th>
+              <th scope="col" class="px-4 py-4 font-display font-semibold text-primary">{data.pricingPackages.basic}</th>
+              <th scope="col" class="px-4 py-4 font-display font-semibold text-primary">{data.pricingPackages.advanced}</th>
+              <th scope="col" class="px-4 py-4 font-display font-semibold text-primary">{data.pricingPackages.premium}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.pricingTable.map((row, i) => (
+              <tr class={i % 2 === 0 ? 'bg-white' : 'bg-neutral-100/50'}>
+                <td class="px-4 py-3 font-medium">{row.feature}</td>
+                <td class="px-4 py-3 text-neutral-600">{row.basic}</td>
+                <td class="px-4 py-3 text-neutral-600">{row.advanced}</td>
+                <td class="px-4 py-3 text-neutral-600">{row.premium}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* 6. Lokale Referenzen */}
+<section class="section relative overflow-hidden bg-primary text-white">
+  <HexPattern class="absolute inset-0 opacity-10" />
+  <div class="container relative z-10">
+    <div class="mx-auto max-w-3xl">
+      <span class="section-label text-white/80 before:bg-accent">
+        <MapPin class="h-4 w-4" />
+        Aus der Region
+      </span>
+      <h2 class="text-white">{data.localHeadline}</h2>
+      <p class="mt-4 text-lg text-white/80 leading-relaxed">{data.localIntro}</p>
+    </div>
+
+    <div class="mt-12 grid gap-6 md:grid-cols-2">
+      {data.localReferences.map((ref, i) => (
+        <Reveal delay={i * 100}>
+          <div class="rounded-card border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition-colors hover:border-accent/50 hover:bg-white/10">
+            <h3 class="mb-2 text-white">{ref.title}</h3>
+            <p class="text-white/80 leading-relaxed">{ref.description}</p>
+          </div>
+        </Reveal>
+      ))}
+    </div>
+  </div>
+</section>
+
+{/* 7. Process */}
+<section class="section">
+  <div class="container">
+    <div class="mx-auto max-w-3xl text-center">
+      <span class="section-label justify-center">Ablauf</span>
+      <h2>{data.processHeadline}</h2>
+      <p class="mt-4 text-lg text-neutral-600 leading-relaxed">{data.processIntro}</p>
+    </div>
+
+    <div class="mt-12">
+      <ProcessTimeline steps={processSteps} variant="compact" />
+    </div>
+
+    <div class="mt-10 text-center">
+      <a href="/zusammenarbeit" class="btn-outline">
+        Alle 6 Schritte im Detail
+      </a>
+    </div>
+  </div>
+</section>
+
+{/* 8. Bezug zur Basis-Service-Seite */}
+<section class="section bg-neutral-100 py-12">
+  <div class="container">
+    <div class="mx-auto max-w-3xl rounded-card border border-neutral-200 bg-white p-6 sm:p-8">
+      <div class="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div class="flex items-start gap-4">
+          <Sparkles class="mt-1 h-6 w-6 shrink-0 text-accent" />
+          <div>
+            <h3 class="mb-1">Sie suchen die allgemeine Leistungsübersicht?</h3>
+            <p class="text-neutral-600">
+              Mehr Hintergründe und Details zur Leistung {data.serviceLabel} finden Sie auf der entsprechenden Service-Seite.
+            </p>
+          </div>
+        </div>
+        <a href={data.baseServicePath} class="btn-link shrink-0">
+          {data.baseServiceLabel}
+          <ArrowRight class="h-4 w-4" />
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* 9. FAQ */}
+<section class="section">
+  <div class="container">
+    <FAQ
+      title={`Häufige Fragen zu ${data.serviceLabel} in ${data.city}`}
+      items={data.faqs}
+    />
+  </div>
+</section>
+
+{/* 10. CTA */}
+<CTA headline={data.ctaHeadline} subline={data.ctaSubline} />

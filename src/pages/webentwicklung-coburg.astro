@@ -1,0 +1,46 @@
+---
+import PageLayout from '@layouts/PageLayout.astro';
+import { buildSeoMeta } from '@utils/seo';
+import { localServices } from '@data/local-services';
+import {
+  buildLocalService,
+  buildFaqPage,
+  buildBreadcrumbList,
+} from '@utils/schema';
+import JsonLd from '@components/seo/JsonLd.astro';
+import LocalServicePage from '@components/sections/LocalServicePage.astro';
+
+const data = localServices.find((ls) => ls.service === 'webentwicklung')!;
+
+const seo = buildSeoMeta({
+  title: data.title,
+  description: data.metaDescription,
+});
+---
+
+<PageLayout
+  title={seo.title}
+  description={seo.description}
+  ogImage={seo.ogImage}
+  ogType={seo.ogType}
+>
+  <JsonLd
+    schema={buildLocalService({
+      name: `${data.serviceLabel} ${data.city}`,
+      description: data.metaDescription,
+      url: data.url,
+      city: data.city,
+      region: data.region,
+      priceRange: data.priceRange,
+    })}
+  />
+  <JsonLd schema={buildFaqPage(data.faqs)} />
+  <JsonLd
+    schema={buildBreadcrumbList([
+      { label: 'Startseite', href: '/' },
+      { label: `${data.serviceLabel} ${data.city}`, href: `/${data.service}-${data.citySlug}` },
+    ])}
+  />
+
+  <LocalServicePage data={data} />
+</PageLayout>
