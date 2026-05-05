@@ -16,6 +16,7 @@ import TestimonialCard from '@components/sections/TestimonialCard.astro';
 import LocalSection from '@components/sections/LocalSection.astro';
 import FAQ from '@components/sections/FAQ.astro';
 import CTA from '@components/ui/CTA.astro';
+import Reveal from '@components/ui/Reveal.astro';
 
 import { Palette, Code, Brain, Search } from 'lucide-astro';
 import NetworkPattern from '@components/decorative/NetworkPattern.astro';
@@ -23,9 +24,9 @@ import IsometricBlocks from '@components/decorative/IsometricBlocks.astro';
 import GridPattern from '@components/decorative/GridPattern.astro';
 
 const seo = buildSeoMeta({
-  title: 'Digitalwerk Coburg',
+  title: 'Webdesign & Webentwicklung Coburg',
   description:
-    'Ihr zuverlässiger Digitalpartner aus Coburg für Webdesign, Webentwicklung, SEO und KI-Beratung. Persönlich. Regional. Ergebnisorientiert.',
+    'Webdesign, Webentwicklung, SEO und KI-Beratung aus Coburg. Pascal Krason — Fachinformatiker mit 10+ Jahren Erfahrung. Kostenloses Erstgespräch.',
 });
 
 const iconMap: Record<string, any> = {
@@ -52,9 +53,9 @@ const iconMap: Record<string, any> = {
     primaryCta={{ text: 'Erstgespräch vereinbaren', href: '/kontakt' }}
     secondaryCta={{ text: 'Leistungen entdecken', href: '/leistungen' }}
     stats={[
-      { value: '10+', label: 'Jahre Erfahrung' },
-      { value: '50+', label: 'Projekte' },
-      { value: '100%', label: 'Aus Coburg' },
+      { value: { number: 10, suffix: '+' }, label: 'Jahre Erfahrung' },
+      { value: { number: 50, suffix: '+' }, label: 'Projekte' },
+      { value: { number: 100, suffix: '%' }, label: 'Aus Coburg' },
     ]}
   />
 
@@ -75,19 +76,21 @@ const iconMap: Record<string, any> = {
       </div>
 
       <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {services.map((s) => {
+        {services.map((s, i) => {
           const IconComponent = iconMap[s.icon];
           return (
-            <ServiceCard
-              title={s.shortTitle}
-              description={s.description}
-              href={s.href}
-              features={s.features.slice(0, 3).map((f) => f.title)}
-            >
-              {IconComponent && (
-                <IconComponent slot="icon" class="h-7 w-7" />
-              )}
-            </ServiceCard>
+            <Reveal delay={i * 100}>
+              <ServiceCard
+                title={s.shortTitle}
+                description={s.description}
+                href={s.href}
+                features={s.features.slice(0, 3).map((f) => f.title)}
+              >
+                {IconComponent && (
+                  <IconComponent slot="icon" class="h-7 w-7" />
+                )}
+              </ServiceCard>
+            </Reveal>
           );
         })}
       </div>
@@ -159,15 +162,17 @@ const iconMap: Record<string, any> = {
       </div>
 
       <div class="mt-12 grid gap-6 md:grid-cols-3">
-        {testimonials.map((t) => (
-          <TestimonialCard
-            name={t.name}
-            role={t.role}
-            company={t.company}
-            quote={t.quote}
-            rating={t.rating}
-            initials={t.initials}
-          />
+        {testimonials.map((t, i) => (
+          <Reveal delay={i * 120}>
+            <TestimonialCard
+              name={t.name}
+              role={t.role}
+              company={t.company}
+              quote={t.quote}
+              rating={t.rating}
+              initials={t.initials}
+            />
+          </Reveal>
         ))}
       </div>
     </div>

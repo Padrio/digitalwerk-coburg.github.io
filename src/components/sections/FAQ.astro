@@ -37,19 +37,19 @@ const faqSchema = {
 
   <div class="mx-auto max-w-3xl divide-y divide-neutral-100">
     {items.map((item) => (
-      <details class="group">
+      <details class="faq-item group">
         <summary class="flex cursor-pointer items-center justify-between gap-4 py-5 font-display text-lg font-semibold text-primary transition-colors hover:text-accent list-none [&::-webkit-details-marker]:hidden">
           <span>{item.question}</span>
           {/* Plus/minus indicator */}
-          <span class="relative flex h-6 w-6 shrink-0 items-center justify-center" aria-hidden="true">
+          <span class="faq-icon relative flex h-6 w-6 shrink-0 items-center justify-center" aria-hidden="true">
             {/* Horizontal bar (always visible) */}
             <span class="absolute h-0.5 w-3.5 rounded-full bg-accent"></span>
             {/* Vertical bar (hidden when open) */}
-            <span class="absolute h-3.5 w-0.5 rounded-full bg-accent transition-transform duration-200 group-open:rotate-90 group-open:opacity-0"></span>
+            <span class="faq-icon-vbar absolute h-3.5 w-0.5 rounded-full bg-accent"></span>
           </span>
         </summary>
 
-        <div class="pb-5 pr-10 text-neutral-600 leading-relaxed">
+        <div class="faq-answer pb-5 pr-10 text-neutral-600 leading-relaxed">
           <p>{item.answer}</p>
         </div>
       </details>

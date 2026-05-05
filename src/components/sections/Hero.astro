@@ -3,13 +3,19 @@ import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 import HexPattern from '@components/decorative/HexPattern.astro';
 
+interface CounterValue {
+  number: number;
+  prefix?: string;
+  suffix?: string;
+}
+
 interface Props {
   headline: string;
   subheadline: string;
   primaryCta?: { text: string; href: string };
   secondaryCta?: { text: string; href: string };
   badge?: string;
-  stats?: Array<{ value: string; label: string }>;
+  stats?: Array<{ value: string | CounterValue; label: string }>;
   variant?: 'centered' | 'split';
   backgroundImage?: ImageMetadata;
 }
@@ -39,6 +45,8 @@ const {
       sizes="100vw"
       class="absolute inset-0 h-full w-full object-cover opacity-20 image-desaturated"
       loading="eager"
+      fetchpriority="high"
+      decoding="async"
     />
   )}
 
@@ -97,7 +105,18 @@ const {
             {stats.map((stat) => (
               <div class="text-center">
                 <div class="font-display text-3xl font-bold text-white sm:text-4xl">
-                  {stat.value}
+                  {typeof stat.value === 'object' ? (
+                    <span
+                      class="counter"
+                      data-target={stat.value.number}
+                      data-prefix={stat.value.prefix ?? ''}
+                      data-suffix={stat.value.suffix ?? ''}
+                    >
+                      {stat.value.prefix ?? ''}0{stat.value.suffix ?? ''}
+                    </span>
+                  ) : (
+                    stat.value
+                  )}
                 </div>
                 <div class="mt-1 text-small text-white/60">{stat.label}</div>
               </div>
@@ -143,7 +162,18 @@ const {
               {stats.map((stat) => (
                 <div>
                   <div class="font-display text-3xl font-bold text-white">
-                    {stat.value}
+                    {typeof stat.value === 'object' ? (
+                      <span
+                        class="counter"
+                        data-target={stat.value.number}
+                        data-prefix={stat.value.prefix ?? ''}
+                        data-suffix={stat.value.suffix ?? ''}
+                      >
+                        {stat.value.prefix ?? ''}0{stat.value.suffix ?? ''}
+                      </span>
+                    ) : (
+                      stat.value
+                    )}
                   </div>
                   <div class="mt-1 text-small text-white/60">{stat.label}</div>
                 </div>
@@ -159,3 +189,36 @@ const {
     )}
   </div>
 </section>
+
+<script>
+  const counters = document.querySelectorAll<HTMLElement>('.counter');
+  if (counters.length > 0) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target as HTMLElement;
+          const target = parseInt(el.dataset.target ?? '0', 10);
+          const prefix = el.dataset.prefix ?? '';
+          const suffix = el.dataset.suffix ?? '';
+          const duration = 1200;
+          const start = performance.now();
+
+          const tick = (now: number) => {
+            const t = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - t, 3);
+            const value = Math.round(target * eased);
+            el.textContent = `${prefix}${value}${suffix}`;
+            if (t < 1) requestAnimationFrame(tick);
+          };
+
+          requestAnimationFrame(tick);
+          observer.unobserve(el);
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    counters.forEach((el) => observer.observe(el));
+  }
+</script>

@@ -28,9 +28,9 @@ function isActive(href: string): boolean {
             <a
               href={item.href}
               class:list={[
-                'inline-flex items-center gap-1 rounded-md px-3 py-2 font-display text-[0.9375rem] font-medium no-underline transition-colors',
+                'nav-link inline-flex items-center gap-1 rounded-md px-3 py-2 font-display text-[0.9375rem] font-medium no-underline transition-colors',
                 isActive(item.href)
-                  ? 'text-accent'
+                  ? 'nav-link-active text-accent'
                   : 'text-primary hover:text-accent',
               ]}
               aria-haspopup="true"
@@ -41,7 +41,7 @@ function isActive(href: string): boolean {
             </a>
 
             {/* Dropdown panel */}
-            <div class="invisible absolute left-0 top-full z-50 pt-2 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
+            <div class="nav-dropdown invisible absolute left-0 top-full z-50 -translate-y-2 pt-2 opacity-0 transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
               <div class="min-w-56 rounded-card border border-neutral-100 bg-white p-2 shadow-lg shadow-primary/5">
                 {item.children.map((child) => (
                   <a
@@ -63,9 +63,9 @@ function isActive(href: string): boolean {
           <a
             href={item.href}
             class:list={[
-              'rounded-md px-3 py-2 font-display text-[0.9375rem] font-medium no-underline transition-colors',
+              'nav-link rounded-md px-3 py-2 font-display text-[0.9375rem] font-medium no-underline transition-colors',
               isActive(item.href)
-                ? 'text-accent'
+                ? 'nav-link-active text-accent'
                 : 'text-primary hover:text-accent',
             ]}
           >
