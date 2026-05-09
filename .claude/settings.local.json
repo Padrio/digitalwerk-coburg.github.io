@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:decaster.dev)",
+      "WebFetch(domain:cal.com)",
+      "WebFetch(domain:contentisland.net)",
+      "WebFetch(domain:docs.astro.build)",
+      "WebFetch(domain:digitalwerk-coburg.de)",
+      "WebFetch(domain:pkrason.de)",
+      "Bash(magick:*)",
+      "Bash(fc-list ::*)",
+      "Bash(npx:*)",
+      "Bash(node:*)",
+      "Bash(sips:*)",
+      "WebFetch(domain:www.digitalbonus.bayern)",
+      "WebFetch(domain:www.kfw.de)",
+      "WebFetch(domain:digitalzentrum-franken.de)",
+      "WebFetch(domain:www.stmwi.bayern.de)",
+      "WebFetch(domain:www.ihk.de)",
+      "Bash(grep -o '\\\\[.*\\\\]\\(/[^\\)]*' /Users/pascal/Developer/DigitalWerk/src/content/blog/*.md)",
+      "WebFetch(domain:www.bitkom.org)"
+    ]
+  }
+}

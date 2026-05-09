@@ -73,7 +73,7 @@ export const localServices: LocalServiceData[] = [
     heroSubheadline:
       'Professionelle Websites für Coburger Unternehmen. Direkt vor Ort an der Vestestadt — ohne Agentur-Bürokratie und mit fester Ansprechperson über die gesamte Projektlaufzeit.',
     summary:
-      'Webdesign aus Coburg von Pascal Krason: maßgeschneiderte Websites für Handwerker, Praxen, Gastronomen und Mittelstand in Oberfranken. Festpreis ab 3.000 Euro, persönlicher Kontakt vor Ort, in 4–6 Wochen online.',
+      'Webdesign aus Coburg von Pascal Krason: Websites für Handwerker, Praxen, Gastronomen und Mittelstand in Oberfranken — ohne Baukasten, mit fester Ansprechperson. Festpreis ab 3.000 Euro, persönlicher Kontakt vor Ort, in 4–6 Wochen online.',
     trustHeadline: 'Warum ein Webdesigner aus Coburg statt Großstadt-Agentur?',
     trustPoints: [
       'Persönliches Treffen vor Ort möglich — kein langer Anfahrtsweg, keine Telko-Hürden bei Designentscheidungen.',
@@ -204,7 +204,7 @@ export const localServices: LocalServiceData[] = [
     heroSubheadline:
       'Maßgeschneiderte Web-Anwendungen, Portale und Schnittstellen für Coburger Unternehmen. Wenn WordPress oder Wix an seine Grenzen kommt, beginnt meine Arbeit.',
     summary:
-      'Individuelle Webentwicklung aus Coburg: Web-Apps, Kundenportale, Schnittstellen und Custom-CMS-Lösungen. Pascal Krason, Fachinformatiker mit 10+ Jahren Erfahrung von CHECK24 bis Digitalwerk. Stack: Astro, React, TypeScript, Node.js, Laravel.',
+      'Individuelle Webentwicklung aus Coburg: Web-Apps, Kundenportale, Schnittstellen und Custom-CMS-Lösungen. Pascal Krason, Fachinformatiker mit über 10 Jahren Erfahrung in Enterprise-Webentwicklung. Stack: Astro, React, TypeScript, Node.js, Laravel.',
     trustHeadline: 'Wann brauchen Sie individuelle Webentwicklung statt Baukasten?',
     trustPoints: [
       'Wenn Standard-CMS wie WordPress an Performance- oder Sicherheits-Grenzen stoßen.',
@@ -239,9 +239,9 @@ export const localServices: LocalServiceData[] = [
           'Wenn sinnvoll: REST oder GraphQL APIs, sodass spätere Mobile-Apps oder externe Systeme angeschlossen werden können.',
       },
       {
-        title: 'CHECK24-Erfahrung',
+        title: 'Engineering aus der Praxis',
         description:
-          'Über 5 Jahre als Entwickler bei einem der größten deutschen Vergleichsportale — Skalierung, Sicherheit und Tooling auf Enterprise-Niveau.',
+          'Über zehn Jahre Engineering-Erfahrung aus großen Vergleichs- und E-Commerce-Plattformen. Skalierung, Sicherheit und Tooling auf Enterprise-Niveau, übertragen auf den Mittelstand.',
       },
     ],
     pricingHeadline: 'Was kostet individuelle Webentwicklung?',
