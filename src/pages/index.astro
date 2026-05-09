@@ -35,6 +35,11 @@ const iconMap: Record<string, any> = {
   brain: Brain,
   search: Search,
 };
+
+// Toggle: Testimonial-Sektion ist temporär ausgeblendet, bis echte
+// dritt-verifizierte Bewertungen (z.B. via ProvenExpert oder Google) vorliegen.
+// Auf true setzen, wenn die testimonials-Daten ersetzt sind.
+const SHOW_TESTIMONIALS = false;
 ---
 
 <PageLayout
@@ -148,35 +153,37 @@ const iconMap: Record<string, any> = {
     </div>
   </section>
 
-  {/* 6. Testimonials */}
-  <section class="section relative bg-neutral-100 overflow-hidden">
-    <GridPattern variant="dots" class="absolute inset-0" />
-    <div class="container relative z-10">
-      <div class="mx-auto max-w-3xl text-center">
-        <span class="section-label justify-center">Kundenstimmen</span>
-        <h2>Was meine Kunden sagen</h2>
-        <p class="mt-4 text-lg text-neutral-600 leading-relaxed">
-          Zufriedene Kunden sind die beste Referenz. Hier erfahren Sie, wie die
-          Zusammenarbeit mit Digitalwerk Coburg in der Praxis aussieht.
-        </p>
-      </div>
+  {/* 6. Testimonials — temporär ausgeblendet via SHOW_TESTIMONIALS-Toggle, bis echte Reviews vorliegen */}
+  {SHOW_TESTIMONIALS && (
+    <section class="section relative bg-neutral-100 overflow-hidden">
+      <GridPattern variant="dots" class="absolute inset-0" />
+      <div class="container relative z-10">
+        <div class="mx-auto max-w-3xl text-center">
+          <span class="section-label justify-center">Kundenstimmen</span>
+          <h2>Was meine Kunden sagen</h2>
+          <p class="mt-4 text-lg text-neutral-600 leading-relaxed">
+            Zufriedene Kunden sind die beste Referenz. Hier erfahren Sie, wie die
+            Zusammenarbeit mit Digitalwerk Coburg in der Praxis aussieht.
+          </p>
+        </div>
 
-      <div class="mt-12 grid gap-6 md:grid-cols-3">
-        {testimonials.map((t, i) => (
-          <Reveal delay={i * 120}>
-            <TestimonialCard
-              name={t.name}
-              role={t.role}
-              company={t.company}
-              quote={t.quote}
-              rating={t.rating}
-              initials={t.initials}
-            />
-          </Reveal>
-        ))}
+        <div class="mt-12 grid gap-6 md:grid-cols-3">
+          {testimonials.map((t, i) => (
+            <Reveal delay={i * 120}>
+              <TestimonialCard
+                name={t.name}
+                role={t.role}
+                company={t.company}
+                quote={t.quote}
+                rating={t.rating}
+                initials={t.initials}
+              />
+            </Reveal>
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  )}
 
   {/* 7. LocalSection */}
   <LocalSection />
