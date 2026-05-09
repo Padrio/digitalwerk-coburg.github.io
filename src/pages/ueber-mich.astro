@@ -4,12 +4,13 @@ import { buildSeoMeta } from '@utils/seo';
 import { SITE, PROFILE_LAST_MODIFIED } from '@data/site';
 import JsonLd from '@components/seo/JsonLd.astro';
 import { buildPerson, buildProfilePage } from '@utils/schema';
+import { Image } from 'astro:assets';
+import pascalImage from '@assets/pascal.png';
 
 import Hero from '@components/sections/Hero.astro';
 import CTA from '@components/ui/CTA.astro';
 
 import { Gem, Eye, Handshake, Briefcase, GraduationCap, Rocket, Users, Building2 } from 'lucide-astro';
-import IsometricBlocks from '@components/decorative/IsometricBlocks.astro';
 import GridPattern from '@components/decorative/GridPattern.astro';
 
 const seo = buildSeoMeta({
@@ -111,7 +112,7 @@ const milestones = [
     variant="centered"
     badge="Über mich"
     headline="Hallo, ich bin Pascal Krason"
-    subheadline="Gründer von Digitalwerk Coburg – über 10 Jahre Erfahrung in Webentwicklung und digitaler Strategie. Ihr persönlicher Ansprechpartner für alle digitalen Fragen."
+    subheadline="Inhaber von Digitalwerk Coburg — über 10 Jahre Erfahrung in Webentwicklung und digitaler Strategie. Ihre feste Ansprechperson für alle digitalen Fragen."
   />
 
   {/* 2. Zahlen/Fakten */}
@@ -142,9 +143,20 @@ const milestones = [
   <section class="section">
     <div class="container">
       <div class="grid items-start gap-12 lg:grid-cols-2">
-        {/* Left: Visual */}
+        {/* Left: Photo */}
         <div class="flex items-center justify-center">
-          <IsometricBlocks class="w-full max-w-md" />
+          <div class="relative w-full max-w-md overflow-hidden rounded-card shadow-xl shadow-primary/10">
+            <Image
+              src={pascalImage}
+              alt="Pascal Krason, Webentwickler und Inhaber von Digitalwerk Coburg, in der Werkstatt"
+              widths={[400, 600, 800]}
+              sizes="(max-width: 1024px) 90vw, 400px"
+              format="webp"
+              quality={80}
+              class="h-auto w-full object-cover"
+              loading="eager"
+            />
+          </div>
         </div>
 
         {/* Right: Story */}

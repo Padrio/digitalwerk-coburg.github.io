@@ -16,6 +16,14 @@ const isSuccess = Astro.url.searchParams.get("success") === "true";
     </p>
   </div>
 ) : (
+  <!--
+    Formspree-Endpoint einsetzen:
+    1) Account auf https://formspree.io anlegen (EU-Server für DSGVO empfohlen)
+    2) Neues Formular erstellen, FORM_ID kopieren (Format: xnnnnnnn)
+    3) Hier 'FORM_ID' durch die echte ID ersetzen
+    4) AVV mit Formspree abschließen, in Datenschutzerklärung dokumentieren
+    Kostenloser Plan: 50 Submissions/Monat — reicht für Phase-1-Volumen.
+  -->
   <form
     action="https://formspree.io/f/FORM_ID"
     method="POST"
