@@ -1,6 +1,7 @@
 ---
 title: "Local SEO Coburg: Warum Ihr Google Business Profile 2026 über Sichtbarkeit entscheidet"
 description: "Google bevorzugt lokale Suchergebnisse stärker denn je. Erfahren Sie, wie Coburger Unternehmen mit einem optimierten Google Business Profile, lokalen Keywords und Bewertungen ihre Sichtbarkeit dramatisch steigern."
+summary: "Lokale Sichtbarkeit auf Google entscheidet sich an drei Faktoren: Relevanz (Google Business Profile zu rund 32 % gewichtet), Bekanntheit (Bewertungen rund 20 %) und Entfernung. Die Optimierung beginnt mit einem vollständigen GBP, aktivem Bewertungsmanagement und konsistenten NAP-Daten über alle Plattformen — nicht mit teurem Backlink-Aufbau."
 pubDate: 2026-03-10
 tags: ["Local SEO", "Google Business Profile", "Coburg", "Lokale Suche"]
 draft: false
@@ -55,7 +56,19 @@ Wie bekannt und vertrauenswürdig ist Ihr Unternehmen im Internet? Google misst 
 
 Studien zeigen, dass die Signale aus Ihrem Google Business Profile etwa 32 Prozent des lokalen Rankings ausmachen. Bewertungen tragen weitere 20 Prozent bei. Zusammen sind das über die Hälfte aller Ranking-Faktoren — und beides können Sie direkt beeinflussen.
 
-**Ihr Tipp:** Konzentrieren Sie sich auf das, was Sie kontrollieren können: ein vollständiges Profil, aktives Bewertungsmanagement und konsistente Unternehmensdaten.
+Die folgende Tabelle ordnet die wichtigsten lokalen Ranking-Faktoren nach Gewichtung und zeigt, wo Sie selbst ansetzen können:
+
+| Ranking-Faktor | Ungefähre Gewichtung | Wo Sie ansetzen |
+|----------------|---------------------|------------------|
+| Google Business Profile (Vollständigkeit, Kategorien, Beschreibung) | ~32 % | business.google.com — Profil komplett ausfüllen, primäre Kategorie sorgfältig wählen |
+| Bewertungen (Anzahl, Durchschnitt, Aktualität, Antwortrate) | ~20 % | Aktiv um Bewertungen bitten, jede beantworten — auch die negativen |
+| Backlinks und lokale Erwähnungen | ~15 % | IHK-Verzeichnis, Branchenbücher, Kooperationen mit lokalen Partnern |
+| On-Page SEO (Inhalte mit lokalem Bezug) | ~12 % | Stadt + Branche in Title, H1 und im Body — natürlich, nicht gestaffelt |
+| Technische Faktoren (Mobile, Speed, HTTPS) | ~8 % | Lighthouse 90+, Schema.org-Markup, sauberes HTTPS |
+| NAP-Konsistenz über alle Plattformen | ~7 % | Branchenverzeichnisse abgleichen — Name, Adresse, Telefon identisch |
+| Klickraten und Engagement im Profil | ~6 % | Fotos hochladen, Beiträge veröffentlichen, auf Bewertungen antworten |
+
+**Ihr Tipp:** Konzentrieren Sie sich zuerst auf das, was Sie direkt kontrollieren — Profil und Bewertungen. Backlinks und Citations sind wichtig, aber wirken langsamer.
 
 ## Google Business Profile: Ihr digitales Schaufenster
 
@@ -136,7 +149,7 @@ Unternehmen mit einer NAP-Konsistenz von 75 Prozent oder mehr verzeichnen laut S
 
 ## 5 häufige Fehler, die Coburger Unternehmen vermeiden sollten
 
-Aus der Praxis kennen wir typische Stolperfallen, die immer wieder vorkommen. Prüfen Sie, ob einer dieser Punkte auf Sie zutrifft:
+Aus der Praxis kenne ich typische Stolperfallen, die immer wieder vorkommen. Prüfen Sie, ob einer dieser Punkte auf Sie zutrifft:
 
 ### 1. Unvollständiges Profil
 
