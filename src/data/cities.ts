@@ -24,24 +24,24 @@ export const cities: City[] = [
     slug: 'bamberg',
     region: 'Oberfranken',
     description:
-      'Professionelle Websites und digitale Lösungen für Unternehmen in Bamberg und dem Bamberger Umland.',
-    isActive: false,
+      'Webdesign und SEO für Unternehmen im UNESCO-Welterbe Bamberg — von der Innenstadt-Brauerei bis zum Hotelier in der Inselstadt.',
+    isActive: true,
   },
   {
     name: 'Kronach',
     slug: 'kronach',
     region: 'Oberfranken',
     description:
-      'Webdesign und Online-Marketing für Betriebe in Kronach – regional verwurzelt, digital stark.',
-    isActive: false,
+      'Webdesign und SEO für Betriebe in Kronach — vom Familienhandwerk bis zur Holzmöbel-Manufaktur am Fuß der Festung Rosenberg.',
+    isActive: true,
   },
   {
     name: 'Lichtenfels',
     slug: 'lichtenfels',
     region: 'Oberfranken',
     description:
-      'Digitale Lösungen für Lichtenfels und die Korbstadt-Region – von der Website bis zur KI-Beratung.',
-    isActive: false,
+      'Webdesign und SEO für die Korbstadt Lichtenfels und das Obermain-Tal — Handwerk, Mittelstand, regionale Tourismusbetriebe.',
+    isActive: true,
   },
   {
     name: 'Sonneberg',

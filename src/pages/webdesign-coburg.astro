@@ -1,7 +1,7 @@
 ---
 import PageLayout from '@layouts/PageLayout.astro';
 import { buildSeoMeta } from '@utils/seo';
-import { localServices } from '@data/local-services';
+import { getLocalServiceBySlug } from '@data/local-services';
 import {
   buildLocalService,
   buildFaqPage,
@@ -10,7 +10,7 @@ import {
 import JsonLd from '@components/seo/JsonLd.astro';
 import LocalServicePage from '@components/sections/LocalServicePage.astro';
 
-const data = localServices.find((ls) => ls.service === 'webdesign')!;
+const data = getLocalServiceBySlug('webdesign-coburg')!;
 
 const seo = buildSeoMeta({
   title: data.title,
