@@ -76,28 +76,46 @@ export function buildLocalBusiness(): WithContext<LocalBusiness> {
     description: SITE.description,
     url: SITE.url,
     email: SITE.email,
-    telephone: SITE.phone,
+    telephone: SITE.phoneE164,
     foundingDate: '2024',
     logo: `${SITE.url}/favicon.svg`,
+    image: `${SITE.url}/og-image.webp`,
     address: {
       '@type': 'PostalAddress',
       streetAddress: SITE.address.street,
       postalCode: SITE.address.zip,
       addressLocality: SITE.address.city,
-      addressRegion: SITE.address.region,
+      addressRegion: SITE.address.regionCode,
       addressCountry: SITE.address.country,
     },
-    founder: { '@id': ID_PERSON } as unknown as Person,
-    areaServed: {
-      '@type': 'GeoCircle',
-      geoMidpoint: {
-        '@type': 'GeoCoordinates',
-        latitude: 50.2612,
-        longitude: 10.9628,
-      },
-      geoRadius: '50000',
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: 50.26121,
+      longitude: 10.96280,
     },
-    priceRange: '$$',
+    founder: { '@id': ID_PERSON } as unknown as Person,
+    areaServed: [
+      { '@type': 'City', name: 'Coburg' },
+      { '@type': 'City', name: 'Bamberg' },
+      { '@type': 'City', name: 'Kronach' },
+      { '@type': 'City', name: 'Lichtenfels' },
+      { '@type': 'City', name: 'Sonneberg' },
+      { '@type': 'City', name: 'Kulmbach' },
+      { '@type': 'City', name: 'Bayreuth' },
+      { '@type': 'City', name: 'Hildburghausen' },
+      { '@type': 'AdministrativeArea', name: 'Oberfranken' },
+    ],
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        opens: '09:00',
+        closes: '18:00',
+      },
+    ],
+    priceRange: '€€',
+    currenciesAccepted: 'EUR',
+    paymentAccepted: 'Überweisung, Rechnung, PayPal',
     sameAs: [
       SITE.social.linkedIn,
       SITE.social.github,
@@ -111,13 +129,6 @@ export function buildLocalBusiness(): WithContext<LocalBusiness> {
       'Responsive Design',
       'Barrierefreies Webdesign',
     ],
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '5.0',
-      reviewCount: '3',
-      bestRating: '5',
-      worstRating: '1',
-    },
   } as unknown as WithContext<LocalBusiness>;
 }
 
@@ -198,8 +209,8 @@ export function buildService(service: ServiceInput): WithContext<Service> {
     url: service.url ?? SITE.url,
     provider: { '@id': ID_ORGANIZATION } as unknown as LocalBusiness,
     areaServed: {
-      '@type': 'Place',
-      name: `${SITE.address.city}, ${SITE.address.region}`,
+      '@type': 'AdministrativeArea',
+      name: SITE.address.region,
     },
   };
 }

@@ -21,7 +21,9 @@ const {
   articleModifiedTime,
 } = Astro.props;
 
-const canonicalUrl = canonical || new URL(Astro.url.pathname, Astro.site).href;
+// Strip .html suffix and normalize trailing slash so canonical matches sitemap clean URLs.
+const cleanPathname = Astro.url.pathname.replace(/\.html$/, '').replace(/\/index$/, '/') || '/';
+const canonicalUrl = canonical || new URL(cleanPathname, Astro.site).href;
 const ogImageUrl = new URL(ogImage, Astro.site).href;
 ---
 

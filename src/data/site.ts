@@ -7,6 +7,7 @@ export interface Address {
   zip: string;
   city: string;
   region: string;
+  regionCode: string;
   country: string;
 }
 
@@ -28,6 +29,7 @@ export interface SiteConfig {
   description: string;
   email: string;
   phone: string;
+  phoneE164: string;
   address: Address;
   social: SocialLinks;
   owner: Owner;
@@ -42,16 +44,18 @@ export const PROFILE_LAST_MODIFIED = new Date('2026-05-05T00:00:00Z');
 export const SITE: SiteConfig = {
   url: 'https://digitalwerk-coburg.de',
   name: 'Digitalwerk Coburg',
-  tagline: 'Digitale Lösungen. Solide gebaut.',
+  tagline: 'Websites und Web-Apps, die wirklich funktionieren.',
   description:
-    'Ihr zuverlässiger Digitalpartner aus Coburg für Webdesign, Webentwicklung, SEO und KI-Beratung. Persönlich. Regional. Ergebnisorientiert.',
+    'Pascal Krason — Webentwickler aus Coburg. Webdesign, Webentwicklung, SEO und KI-Beratung für den Mittelstand in Oberfranken. Persönlich, lokal, ergebnisorientiert.',
   email: 'hallo@digitalwerk-coburg.de',
-  phone: '+49 (0) 174 660 3656',
+  phone: '+49 174 660 3656',
+  phoneE164: '+491746603656',
   address: {
     street: 'Von-Mayer-Straße 25',
     zip: '96450',
     city: 'Coburg',
     region: 'Oberfranken',
+    regionCode: 'BY',
     country: 'DE',
   },
   social: {
@@ -61,6 +65,6 @@ export const SITE: SiteConfig = {
   },
   owner: {
     name: 'Pascal Krason',
-    role: 'Gründer & Entwickler',
+    role: 'Webentwickler & Inhaber',
   },
 };

@@ -20,6 +20,8 @@ export default defineConfig({
     sitemap({
       filter: (page) =>
         !page.includes('/impressum') && !page.includes('/datenschutz'),
+      changefreq: 'weekly',
+      lastmod: new Date(),
     }),
   ],
   vite: {
