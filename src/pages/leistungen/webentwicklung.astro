@@ -4,21 +4,51 @@ import { getServiceBySlug } from '@data/services';
 import { serviceFaqs } from '@data/faqs';
 import { buildSeoMeta } from '@utils/seo';
 import { buildService, buildFaqPage } from '@utils/schema';
+import { getServicePricing } from '@data/service-pricing';
 import JsonLd from '@components/seo/JsonLd.astro';
 import Hero from '@components/sections/Hero.astro';
 import FAQ from '@components/sections/FAQ.astro';
+import PricingTiers from '@components/sections/PricingTiers.astro';
 import CTA from '@components/ui/CTA.astro';
-import { CheckCircle } from 'lucide-astro';
+import { CheckCircle, Code2, Database, Zap } from 'lucide-astro';
 import GridPattern from '@components/decorative/GridPattern.astro';
 
 const service = getServiceBySlug('webentwicklung')!;
 const faqs = serviceFaqs['webentwicklung'] || [];
+const pricing = getServicePricing('webentwicklung')!;
 
 const seo = buildSeoMeta({
-  title: 'Webentwicklung Coburg',
+  title: 'Webentwicklung — der Service im Überblick',
   description:
-    'Individuelle Webentwicklung aus Coburg: Leistungsstarke Webanwendungen mit modernen Technologien. Sauberer Code, API-Anbindungen und langfristig wartbare Lösungen.',
+    'Individuelle Webentwicklung aus Coburg: Web-Apps, Kundenportale, APIs. Stack: Astro, React, TypeScript, Node.js, Laravel. Festpreis oder Tagessatz à 850 €.',
 });
+
+const stackBlocks = [
+  {
+    icon: 'code',
+    layer: 'Frontend',
+    items: ['Astro 5', 'React 18+', 'TypeScript', 'Tailwind CSS 4', 'Vue (auf Wunsch)'],
+    note: 'SSG bevorzugt für Marketing-Sites, SSR/SPA für interaktive Web-Apps. Mobile-First, Lighthouse 95+ als Standard.',
+  },
+  {
+    icon: 'database',
+    layer: 'Backend',
+    items: ['Node.js (Express, Fastify)', 'Laravel 11 (PHP)', 'PostgreSQL', 'MySQL', 'MongoDB', 'Redis'],
+    note: 'Stack-Auswahl nach Projektanforderung. Für API-First-Architektur meist Node, für klassische Geschäftsanwendungen Laravel.',
+  },
+  {
+    icon: 'zap',
+    layer: 'Infrastruktur & Tooling',
+    items: ['Hetzner (DSGVO, Deutschland)', 'Vercel / Netlify', 'GitHub Actions CI/CD', 'Docker', 'Stripe / PayPal', 'DATEV-API'],
+    note: 'Hosting auf Wunsch in Deutschland (Hetzner Falkenstein). CI/CD-Pipelines automatisieren Tests und Deployments.',
+  },
+];
+
+const stackIconMap: Record<string, any> = {
+  code: Code2,
+  database: Database,
+  zap: Zap,
+};
 ---
 
 <PageLayout title={seo.title} description={seo.description}>
@@ -27,17 +57,26 @@ const seo = buildSeoMeta({
 
   <!-- Hero -->
   <Hero
-    badge={service.shortTitle}
-    headline={service.title}
-    subheadline={service.description}
-    primaryCta={{ text: 'Jetzt anfragen', href: '/kontakt' }}
+    badge="Webentwicklung"
+    headline="Webentwicklung — der Service im Überblick"
+    subheadline="Individuelle Web-Anwendungen, Kundenportale und Schnittstellen, wenn Standard-Software an Grenzen stößt. Saubere Codebase, Code-Eigentum bleibt bei Ihnen, Tagessatz transparent à 850 €."
+    primaryCta={{ text: 'Erstgespräch vereinbaren', href: '/kontakt' }}
+    secondaryCta={{ text: 'Preise ansehen', href: '#preise' }}
   />
 
   <!-- Features -->
   <section class="section">
     <div class="container">
-      <span class="section-label">Was Sie bekommen</span>
-      <h2 class="mb-12">Leistungen im Detail</h2>
+      <div class="mx-auto max-w-3xl">
+        <span class="section-label">Leistungen</span>
+        <h2 class="mb-4">Was umfasst Webentwicklung bei mir?</h2>
+        <p class="mb-12 text-lg text-neutral-600 leading-relaxed">
+          Webentwicklung beginnt dort, wo ein Standard-CMS wie WordPress
+          nicht mehr reicht — bei eigener Geschäftslogik, Schnittstellen
+          zu Bestandssoftware oder digitalen Produkten mit echten Nutzern.
+          Acht Bausteine, die ich je nach Projekt kombiniere:
+        </p>
+      </div>
 
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {service.features.map((feature, index) => (
@@ -53,13 +92,72 @@ const seo = buildSeoMeta({
     </div>
   </section>
 
-  <!-- USPs -->
+  <!-- Tech Stack Section (NEW) -->
   <section class="section relative bg-neutral-100 overflow-hidden">
     <GridPattern variant="dots" class="absolute inset-0" />
     <div class="container relative z-10">
       <div class="mx-auto max-w-3xl">
-        <span class="section-label">Warum Digitalwerk</span>
-        <h2 class="mb-10">Ihre Vorteile</h2>
+        <span class="section-label">Tech-Stack</span>
+        <h2 class="mb-4">Mit welchem Tech-Stack arbeite ich?</h2>
+        <p class="mb-10 text-lg text-neutral-600 leading-relaxed">
+          Keine PHP-Antiquitäten, keine Vendor-Lock-ins. Mein Stack ist auf
+          langfristige Wartbarkeit und Performance ausgerichtet — Frontend,
+          Backend und Infrastruktur jeweils nach Projektanforderung. Drei
+          Schichten, klare Auswahllogik:
+        </p>
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-3">
+        {stackBlocks.map((block) => {
+          const Icon = stackIconMap[block.icon];
+          return (
+            <article class="card p-6">
+              <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent">
+                <Icon class="h-6 w-6" />
+              </div>
+              <h3 class="font-display text-lg font-semibold text-primary">{block.layer}</h3>
+              <ul class="mt-4 space-y-1.5">
+                {block.items.map((item) => (
+                  <li class="flex items-start gap-2 text-small text-neutral-700">
+                    <CheckCircle class="mt-0.5 h-4 w-4 shrink-0 text-success" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <p class="mt-4 text-small text-neutral-600 leading-relaxed">{block.note}</p>
+            </article>
+          );
+        })}
+      </div>
+
+      <p class="mx-auto mt-10 max-w-3xl rounded-card border-l-4 border-accent bg-white p-6 text-neutral-700 leading-relaxed">
+        <strong class="font-semibold text-primary">Kein Vendor-Lock-in:</strong>{' '}
+        Sie bekommen Repository-Zugang (GitHub/GitLab), Dokumentation und einen
+        Übergabe-Workshop. Auch andere Entwickler können später daran arbeiten — ich
+        baue keine Geheim-Frameworks und keine proprietären CMS, sondern setze auf
+        Open-Source-Tools, die in jeder anderen Agentur ebenfalls bekannt sind.
+      </p>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <PricingTiers
+    intro={pricing.intro}
+    tiers={pricing.tiers}
+    footnote={pricing.footnote}
+    anchorId="preise"
+  />
+
+  <!-- USPs renamed -->
+  <section class="section">
+    <div class="container">
+      <div class="mx-auto max-w-3xl">
+        <span class="section-label">Warum bei mir</span>
+        <h2 class="mb-4">Warum Webentwicklung bei Digitalwerk?</h2>
+        <p class="mb-10 text-lg text-neutral-600 leading-relaxed">
+          Vier Eigenschaften, die meine Arbeit von typischer Agentur-Webentwicklung
+          oder Offshore-Lösungen unterscheiden:
+        </p>
 
         <ul class="space-y-4">
           {service.usps.map((usp) => (
@@ -73,19 +171,20 @@ const seo = buildSeoMeta({
     </div>
   </section>
 
-  <!-- Deliverables -->
-  <section class="section">
+  <!-- Deliverables renamed -->
+  <section class="section bg-neutral-100">
     <div class="container">
       <div class="mx-auto max-w-3xl">
         <span class="section-label">Lieferumfang</span>
-        <h2 class="mb-4">Das ist im Paket enthalten</h2>
+        <h2 class="mb-4">Was Sie nach Projektabschluss bekommen</h2>
 
         <span class="mb-4 inline-block rounded-full bg-accent/10 px-4 py-1.5 font-display text-sm font-semibold text-accent">
           {service.ctaText}
         </span>
-        <a href="/kontakt" class="mb-8 inline-block text-sm font-semibold text-accent hover:underline">
-          Jetzt Angebot besprechen &rarr;
-        </a>
+        <p class="mb-8 text-neutral-600 leading-relaxed">
+          Standardlieferumfang für Web-App-Projekte. Bei Erweiterungen einzelner
+          Funktionen oder bei großen Plattformen wird die Liste angepasst:
+        </p>
 
         <ul class="space-y-3">
           {service.deliverables.map((item) => (
@@ -99,13 +198,16 @@ const seo = buildSeoMeta({
     </div>
   </section>
 
-  <!-- Stadt-Landingpage Verweis -->
+  <!-- Stadt-LP-Verweis -->
   <section class="section py-12">
     <div class="container">
       <div class="mx-auto max-w-3xl rounded-card border border-accent/30 bg-accent/5 p-6 sm:p-8">
-        <h3 class="mb-2">Sie sind aus Coburg?</h3>
+        <h3 class="mb-2">Sie sitzen in Coburg?</h3>
         <p class="mb-4 text-neutral-600 leading-relaxed">
-          Auf unserer Stadt-Landingpage <strong>Webentwicklung Coburg</strong> finden Sie Anwendungsbeispiele aus der Coburger Wirtschaft, Tagessätze und konkrete Use-Cases für Mittelstand und Industrie in Oberfranken.
+          Auf der Stadt-Landingpage <strong>Webentwicklung Coburg</strong>{' '}
+          finden Sie konkrete Anwendungsbeispiele aus der Coburger Wirtschaft —
+          Versicherungssektor, Möbelindustrie, Logistik. Plus Tagessätze und Use-Cases
+          für Mittelstand und Industrie in Oberfranken.
         </p>
         <a href="/webentwicklung-coburg" class="btn-link">
           Webentwicklung Coburg ansehen &rarr;
@@ -117,13 +219,13 @@ const seo = buildSeoMeta({
   <!-- FAQ -->
   <section class="section bg-neutral-100">
     <div class="container">
-      <FAQ title={`Häufige Fragen zu ${service.shortTitle}`} items={faqs} />
+      <FAQ title="Häufige Fragen zur Webentwicklung" items={faqs} />
     </div>
   </section>
 
   <!-- CTA -->
   <CTA
     headline="Bereit für Ihre individuelle Webanwendung?"
-    subline="Lassen Sie uns gemeinsam eine technisch saubere Lösung entwickeln, die mit Ihrem Unternehmen wächst."
+    subline="Im kostenlosen Erstgespräch klären wir in 30 Minuten, ob individuelle Entwicklung wirklich der richtige Weg ist — oder ob ein Standard-Tool ausreicht. Ergebnisoffen."
   />
 </PageLayout>

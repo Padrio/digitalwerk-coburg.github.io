@@ -1,0 +1,66 @@
+---
+import { CheckCircle } from 'lucide-astro';
+import type { PricingTier } from '@data/service-pricing';
+
+interface Props {
+  intro: string;
+  tiers: PricingTier[];
+  footnote?: string;
+  /** Optional anchor id for in-page navigation. */
+  anchorId?: string;
+}
+
+const { intro, tiers, footnote, anchorId = 'preise' } = Astro.props;
+---
+
+<section id={anchorId} class="section">
+  <div class="container">
+    <div class="mx-auto max-w-3xl">
+      <p class="text-lg text-neutral-600 leading-relaxed">{intro}</p>
+    </div>
+
+    <div class="mt-12 grid gap-6 md:grid-cols-3">
+      {tiers.map((tier) => (
+        <article
+          class:list={[
+            'card flex flex-col p-8',
+            tier.ctaLabel ? 'border-2 border-accent shadow-lg shadow-accent/10' : '',
+          ]}
+        >
+          {tier.ctaLabel && (
+            <span class="mb-4 inline-block self-start rounded-full bg-accent px-3 py-1 font-display text-xs font-semibold uppercase tracking-wider text-white">
+              {tier.ctaLabel}
+            </span>
+          )}
+
+          <h3 class="font-display text-xl font-semibold text-primary">
+            {tier.name}
+          </h3>
+
+          <p class="mt-2 font-display text-2xl font-bold text-accent">
+            {tier.priceLabel}
+          </p>
+
+          <p class="mt-4 text-neutral-600 leading-relaxed">
+            {tier.description}
+          </p>
+
+          <ul class="mt-6 space-y-2.5">
+            {tier.highlights.map((h) => (
+              <li class="flex items-start gap-2 text-small text-neutral-700">
+                <CheckCircle class="mt-0.5 h-4 w-4 shrink-0 text-success" />
+                <span>{h}</span>
+              </li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+
+    {footnote && (
+      <p class="mx-auto mt-8 max-w-3xl text-center text-small text-neutral-500 leading-relaxed">
+        {footnote}
+      </p>
+    )}
+  </div>
+</section>

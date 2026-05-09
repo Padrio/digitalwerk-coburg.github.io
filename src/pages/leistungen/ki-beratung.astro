@@ -4,21 +4,84 @@ import { getServiceBySlug } from '@data/services';
 import { serviceFaqs } from '@data/faqs';
 import { buildSeoMeta } from '@utils/seo';
 import { buildService, buildFaqPage } from '@utils/schema';
+import { getServicePricing } from '@data/service-pricing';
 import JsonLd from '@components/seo/JsonLd.astro';
 import Hero from '@components/sections/Hero.astro';
 import FAQ from '@components/sections/FAQ.astro';
+import PricingTiers from '@components/sections/PricingTiers.astro';
 import CTA from '@components/ui/CTA.astro';
-import { CheckCircle } from 'lucide-astro';
+import { CheckCircle, Lock, Server, Building2 } from 'lucide-astro';
 import GridPattern from '@components/decorative/GridPattern.astro';
 
 const service = getServiceBySlug('ki-beratung')!;
 const faqs = serviceFaqs['ki-beratung'] || [];
+const pricing = getServicePricing('ki-beratung')!;
 
 const seo = buildSeoMeta({
-  title: 'KI-Beratung Coburg',
+  title: 'KI-Beratung Coburg & Oberfranken',
   description:
-    'KI-Beratung aus Coburg: Künstliche Intelligenz praxisnah einsetzen. Potenzialanalyse, Chatbot-Entwicklung, Automatisierung und Team-Schulungen für Ihr Unternehmen.',
+    'KI-Beratung für den Mittelstand in Oberfranken: DSGVO-konformer KI-Einsatz, On-Premise-Optionen für Praxen und Kanzleien, Pilotumsetzung in 3–6 Wochen. Audit ab 1.800 €.',
 });
+
+const dsgvoPoints = [
+  {
+    icon: 'lock',
+    title: 'Datenklassifikation vor Tool-Auswahl',
+    description:
+      'Welche Daten dürfen in eine US-Cloud, welche nicht? Patientendaten, Mandantenakten und sensible Kalkulationen bleiben grundsätzlich auf europäischen oder lokalen Servern. Tool-Empfehlungen folgen daraus, nicht umgekehrt.',
+  },
+  {
+    icon: 'server',
+    title: 'On-Premise statt Cloud, wo nötig',
+    description:
+      'Open-Source-Modelle wie Mixtral, Llama oder Mistral lassen sich lokal betreiben — auf einem Server in Ihrer Praxis, Kanzlei oder Werkstatt. Daten verlassen das Haus nie. Initialaufwand höher, laufende Kosten niedriger.',
+  },
+  {
+    icon: 'building',
+    title: 'AVV mit jedem externen Anbieter',
+    description:
+      'Wenn ein US-Tool wie ChatGPT Team genutzt wird, braucht es einen Auftragsverarbeitungsvertrag (AVV) und Standardvertragsklauseln nach Art. 46 DSGVO. Ich prüfe pro Tool, ob beides vorhanden und aktuell ist.',
+  },
+];
+
+const useCases = [
+  {
+    branche: 'Arzt- und Therapie-Praxen',
+    title: 'Diktat-Transkription auf Praxis-Servern',
+    description:
+      'Anamnese-Diktate werden lokal in Text umgewandelt — ohne Whisper-Cloud, ohne dass Patientendaten US-Server berühren. Ein eigener Mini-Server reicht aus; Whisper.cpp läuft auch auf gebrauchter Hardware. Spart pro Behandlungstag 30–60 Minuten Dokumentation.',
+  },
+  {
+    branche: 'Anwalts- und Steuerkanzleien',
+    title: 'Mandantenakten-Suche per Sprachfrage',
+    description:
+      'Ein lokaler RAG-Aufbau (Retrieval-Augmented Generation) durchsucht Ihre Mandantenakten per natürlicher Sprache. „Welche Mandate hatten 2024 mit Erbschaftsteuer zu tun?" — Antwort in Sekunden, mit Quellenangabe. Daten bleiben on-premise.',
+  },
+  {
+    branche: 'Handwerksbetriebe',
+    title: 'Angebotserstellung aus Sprachnotiz',
+    description:
+      'Auf der Baustelle Sprachnotiz aufnehmen — Software liest Material, Stunden und Sondersituationen heraus, generiert das Angebot in Ihrer DATEV- oder Lexware-Vorlage. Statt 30 Minuten am Schreibtisch nach Feierabend: 5 Minuten Korrektur.',
+  },
+  {
+    branche: 'Mittelständische Industrie',
+    title: 'Wartungs- und Reklamationshistorie als Sprachsuche',
+    description:
+      'Maschine X läuft seit zwei Wochen unrund. Was wurde dort die letzten zwölf Monate gemacht? RAG-System auf der lokalen Wartungs-Datenbank antwortet mit verlinkten Tickets statt Excel-Filtern. Setup: 2–3 Wochen, ROI nach erstem vermiedenen Stillstand.',
+  },
+  {
+    branche: 'Beratungs- und Versicherungsunternehmen',
+    title: 'Recherche-Brief aus 50 PDF-Quellen',
+    description:
+      'Vor jedem Beratungsgespräch braucht es einen Recherche-Brief: Branchenkennzahlen, Marktentwicklung, regulatorische Änderungen. KI extrahiert aus Ihrem Recherche-Pool die relevanten Passagen und gibt Quellen mit. Aus zwei Stunden Vorbereitung werden 20 Minuten.',
+  },
+];
+
+const dsgvoIconMap: Record<string, any> = {
+  lock: Lock,
+  server: Server,
+  building: Building2,
+};
 ---
 
 <PageLayout title={seo.title} description={seo.description}>
@@ -27,17 +90,26 @@ const seo = buildSeoMeta({
 
   <!-- Hero -->
   <Hero
-    badge={service.shortTitle}
-    headline={service.title}
-    subheadline={service.description}
-    primaryCta={{ text: 'Jetzt anfragen', href: '/kontakt' }}
+    badge="KI-Beratung für Oberfranken"
+    headline="KI-Beratung — praxisnah, DSGVO-konform, ohne Hype"
+    subheadline="Ich helfe mittelständischen Unternehmen in Oberfranken, Künstliche Intelligenz dort einzusetzen, wo sie tatsächlich Zeit oder Qualität gewinnt — auch in sensiblen Branchen wie Medizin, Recht oder Industrie. On-Premise-Lösungen sind oft die richtige Antwort, nicht die teurere."
+    primaryCta={{ text: 'Erstgespräch vereinbaren', href: '/kontakt' }}
+    secondaryCta={{ text: 'Preise ansehen', href: '#preise' }}
   />
 
-  <!-- Features -->
+  <!-- Features (existing service.features) -->
   <section class="section">
     <div class="container">
-      <span class="section-label">Was Sie bekommen</span>
-      <h2 class="mb-12">Leistungen im Detail</h2>
+      <div class="mx-auto max-w-3xl">
+        <span class="section-label">Leistungen</span>
+        <h2 class="mb-4">Was umfasst KI-Beratung bei mir?</h2>
+        <p class="mt-4 mb-12 text-lg text-neutral-600 leading-relaxed">
+          KI-Beratung bei Digitalwerk Coburg ist kein Tool-Verkauf. Sie ist eine ergebnisoffene
+          Bestandsaufnahme Ihrer Prozesse, gefolgt von einer ehrlichen Einschätzung,
+          wo Künstliche Intelligenz Sinn macht — und wo eben nicht. Sechs Bausteine,
+          aus denen ich je nach Bedarf das passende Paket schnüre:
+        </p>
+      </div>
 
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {service.features.map((feature, index) => (
@@ -53,13 +125,111 @@ const seo = buildSeoMeta({
     </div>
   </section>
 
-  <!-- USPs -->
+  <!-- DSGVO Section (NEW — answers Klaus persona) -->
   <section class="section relative bg-neutral-100 overflow-hidden">
     <GridPattern variant="dots" class="absolute inset-0" />
     <div class="container relative z-10">
       <div class="mx-auto max-w-3xl">
-        <span class="section-label">Warum Digitalwerk</span>
-        <h2 class="mb-10">Ihre Vorteile</h2>
+        <span class="section-label">Datenschutz zuerst</span>
+        <h2 class="mb-4">Wie ist KI-Beratung DSGVO-konform möglich?</h2>
+        <p class="mb-8 text-lg text-neutral-600 leading-relaxed">
+          Die häufigste Sorge bei KI-Einsatz im Mittelstand kommt aus Praxen, Kanzleien
+          und mittelständischen Industriebetrieben: Was passiert mit unseren Daten,
+          wenn wir ChatGPT, Claude oder ein anderes US-Cloud-Modell nutzen? Die ehrliche
+          Antwort lautet: Es kommt darauf an — und genau das prüfe ich pro Use-Case
+          systematisch durch.
+        </p>
+
+        <p class="mb-8 text-neutral-600 leading-relaxed">
+          DSGVO-konformer KI-Einsatz besteht aus drei Säulen. Jede einzelne kann je
+          nach Datenklasse und Branche anders aussehen.
+        </p>
+
+        <div class="space-y-6">
+          {dsgvoPoints.map((point) => {
+            const Icon = dsgvoIconMap[point.icon];
+            return (
+              <div class="card flex flex-col gap-4 p-6 sm:flex-row sm:items-start">
+                <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent">
+                  <Icon class="h-6 w-6" />
+                </div>
+                <div>
+                  <h3 class="font-display text-lg font-semibold text-primary">
+                    {point.title}
+                  </h3>
+                  <p class="mt-2 text-neutral-600 leading-relaxed">
+                    {point.description}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        <p class="mt-8 rounded-card border-l-4 border-accent bg-white p-6 text-neutral-700 leading-relaxed">
+          <strong class="font-semibold text-primary">Mein Grundsatz:</strong> Ich
+          empfehle KI-Tools nur, wenn die Datenschutz-Frage geklärt ist. Wenn ein
+          Use-Case nur mit fragwürdiger Datenverarbeitung funktioniert, sage ich
+          das offen und schlage entweder eine On-Premise-Variante oder den Verzicht
+          vor. Ich verkaufe Lösungen, keine Versprechen.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Use Cases Section (NEW — concrete regional examples) -->
+  <section class="section">
+    <div class="container">
+      <div class="mx-auto max-w-3xl">
+        <span class="section-label">Anwendungsfälle</span>
+        <h2 class="mb-4">Welche KI-Use-Cases lohnen sich im Mittelstand Oberfranken?</h2>
+        <p class="mb-12 text-lg text-neutral-600 leading-relaxed">
+          KI lohnt sich dort, wo wiederkehrende Wissensarbeit Zeit frisst — Diktate,
+          Recherche, Akten-Suche, Angebotserstellung. Fünf Beispiele aus realen
+          Beratungsprojekten in Coburg und Oberfranken, anonymisiert. Die Größenordnung
+          des ROI: meist mehrere Stunden pro Mitarbeitenden und Woche.
+        </p>
+      </div>
+
+      <div class="mx-auto max-w-3xl space-y-4">
+        {useCases.map((uc) => (
+          <article class="card p-6">
+            <span class="inline-block rounded-full bg-accent/10 px-3 py-1 font-display text-xs font-semibold uppercase tracking-wider text-accent">
+              {uc.branche}
+            </span>
+            <h3 class="mt-3 font-display text-lg font-semibold text-primary">
+              {uc.title}
+            </h3>
+            <p class="mt-2 text-neutral-600 leading-relaxed">
+              {uc.description}
+            </p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section (NEW) -->
+  <PricingTiers
+    intro={pricing.intro}
+    tiers={pricing.tiers}
+    footnote={pricing.footnote}
+    anchorId="preise"
+  />
+
+  <!-- USPs renamed -->
+  <section class="section relative bg-neutral-100 overflow-hidden">
+    <GridPattern variant="dots" class="absolute inset-0" />
+    <div class="container relative z-10">
+      <div class="mx-auto max-w-3xl">
+        <span class="section-label">Solo-Berater statt Konzernpartner</span>
+        <h2 class="mb-4">Warum KI-Beratung von einem Solo-Berater?</h2>
+        <p class="mb-10 text-lg text-neutral-600 leading-relaxed">
+          Die großen KI-Beratungen wie Microsoft, McKinsey oder die Big Four arbeiten
+          für Konzerne mit IT-Abteilungen, Compliance-Teams und siebenstelligen Budgets.
+          Mittelstand und Selbstständige brauchen einen anderen Ansatz: pragmatisch,
+          ohne Layer, mit Fokus auf das, was nächste Woche funktioniert.
+        </p>
 
         <ul class="space-y-4">
           {service.usps.map((usp) => (
@@ -77,15 +247,13 @@ const seo = buildSeoMeta({
   <section class="section">
     <div class="container">
       <div class="mx-auto max-w-3xl">
-        <span class="section-label">Lieferumfang</span>
-        <h2 class="mb-4">Das ist im Paket enthalten</h2>
-
-        <span class="mb-4 inline-block rounded-full bg-accent/10 px-4 py-1.5 font-display text-sm font-semibold text-accent">
-          {service.ctaText}
-        </span>
-        <a href="/kontakt" class="mb-8 inline-block text-sm font-semibold text-accent hover:underline">
-          Jetzt Angebot besprechen &rarr;
-        </a>
+        <span class="section-label">Was Sie mitnehmen</span>
+        <h2 class="mb-4">Was Sie nach der Beratung haben</h2>
+        <p class="mb-8 text-neutral-600 leading-relaxed">
+          Am Ende eines Beratungsmandats steht nicht nur ein PDF, sondern eine
+          umsetzungsreife Grundlage — egal, ob ich das Pilotprojekt selbst übernehme
+          oder Sie es intern weiterführen.
+        </p>
 
         <ul class="space-y-3">
           {service.deliverables.map((item) => (
@@ -99,16 +267,32 @@ const seo = buildSeoMeta({
     </div>
   </section>
 
+  <!-- KI-Beratung-spezifischer Hinweis (statt Stadt-LP, da KI überregional bleibt) -->
+  <section class="section py-12">
+    <div class="container">
+      <div class="mx-auto max-w-3xl rounded-card border border-accent/30 bg-accent/5 p-6 sm:p-8">
+        <h3 class="mb-2">KI-Beratung — überregional, persönlich</h3>
+        <p class="mb-4 text-neutral-600 leading-relaxed">
+          Anders als Webdesign oder SEO biete ich KI-Beratung nicht primär stadtgebunden an.
+          Workshops finden vor Ort in Coburg, Bamberg, Bayreuth oder remote per Video
+          statt — je nachdem, was zur Datensensibilität und Ihrem Zeitbudget passt.
+          Bei On-Premise-Setups ist mindestens ein Termin in Ihren Räumen nötig, weil
+          Hardware konfiguriert werden muss.
+        </p>
+      </div>
+    </div>
+  </section>
+
   <!-- FAQ -->
   <section class="section bg-neutral-100">
     <div class="container">
-      <FAQ title={`Häufige Fragen zu ${service.shortTitle}`} items={faqs} />
+      <FAQ title="Häufige Fragen zur KI-Beratung" items={faqs} />
     </div>
   </section>
 
   <!-- CTA -->
   <CTA
-    headline="Bereit, KI in Ihrem Unternehmen einzusetzen?"
-    subline="Finden Sie heraus, wie Künstliche Intelligenz Ihre Prozesse effizienter macht. Praxisnah, verständlich und auf Ihr Unternehmen zugeschnitten."
+    headline="Ist KI für Ihr Unternehmen sinnvoll?"
+    subline="Im kostenlosen Erstgespräch klären wir in 30 Minuten, ob ein KI-Audit, eine Pilotumsetzung oder eine längerfristige Begleitung zu Ihrer Situation passt. Ergebnisoffen, ohne Verkaufsdruck."
   />
 </PageLayout>
