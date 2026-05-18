@@ -18,7 +18,9 @@
       "WebFetch(domain:www.stmwi.bayern.de)",
       "WebFetch(domain:www.ihk.de)",
       "Bash(grep -o '\\\\[.*\\\\]\\(/[^\\)]*' /Users/pascal/Developer/DigitalWerk/src/content/blog/*.md)",
-      "WebFetch(domain:www.bitkom.org)"
+      "WebFetch(domain:www.bitkom.org)",
+      "Read(//Users/pascal/.claude/plugins/marketplaces/**)",
+      "Read(//Users/pascal/.claude/**)"
     ]
   }
 }
