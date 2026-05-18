@@ -77,33 +77,6 @@ Two Astro content collections defined in `src/content.config.ts`: `blog` and `wi
 - Duzen vermeiden — der Kunde wird gesiezt
 - Fachbegriffe nur verwenden, wenn sie sofort erklärt werden
 
-## SEO-Keyword-Strategie
-
-### Primär-Keywords (Coburg-Fokus)
-- Webdesign Coburg, Webentwicklung Coburg, SEO Coburg
-- KI-Beratung Coburg, Individualsoftware Coburg
-- Freelancer Webdesign Coburg, Webdesigner Coburg
-
-### Sekundär-Keywords (regional)
-- Webdesign Bamberg, Webdesign Oberfranken
-- Webentwicklung Kronach, Webdesign Lichtenfels, Webdesign Sonneberg
-- Homepage erstellen lassen Coburg, Website erstellen lassen Oberfranken
-
-### Thüringen-Grenzgebiet (wenig Konkurrenz)
-- Webdesign Sonneberg, SEO Hildburghausen, Webentwickler Südthüringen
-
-### Long-Tail-Keywords
-- "Website für Handwerker Coburg", "Arztpraxis Website erstellen", "KI Beratung Mittelstand Oberfranken"
-
-### Transaktionale Keywords
-- "Webdesigner beauftragen Oberfranken", "Website Angebot Coburg"
-
-### Keyword-Zuordnung
-- Jedes Fokus-Keyword gehört zu genau einer Seite (keine Keyword-Kannibalisierung)
-
-### Title-Tag-Format
-`[Seitenthema] | Digitalwerk Coburg` — z.B. „Webdesign Coburg | Digitalwerk Coburg"
-
 ## Design & UX Richtlinien
 
 - Mobile First — alle Layouts zuerst für kleine Bildschirme entwickeln
@@ -129,126 +102,158 @@ Two Astro content collections defined in `src/content.config.ts`: `blog` and `wi
 - **Phase 4 (Tools & Features):** Website-Check-Tool, KI-Chatbot, Vergleichsseiten
 - **Phase 5 (Expansion):** Überregionale Keywords, nationale Stadt-Seiten, Content-Skalierung
 
-## Blog & Content-Regeln
+## SEO/GEO — Projekt-DNA
 
-- Minimum 1.500 Wörter pro Artikel (Ziel: 2.000+)
-- Jeder Artikel: 1 Fokus-Keyword + 3–5 sekundäre Keywords
-- Jeder Artikel: mindestens 2 interne Links zu `/leistungen/*`-Seiten
-- Jeder Artikel: FAQ-Sektion (3–5 Fragen) → Schema.org FAQPage (via `buildFaqPage()` in `src/utils/schema.ts`)
-- Jeder Artikel: CTA am Ende via `CTA`-Komponente (`src/components/ui/CTA.astro`, Default-Text: "Erstgespräch vereinbaren")
-- Veröffentlichungsrhythmus: min. 2 Artikel/Monat, jährliche Aktualisierung bestehender Artikel
-- Jeder Artikel: Zusammenfassungs-Box am Anfang (1–3 Sätze, GEO-optimiert) via `PageSummary`-Komponente
-- Jeder Artikel: mindestens eine HTML-Tabelle mit Kennzahlen/Vergleichen
-- Blog-Frontmatter: `title`, `description`, `summary?`, `pubDate`, `updatedDate?`, `heroImage?`, `tags[]`, `draft`, `faqs[]` (Schema: `src/content.config.ts`)
-- Wissen-Frontmatter: `title`, `description`, `summary?`, `category`, `related[]`, `pubDate?`, `updatedDate?`, `faqs[]`
+Diese Sektion definiert die unveränderlichen Brand- und Zielgruppen-Anker. Alle SEO/GEO-Maßnahmen müssen sich daran messen lassen. Operative Regeln (Wortzahlen, Schema-Aktualität, Citability-Schwellen) liefert das `claude-seo`-Plugin über `/seo`-Kommandos — diese Datei dirigiert nur.
 
-## Seitentyp-Richtlinien
+### Brand- und Regions-Anker
+- Brand: Digitalwerk Coburg (`digitalwerk-coburg.de`)
+- Inhaber & Autorschaft: Pascal Krason — konsistente E-E-A-T-Person, jeder Artikel/Profilbezug verlinkt `/ueber-mich`
+- Kernregion: Coburg/Oberfranken; strategisches Nebenfeld: Thüringen-Grenzgebiet (Sonneberg, Hildburghausen)
+- Primär-Cities (aktiv in `src/data/cities.ts`): Coburg, Bamberg, Kronach, Lichtenfels
 
-### Stadt-Landingpages (`/[leistung]-[stadt]`)
-- GEO-Checkliste (siehe GEO-Abschnitt) bei jeder neuen Seite anwenden
-- Min. 60% einzigartiger Content vs. Basis-Leistungsseite
-- Lokale Bezüge (Sehenswürdigkeiten, Wirtschaft, regionale Besonderheiten)
-- Stadt-spezifische FAQs (3–5 Items)
-- CTA mit Stadtbezug (z.B. "Ihr Webdesigner für Bamberg")
-- Title: `[Leistung] [Stadt] | Digitalwerk Coburg`
-- Datenquelle: `src/data/cities.ts` (Interface: `City { name, slug, region, description, isActive }`)
+### Keyword-DNA (Source-of-Truth für Cluster-Briefings)
+- Primär: „Webdesign Coburg", „Webentwicklung Coburg", „SEO Coburg", „KI-Beratung Coburg", „Individualsoftware Coburg"
+- Regional: Bamberg / Kronach / Lichtenfels in Kombination mit Webdesign, SEO, Webentwicklung
+- Nische Thüringen-Grenze: Sonneberg, Hildburghausen, Südthüringen
+- Long-Tail- und Intent-Auffächerung übernimmt `/seo cluster <seed>` — keine Inline-Pflege hier
 
-### Branchen-Landingpages (`/branchen/[branche]`)
-- GEO-Checkliste (siehe GEO-Abschnitt) bei jeder neuen Seite anwenden
-- Typische Herausforderung der Branche + Lösungsansatz
-- Beispiel-Szenario (fiktiv aber realistisch)
-- Datenquelle: `src/data/industries.ts` (Interface: `Industry { id, title, icon, challenge, solutions[], href }`)
+### Tonalität (Brand-Voice)
+- Sie-Form, deutschsprachig, kein Duzen
+- Seriöses Ingenieurbüro, nicht hippe Startup-Landingpage
+- Fachbegriffe nur mit Inline-Erklärung
+- Konkrete Zahlen und Zeitspannen statt vager Aussagen — Vertrauen durch Transparenz
+- Zielgruppe: Geschäftsinhaber, Handwerker, Praxen, Gastronomen, Mittelstand in Oberfranken
 
-### Vergleichsseiten (`/vergleich/[slug]`)
-- GEO-Checkliste (siehe GEO-Abschnitt) bei jeder neuen Seite anwenden
-- Ehrlicher, ausgewogener Vergleich — Trade-offs benennen
-- CTA: Beratung anbieten, kein Hard-Sell
+### Conversion-Anker
+- Primärer CTA-Text: „Kostenloses Erstgespräch vereinbaren"
+- Vertrauenssignale Pflicht: echtes Foto, „kostenlos & unverbindlich", regionaler Bezug, Erreichbarkeit
+- Keine übertriebenen Versprechen — Trade-offs offen benennen
 
-### Wissen/Glossar (`/wissen/[slug]`)
-- Fachbegriffe in einfacher Sprache erklären
-- Erster Absatz: fett gedruckte Definition (direkt zitierfähig für KI)
-- Jeder Eintrag: HTML-Vergleichstabelle + FAQ-Sektion mit Schema.org
-- Schema: `DefinedTerm` mit `inDefinedTermSet` für jeden Eintrag
-- Interne Links zu passenden Leistungsseiten
-- `related[]`-Frontmatter für Querverweise nutzen
-- GEO-Checkliste (siehe GEO-Abschnitt) bei jeder neuen Seite anwenden
+## SEO/GEO — Architektur-Invarianten
 
-## Conversion & CTA-Regeln
+Diese Verträge dürfen nicht ohne Code-Refactor gebrochen werden. Bei Änderungen am Schema-Layer immer `/seo schema <url>` gegen die Live-Seite laufen lassen.
 
-- Jede Seite: mindestens 1 CTA (empfohlen: oben UND unten)
-- Primärer CTA-Text: "Kostenloses Erstgespräch vereinbaren"
-- `CTA`-Komponente (`src/components/ui/CTA.astro`): Props `headline`, `subline`, `buttonText` (Default: "Erstgespräch vereinbaren"), `buttonHref` (Default: `/kontakt`)
-- Vertrauenssignale: echtes Foto, "kostenlos & unverbindlich", Erreichbarkeit, regionaler Bezug
-- Konkrete Zahlen statt vager Aussagen ("in 4–6 Wochen" statt "schnell")
+### Schema.org Entity-Graph (`src/utils/schema.ts`)
+- Drei fixe `@id`-Konstanten:
+  - Organisation: `${SITE.url}/#organization` (`buildLocalBusiness()`)
+  - Person: `${SITE.url}/#person` (`buildPerson()`)
+  - WebSite: `${SITE.url}/#website` (`buildWebSite()`)
+- Neue Schemas referenzieren bestehende Entitäten ausschließlich per `@id` — keine Inline-Duplikate von Person/Organisation
+- Verfügbare Builder: `buildLocalBusiness`, `buildPerson`, `buildWebSite`, `buildProfilePage`, `buildService`, `buildLocalService`, `buildFaqPage`, `buildBreadcrumbList`, `buildHowTo`, `buildBlogPosting`, `buildDefinedTerm`
+- `PageLayout.astro` injiziert LocalBusiness + WebSite automatisch — Page-Schemas nur additiv
 
-## Interne Verlinkung & E-E-A-T
+### Datenfile-Verträge (`src/data/`)
+- Stadt-Landingpages: `cities.ts` — Interface `City { name, slug, region, description, isActive }`; nur `isActive: true` rendert
+- Branchen-Landingpages: `industries.ts` — Interface `Industry { id, title, icon, challenge, solutions[], href }`
+- Content Collections: `blog` und `wissen` in `src/content.config.ts`
+  - Blog-Frontmatter: `title`, `description`, `summary?`, `pubDate`, `updatedDate?`, `heroImage?`, `tags[]`, `draft`, `faqs[]`
+  - Wissen-Frontmatter: `title`, `description`, `summary?`, `category`, `related[]`, `pubDate?`, `updatedDate?`, `faqs[]`
 
-- E-E-A-T = Experience, Expertise, Authoritativeness, Trustworthiness
-- Verlinkungsmatrix:
-  - Leistungsseiten ↔ Blog-Artikel ↔ Branchenlösungen
-  - Stadt-Landingpages → Leistungsseiten + Kontakt
-  - Blog-Artikel → min. 2 Leistungsseiten + verwandte Artikel
-- Autorschaft: Pascal Krason als konsistenter Autor, Verweis auf `/ueber-mich`
-- Keine übertriebenen Behauptungen — Vertrauen durch Transparenz
+### Komponenten-Verträge
+- `CTA` (`src/components/ui/CTA.astro`): Props `headline`, `subline`, `buttonText` (Default „Erstgespräch vereinbaren"), `buttonHref` (Default `/kontakt`)
+- `PageSummary` (`src/components/ui/PageSummary.astro`): Prop `summary` — Pflicht-Einbindung auf Blog-Detail, Wissen-Detail, Stadt-Landingpage, Branchen-Landingpage
+- FAQ-Sektion: `buildFaqPage(faqs)` aus dem Frontmatter-Feld `faqs[]`
+- Breadcrumbs: `buildBreadcrumbList()` — automatisch aus URL via `src/utils/seo.ts`
 
-## GEO (Generative Engine Optimization)
+### URL- und Title-Vertrag
+- Stadt-Landingpage: `/[leistung]-[stadt]` (Beispiel: `/webdesign-coburg`)
+- Branchen-Landingpage: `/branchen/[branche]`
+- Vergleichsseiten: `/vergleich/[slug]`
+- Wissen: `/wissen/[slug]`
+- Title-Format: `[Seitenthema] | Digitalwerk Coburg`
+- Stadt-Title-Format: `[Leistung] [Stadt] | Digitalwerk Coburg`
+- Slugs in deutscher Sprache (`/leistungen`, `/ueber-mich`, `/zusammenarbeit`)
 
-GEO optimiert die Website für KI-gestützte Suchsysteme (ChatGPT, Perplexity, Google AI Overviews, Copilot). GEO ist bei JEDER Seitenänderung und Content-Erstellung mitzudenken.
+### Keyword-Zuordnung
+- Jedes Fokus-Keyword gehört zu genau einer Seite — Keyword-Kannibalisierung ist Build-Blocker
+- Vor neuer Seite: `/seo cluster <seed>` prüfen, ob das Keyword bereits einer bestehenden Seite zugewiesen ist
 
-### Grundprinzipien
-- KI-Engines extrahieren einzelne Absätze, nicht ganze Seiten — jeder Absatz muss für sich stehen können
-- Strukturierte Daten (Schema.org) sind der wichtigste technische Hebel — Seiten mit Schema werden 30–50% häufiger zitiert
-- Alle Schema-Objekte MÜSSEN über @id-Referenzen verknüpft sein (Entity-Graph)
-- Fakten und Zahlen schlagen Marketing-Sprache — konkrete Angaben werden zitiert, vage Aussagen nicht
+### Cluster-Topologie (Hub–Spoke)
+- Aktive Cluster: Webdesign, SEO, KI-Beratung, Digitalisierung
+- Hub = Leistungsseite unter `/leistungen/*`
+- Spokes = Blog-Artikel und Wissen-Einträge
+- Pflicht-Verlinkung: jeder Spoke → Hub; jeder Hub → alle Spokes; Spokes untereinander innerhalb des Clusters
+- Stadt-Landingpages verlinken auf Leistungs-Hub + `/kontakt`
 
-### Schema.org Entity-Graph
-- Organisation: `@id: "${SITE.url}/#organization"` (in `buildLocalBusiness()`)
-- Person: `@id: "${SITE.url}/#person"` (in `buildPerson()`)
-- WebSite: `@id: "${SITE.url}/#website"` (in `buildWebSite()`)
-- Neue Schemas MÜSSEN bestehende Entitäten per @id referenzieren, NICHT inline duplizieren
-- Beispiel: `author: { '@id': '${SITE.url}/#person' }` statt `author: { '@type': 'Person', name: '...' }`
+### KI-Crawler-Konfiguration
+- Source-of-Truth: `/public/robots.txt` — erlaubt explizit GPTBot, ChatGPT-User, ClaudeBot, PerplexityBot, Google-Extended, Applebot-Extended
+- Source-of-Truth: `/public/llms.txt` und `/public/llms-full.txt` — bei neuen Leistungen, Stadt-Seiten oder Schlüsselseiten aktualisieren
+- KI-Bots niemals blockieren ohne explizite Entscheidung
+- Sitemap: `/sitemap-index.xml` via `@astrojs/sitemap` — Excludes: `/impressum`, `/datenschutz`
 
-### Zitierfähiger-Absatz-Pattern (für alle Inhalte)
-Jeder wichtige Absatz folgt diesem Muster:
-1. **Erster Satz**: Direkte, faktische Aussage (keine Frage, kein Hedging)
-2. **Zweiter Satz**: Konkreter Beleg (Zahl, Quelle, spezifisches Detail)
-3. **Maximal 2–3 Sätze** pro zitierfähigem Absatz
+## SEO/GEO — Workflow-Dispatcher (claude-seo Plugin)
 
-Beispiel:
-- Falsch: "Es gibt viele Faktoren, die den Preis einer Website beeinflussen..."
-- Richtig: "Eine professionelle Unternehmenswebsite kostet bei Digitalwerk Coburg zwischen 3.000 und 8.000 Euro. Einfache 5-Seiten-Websites liegen am unteren Ende, Projekte mit CMS oder E-Commerce am oberen."
+Operative SEO/GEO-Logik liefert das `claude-seo`-Plugin (Tier 0, ausschließlich kostenfreie Sub-Skills). Diese Sektion mappt projekttypische Anlässe auf `/seo`-Kommandos. Genutzt werden nur Tier-0-Kommandos — `seo-google`, `seo-dataforseo`, `seo-backlinks`, `seo-maps` Tier 1+ sind nicht konfiguriert.
 
-### Content-Anforderungen (Blog, Wissen, Landingpages)
-- Jeder Artikel/Seite: **Zusammenfassungs-Box** am Anfang (1–3 Sätze, direkt zitierfähig) via `PageSummary`-Komponente
-- Jeder Artikel: Mindestens eine **HTML-Tabelle** (Vergleich, Kennzahlen oder Übersicht) — KI parst Tabellen besonders effektiv
-- Definitionen im Fließtext mit `<dfn>`-Tag auszeichnen
-- FAQ-Antworten: Erster Satz = direkte Antwort, dann Erklärung
-- Überschriften als Fragen oder Aussagen formulieren (nicht generisch) — KI matcht Überschriften auf Nutzeranfragen
+### Wann ruft Claude welches Kommando?
 
-### Überschriften-Regeln für GEO
-- Falsch: "Unsere Leistungen", "Ihre Vorteile", "Details"
-- Richtig: "Was umfasst professionelles Webdesign?", "Warum Individualentwicklung statt WordPress?"
-- H2/H3-Überschriften sollen wie Suchanfragen klingen
+- Neue Landingpage (Stadt, Branche, Vergleich) angelegt → `/seo geo <url>` direkt nach dem Build, ergänzt durch `/seo schema <url>` zur Entity-Graph-Validierung
+- Stadt-/Local-Landingpage → zusätzlich `/seo local <url>`
+- Neuer Blog-Post oder Wissen-Eintrag → `/seo content <url>` für E-E-A-T-Check, anschließend `/seo geo <url>`
+- Neues Cluster-Topic oder Long-Tail-Auffächerung gesucht → `/seo cluster <seed-keyword>`
+- Vor Release / nach Astro-Refactor → `/seo drift compare <url>` für jede zuvor baseline-erfasste URL; Schema-Smoke-Test via `/seo schema <url>`
+- Quartals-Audit → `/seo audit https://digitalwerk-coburg.de`
+- Search-Experience-Check (Persona, User-Story) → `/seo sxo <url>`
+- Technischer Drift (INP, Indexierung) → `/seo technical <url>`
+- Sitemap-Veränderungen prüfen → `/seo sitemap <url>`
+- Strategische Quartals-Planung → `/seo plan local-service`
 
-### Neue Seiten — GEO-Checkliste
-Bei jeder neuen Seite prüfen:
-- [ ] Passende Schema.org-Typen mit @id-Verknüpfung eingebunden?
-- [ ] Zusammenfassungs-Box am Anfang vorhanden?
-- [ ] Mindestens eine HTML-Tabelle mit Fakten/Vergleichen?
-- [ ] FAQ-Sektion mit FAQPage-Schema?
-- [ ] Überschriften als Fragen/Aussagen (nicht generisch)?
-- [ ] Frische-Signal vorhanden (Stand-Datum oder dateModified)?
-- [ ] Interne Links in beide Richtungen (Hub <-> Spoke)?
-- [ ] Zitierfähige Absätze (direkte Aussage + Beleg)?
+### Regeln für Plugin-Outputs
+- Plugin-Outputs sind Empfehlungen, keine automatischen Edits — Vorschläge erst in einen Plan überführen, dann implementieren
+- Plugin-Schwellen (Wortzahlen, Passage-Längen, Citability-Scores, Schema-Deprecations) gelten als aktuelle Wahrheit — diese Datei führt sie nicht doppelt
+- Bei Konflikt zwischen Plugin-Empfehlung und Projekt-DNA / Invarianten → siehe Plugin-Overrides unten
 
-### Content-Cluster-Strategie
-Neue Inhalte werden in thematische Cluster eingeordnet:
-- Jedes Cluster hat einen **Hub** (Leistungsseite) und **Spokes** (Blog + Wissen)
-- Jeder Spoke verlinkt zum Hub, jeder Hub zu allen Spokes
-- Spokes verlinken untereinander innerhalb des Clusters
-- Aktuelle Cluster: Webdesign, SEO, KI-Beratung, Digitalisierung
+## SEO/GEO — Plugin-Overrides
 
-### KI-Crawler
-- `robots.txt` erlaubt explizit: GPTBot, ChatGPT-User, ClaudeBot, PerplexityBot, Google-Extended, Applebot-Extended
-- `llms.txt` und `llms-full.txt` im Root-Verzeichnis pflegen bei neuen Seiten/Services
-- Keine KI-Bots blockieren ohne explizite Freigabe
+Stellen, an denen wir bewusst von `claude-seo`-Defaults abweichen. Jede Abweichung mit Begründung; ohne dokumentierten Override gilt die Plugin-Empfehlung.
+
+### FAQPage-Schema trotz Rich-Results-Restriction
+- Plugin-Default: Neue FAQPage-Schemas auf kommerziellen Seiten werden für Google Rich Results nicht mehr empfohlen
+- Override: Wir behalten FAQPage-Schema auf Stadt-, Leistungs- und Wissen-Seiten bei (`buildFaqPage()`)
+- Begründung: Hoher Wert für AI-Citation in ChatGPT, Perplexity und AI Overviews; strukturierte Q&A bleibt für GEO ein primärer Zitations-Hebel
+- Konsequenz: Wenn `/seo schema` FAQPage als „Info" oder „nicht rich-results-fähig" flaggt, ist das hier dokumentiert und kein Blocker
+
+### HTML-Tabelle pro Content-Seite — Empfehlung statt Pflicht
+- Plugin-Default: Tabellen für vergleichende Daten werden für Citability empfohlen
+- Override: Wir formulieren als Empfehlung pro Content-Seite (Blog, Wissen, Stadt), nicht als harten Vertrag
+- Begründung: Nicht jeder Inhalt hat sinnvoll tabellarisierbare Kennzahlen — erzwungene Tabellen erzeugen Filler-Content
+- Konsequenz: Wenn `/seo geo <url>` für eine Seite Tabellen-Lücke flaggt, gezielt nachziehen — nicht pauschal erzwingen
+
+### Tier-1+-Skills nicht verfügbar
+- Plugin-Default: bei vorhandenen Credentials werden `seo-google`, `seo-dataforseo`, `seo-backlinks`, `seo-maps` in `/seo audit` automatisch eingebunden
+- Override: keine API-Keys konfiguriert — diese Sub-Agents werden bewusst nicht aufgerufen
+- Begründung: Tier-0-Workflow bewusst gewählt; Empfehlungen, die nur über kostenpflichtige APIs umsetzbar wären, ignorieren oder als „später" markieren
+
+### `Co-Authored-By`-Tag verboten
+- Siehe globale Git-Regel weiter oben. Falls Plugin-Outputs Community-Footer mit Co-Author-Verweisen vorschlagen, werden diese nicht in Commits oder PRs übernommen.
+
+> Vom Refactor entfernt — diese Inhalte liegen jetzt im Plugin (`/seo content`, `/seo geo`, `/seo schema`, `/seo cluster`):
+> Wortzahl-Schwellen, CWV/INP-Thresholds, FID-Erwähnung, Schema-Deprecation-Daten (HowTo, FAQ-Restriction, SpecialAnnouncement, CourseInfo, EstimatedSalary), das September-2025-QRG-Update, Long-Tail- und Intent-Keyword-Auffächerung, generische E-E-A-T-Definition, Passage-Length- und Citability-Mikro-Regeln, Beispiele für „gute" vs. „schlechte" Überschriften, die 8-Punkte-GEO-Checkliste sowie die 30–50 %-Schema-Zitations-Statistik. Wenn diese Inhalte gebraucht werden: zuständiges `/seo`-Kommando aufrufen.
+
+## Markenpräsenz & AI-Citation-Signale
+
+Brand-Mentions korrelieren stärker mit AI-Sichtbarkeit als Backlinks (Plugin liefert aktuelle Korrelations-Werte via `/seo geo`). Diese Sektion legt die DACH-spezifischen Quellen und die Akquise-Routine fest, die das Plugin nicht kennen kann.
+
+### Zielquellen für Brand-Mentions (DACH-Fokus)
+
+- Reddit DE-Subreddits: r/de, r/Bayern, r/Coburg, r/Selbststaendig, r/Unternehmertum, r/Webdev (DE-Threads)
+- YouTube DE-Channels: Tech-, Gründer- und Mittelstands-Kanäle mit DACH-Reichweite; eigene Erwähnungen in Interviews/Kommentaren
+- Wikipedia DE: relevante Artikel im Umfeld Coburg, Oberfranken, Webentwicklung — Belege und Quellenarbeit (keine direkten Selbst-Edits)
+- Branchenverzeichnisse Oberfranken: IHK Coburg Mitgliederverzeichnis, Handwerkskammer Oberfranken, „Wirtschaftsregion Coburg"-Listings, ProvenExpert, Gelbe Seiten, regionale Stadtportale (coburg.de, bamberg.info, kronach.de, lichtenfels.de)
+- Fachmedien DACH: t3n, heise, dev.to (deutschsprachige Posts), iX, Gründerszene
+- LinkedIn DE: Beiträge zu Coburg/Oberfranken-Themen; Erwähnungen durch Kunden und Partner
+- GitHub: Open-Source-Beiträge unter Brand-Identität `github.com/Padrio` (verifiziert in `src/data/site.ts`)
+- Lokale Events / Stammtische / Coworking-Spaces im Coburger Raum (Zukunftscoburg, Gründerwoche, IHK-Veranstaltungen)
+
+### Akquise-Cadence
+
+- Wöchentlich: 1–2 hochwertige Fachkommentare in Reddit DE oder LinkedIn DE mit Bezug zu Webdesign / SEO / KI im Mittelstand
+- Monatlich: 1 Eintrag oder Update in einem Branchenverzeichnis, 1 Outreach an regionales Stadt- oder IHK-Portal
+- Quartalsweise: 1 Gastbeitrag, Interview oder Podcast-Auftritt mit DACH-Reichweite
+- Halbjährlich: Wikipedia-Quellenarbeit prüfen (Belege ergänzen)
+
+### Messung
+
+- Citation-Tracking: `/seo geo <url>` quartalsweise gegen Schlüsselseiten — Brand-Mention-Score und AI-Citability werden vom Plugin aktuell gehalten
+- Drift-Baseline: `/seo drift baseline <url>` für `/`, `/leistungen/*` und die vier aktiven Stadt-Landingpages — Vergleich pro Quartal via `/seo drift compare`
