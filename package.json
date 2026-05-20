@@ -12,6 +12,7 @@
     "@astrojs/sitemap": "^3.7.0",
     "@fontsource-variable/dm-sans": "^5.2.8",
     "@fontsource-variable/source-sans-3": "^5.2.9",
+    "@microsoft/clarity": "^1.0.2",
     "@tailwindcss/vite": "^4.2.1",
     "astro": "^5.17.1",
     "lucide-astro": "^0.556.0",
