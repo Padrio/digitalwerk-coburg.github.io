@@ -307,8 +307,10 @@ export function buildBlogPosting(post: BlogPostInput): WithContext<BlogPosting> 
   return {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
+    '@id': post.url,
     headline: post.title,
     description: post.description,
+    inLanguage: 'de-DE',
     datePublished: post.pubDate.toISOString(),
     ...(post.updatedDate ? { dateModified: post.updatedDate.toISOString() } : {}),
     author: { '@id': ID_PERSON } as unknown as Person,
@@ -318,6 +320,7 @@ export function buildBlogPosting(post: BlogPostInput): WithContext<BlogPosting> 
       '@type': 'WebPage',
       '@id': post.url,
     },
+    isPartOf: { '@id': ID_WEBSITE } as unknown as WebSite,
   };
 }
 

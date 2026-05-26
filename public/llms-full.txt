@@ -44,6 +44,16 @@ So läuft eine Zusammenarbeit mit Digitalwerk Coburg ab: Von der ersten Idee bis
 
 Fachartikel zu Webdesign, SEO, Digitalisierung und KI für den Mittelstand. Praxisnahe Tipps und aktuelle Informationen für Unternehmer in Oberfranken.
 
+- [Google My Business 2026: Neue Features für mehr lokale Sichtbarkeit in Coburg](https://digitalwerk-coburg.de/blog/google-my-business-coburg): KI-gestütztes Bewertungsmanagement, AR-Produktansichten und automatisierte Öffnungszeiten — so nutzen lokale Unternehmen in Coburg die neuen Features.
+- [Automatisierte Rechnungsstellung: Warenwirtschaft trifft KI](https://digitalwerk-coburg.de/blog/automatisierte-rechnungsstellung-warenwirtschaft-ki): KI-gestützte Warenwirtschaftssysteme automatisieren Angebote, Rechnungen und Mahnwesen. Konkrete Tools, Kosten und Praxisbeispiele aus Oberfranken.
+- [EU AI Act 2026: Was KMU in Oberfranken jetzt wissen müssen](https://digitalwerk-coburg.de/blog/eu-ai-act-2026-kmu-compliance-oberfranken): Compliance-Anforderungen des EU AI Act für kleine und mittlere Unternehmen — Risikostufen, Fristen und Handlungsschritte.
+- [Voice Search SEO: Sprachsuche-Optimierung für Coburg](https://digitalwerk-coburg.de/blog/voice-search-seo-coburg-sprachsuche-optimierung): Wie lokale Unternehmen in Coburg ihre Website für Sprachsuche optimieren — Featured Snippets, FAQ-Struktur und natürliche Sprache.
+- [Local SEO Coburg: Google Business Profile optimieren](https://digitalwerk-coburg.de/blog/local-seo-coburg-google-business-profile): Grundlagen der lokalen Suchmaschinenoptimierung für Unternehmen in Coburg und Oberfranken.
+- [Digitalisierungsförderung Bayern 2026](https://digitalwerk-coburg.de/blog/digitalisierungsfoerderung-bayern-2026): Aktuelle Förderprogramme für Digitalisierung in Bayern — Zuschüsse, Antragsverfahren und Praxistipps für KMU.
+- [KI-Assistenten im Handwerk: Angebotserstellung und Kundenkommunikation](https://digitalwerk-coburg.de/blog/ki-assistenten-handwerk-angebotserstellung-kundenkommunikation): Wie Handwerksbetriebe KI-Tools für Angebote und Kundenkontakt nutzen — praxisnah und DSGVO-konform.
+- [Micro-Interactions im Webdesign: Conversion-Rate für KMU steigern](https://digitalwerk-coburg.de/blog/micro-interactions-webdesign-conversion-rate-kmu): Kleine Animationen mit großer Wirkung — wie Micro-Interactions die Nutzererfahrung und Conversion-Rate verbessern.
+- [WhatsApp Business API: Lokaler Kundenservice](https://digitalwerk-coburg.de/blog/whatsapp-business-api-lokaler-kundenservice): WhatsApp Business API für lokale Unternehmen — Einrichtung, Automatisierung und DSGVO-konforme Kundenkommunikation.
+
 ## Wissen / Glossar (https://digitalwerk-coburg.de/wissen)
 
 Verständliche Erklärungen digitaler Fachbegriffe: Webdesign, SEO, CMS, Responsive Design und mehr. Zielgruppengerecht für Nicht-Techniker aufbereitet.

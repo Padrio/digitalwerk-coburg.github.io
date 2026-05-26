@@ -3,6 +3,7 @@ title: "Google My Business 2026: Neue Features für mehr lokale Sichtbarkeit in 
 description: "Google My Business Coburg 2026: Bewertungsmanagement mit KI, AR-Produktansichten und automatische Öffnungszeiten — so nutzen lokale Unternehmen die neuen Features."
 summary: "Google hat im Mai 2026 drei wichtige Updates für Google My Business veröffentlicht: ein KI-gestütztes Bewertungsmanagement, AR-Produktansichten und automatisierte Öffnungszeiten. Coburger Unternehmen können damit ihre lokale Sichtbarkeit deutlich verbessern — ohne technisches Vorwissen."
 pubDate: 2026-05-26
+updatedDate: 2026-05-26
 heroImage: "/images/blog/google-my-business-coburg-hero.webp"
 tags: ["Google My Business", "Local SEO", "Coburg", "Digitalisierung"]
 draft: false
@@ -10,18 +11,18 @@ faqs:
   - question: "Ist Google My Business wirklich kostenlos?"
     answer: "Ja, Google My Business (offiziell: Google Unternehmensprofil) ist vollständig kostenlos. Für Erstellung, Verwaltung und Nutzung aller Features — einschließlich der neuen KI-Bewertungsvorschläge und automatisierten Öffnungszeiten — fallen keine Gebühren an. Auch die AR-Produktansichten sind im Grundumfang kostenlos, erfordern allerdings je nach Branche hochwertige Produktfotos oder 3D-Modelle, deren Erstellung Kosten verursachen kann. Kostenpflichtige Google-Ads-Kampagnen sind eine separate Option, aber keine Voraussetzung für die Nutzung des Unternehmensprofils."
   - question: "Wie lange dauert es, bis mein Google-Profil in den Suchergebnissen erscheint?"
-    answer: "Ein neu erstelltes Google Unternehmensprofil erscheint in der Regel innerhalb von 1 bis 2 Wochen in den lokalen Suchergebnissen. Die Verifizierung per Postkarte dauert dabei 5 bis 14 Tage, die telefonische Verifizierung ist bei vielen Branchen innerhalb von Minuten abgeschlossen. Änderungen an bestehenden Profilen — etwa neue Öffnungszeiten oder aktualisierte Fotos — werden meist innerhalb von 24 bis 48 Stunden sichtbar. Die neuen Mai-2026-Features stehen nach der Aktivierung sofort zur Verfügung."
+    answer: "1 bis 2 Wochen — so lange dauert es in der Regel, bis ein neu erstelltes Google Unternehmensprofil in den lokalen Suchergebnissen erscheint. Die Verifizierung per Postkarte dauert dabei 5 bis 14 Tage, die telefonische Verifizierung ist bei vielen Branchen innerhalb von Minuten abgeschlossen. Änderungen an bestehenden Profilen — etwa neue Öffnungszeiten oder aktualisierte Fotos — werden meist innerhalb von 24 bis 48 Stunden sichtbar. Die neuen Mai-2026-Features stehen nach der Aktivierung sofort zur Verfügung."
   - question: "Brauche ich technische Vorkenntnisse für die neuen GMB-Features?"
     answer: "Nein, Google hat die Bedienung der neuen Features bewusst einfach gehalten. Das KI-Bewertungsmanagement schlägt Ihnen fertige Antworten vor, die Sie nur noch anpassen und freigeben. Die automatisierten Öffnungszeiten konfigurieren Sie einmalig über einen Assistenten im Dashboard. Einzig die AR-Produktansichten erfordern etwas mehr Vorbereitung — hochwertige Produktfotos aus mehreren Blickwinkeln. Für die 3D-Modell-Erstellung bietet Google einen integrierten Assistenten, der aus Smartphone-Fotos automatisch 3D-Ansichten generiert."
   - question: "Lohnen sich AR-Produktansichten für kleine Betriebe in Coburg?"
-    answer: "Das hängt von der Branche ab. Einzelhändler mit physischen Produkten — Möbel, Deko, Mode, Elektrogeräte — profitieren am stärksten, weil Kunden Produkte vorab in der eigenen Umgebung betrachten können. Gastronomen können Gerichte in 3D zeigen, was die Klickrate auf das Profil laut Google um 15 bis 25 Prozent steigern kann. Für reine Dienstleister wie Steuerberater oder Rechtsanwälte ist der Mehrwert dagegen gering — dort sind vollständige Bewertungen und aktuelle Öffnungszeiten deutlich wirkungsvoller."
+    answer: "Für Einzelhändler und Gastronomen ja — für reine Dienstleister weniger. Einzelhändler mit physischen Produkten — Möbel, Deko, Mode, Elektrogeräte — profitieren am stärksten, weil Kunden Produkte vorab in der eigenen Umgebung betrachten können. Gastronomen können Gerichte in 3D zeigen, was die Klickrate auf das Profil laut Google um 15 bis 25 Prozent steigern kann. Für reine Dienstleister wie Steuerberater oder Rechtsanwälte ist der Mehrwert dagegen gering — dort sind vollständige Bewertungen und aktuelle Öffnungszeiten deutlich wirkungsvoller."
   - question: "Wie oft sollte ich mein Google Unternehmensprofil aktualisieren?"
     answer: "Mindestens einmal pro Woche sollten Sie Ihr Profil aktiv pflegen — etwa durch einen neuen Beitrag, ein aktuelles Foto oder eine Antwort auf Kundenbewertungen. Google wertet regelmäßige Aktivität als Qualitätssignal und bevorzugt aktive Profile in den lokalen Suchergebnissen. Öffnungszeiten sollten Sie bei jeder Änderung sofort anpassen — die neuen automatisierten Öffnungszeiten nehmen Ihnen diesen Schritt künftig ab. Saisonale Anpassungen wie Sonderöffnungszeiten zum Coburger Weihnachtsmarkt oder Samba-Festival sollten Sie 2 bis 4 Wochen im Voraus einpflegen."
 ---
 
 46 Prozent aller Google-Suchanfragen haben einen lokalen Bezug — Tendenz steigend. Wer in Coburg nach einem Friseur, einem Mittagstisch oder einem Elektriker sucht, sieht zuerst das sogenannte Local Pack: die drei Google-Einträge mit Karte, Bewertungen und Kontaktdaten. Unternehmen, die dort nicht auftauchen, verlieren täglich potenzielle Kunden an die Konkurrenz.
 
-Im Mai 2026 hat Google drei bedeutende Updates für das <dfn>Google Unternehmensprofil</dfn> (ehemals Google My Business) veröffentlicht. Die neuen Funktionen betreffen Bewertungsmanagement, AR-Produktansichten und automatisierte Öffnungszeiten. Für lokale Unternehmen in Coburg und Oberfranken sind das keine abstrakten Tech-Neuigkeiten — es sind konkrete Werkzeuge, die über Sichtbarkeit und Umsatz entscheiden.
+Im Mai 2026 hat Google drei bedeutende Updates veröffentlicht, die Google My Business in Coburg und ganz Oberfranken auf ein neues Niveau heben. Die neuen Funktionen betreffen Bewertungsmanagement, AR-Produktansichten und automatisierte Öffnungszeiten. Für lokale Unternehmen sind das keine abstrakten Tech-Neuigkeiten — es sind konkrete Werkzeuge, die über Sichtbarkeit und Umsatz entscheiden.
 
 Dieser Beitrag zeigt, was sich geändert hat, welche Features sich für welche Branche lohnen und wie Sie Ihr Google-Profil in 5 Schritten auf den neuesten Stand bringen. Alle Angaben beziehen sich auf den Stand Mai 2026.
 
@@ -35,7 +36,7 @@ Die Bedeutung dieses Eintrags hat 2026 einen neuen Höhepunkt erreicht. Drei Ent
 
 **Zweitens: KI-gestützte Suchergebnisse.** Google integriert seit Ende 2025 zunehmend KI-Übersichten (AI Overviews) in die lokale Suche. Diese Übersichten ziehen Informationen direkt aus dem Google Unternehmensprofil — vollständige, aktuelle Profile werden dabei bevorzugt zitiert.
 
-**Drittens: Bewertungen als Entscheidungsfaktor.** 87 Prozent der Verbraucher lesen Online-Bewertungen, bevor sie ein lokales Unternehmen besuchen (BrightLocal Consumer Survey, 2025). In Oberfranken, wo Mund-zu-Mund-Propaganda traditionell stark ist, verlagert sich diese Empfehlungskultur zunehmend ins Digitale.
+**Drittens: Bewertungen als Entscheidungsfaktor.** 87 Prozent der Verbraucher lesen Online-Bewertungen, bevor sie ein lokales Unternehmen besuchen ([BrightLocal Consumer Survey, 2025](https://www.brightlocal.com/research/local-consumer-review-survey/)). In Oberfranken, wo Mund-zu-Mund-Propaganda traditionell stark ist, verlagert sich diese Empfehlungskultur zunehmend ins Digitale.
 
 ## Welche neuen Google-My-Business-Features gibt es seit Mai 2026?
 
@@ -55,9 +56,11 @@ Das neue Bewertungsmanagement ist das Feature mit dem größten Sofort-Nutzen f�
 
 **Review-Analytics mit Trendverlauf.** Google zeigt erstmals einen zeitlichen Verlauf der Bewertungen — Monatsdurchschnitt, Vergleich zum Vorquartal, Branchenbenchmark. Damit erkennen Sie, ob eine Maßnahme (etwa ein neuer Mitarbeiter oder eine geänderte Speisekarte) sich in den Kundenbewertungen niederschlägt.
 
-### So nutzen Coburger Unternehmen die neuen Review-Tools
+### Bewertungen in Coburg aktiv managen: Praxis-Tipps
 
-**Antworten Sie innerhalb von 48 Stunden.** Studien zeigen, dass Unternehmen, die innerhalb von 48 Stunden auf Bewertungen reagieren, 30 Prozent mehr Vertrauen bei potenziellen Neukunden aufbauen als solche, die Bewertungen unbeantwortet lassen. Die neuen KI-Vorschläge machen das jetzt auch ohne Marketingabteilung machbar.
+Wer Bewertungen in Coburg systematisch managt, signalisiert Google lokale Relevanz und Vertrauenswürdigkeit. Die folgenden drei Grundregeln gelten branchenübergreifend — vom Handwerksbetrieb bis zur Arztpraxis.
+
+**Antworten Sie innerhalb von 48 Stunden.** Unternehmen, die innerhalb von 48 Stunden auf Bewertungen reagieren, bauen 30 Prozent mehr Vertrauen bei potenziellen Neukunden auf als solche, die Bewertungen unbeantwortet lassen ([BrightLocal Consumer Survey, 2025](https://www.brightlocal.com/research/local-consumer-review-survey/)). Die neuen KI-Vorschläge machen das jetzt auch ohne Marketingabteilung machbar.
 
 **Nutzen Sie die Sentiment-Analyse als Frühwarnsystem.** Wenn ein Thema wie „Wartezeit" oder „Erreichbarkeit" plötzlich häufiger auftaucht, reagieren Sie operativ — nicht erst, wenn der Bewertungsschnitt sinkt.
 
@@ -91,7 +94,39 @@ Die Einrichtung von AR-Ansichten erfolgt über das Google-Unternehmensprofil-Das
 2. **Automatische 3D-Modellierung prüfen.** Googles KI erstellt aus den Fotos ein drehbares 3D-Modell. Die Qualität hängt direkt von der Fotoqualität ab. Für einfache Produkte wie Vasen, Stühle oder Torten funktioniert das gut. Für komplexe Produkte wie Maschinen oder filigrane Schmuckstücke kann das Ergebnis enttäuschend sein — hier sind professionelle 3D-Modelle die bessere Wahl.
 3. **Freigabe und Veröffentlichung.** Nach der Qualitätsprüfung durch Google (1 bis 3 Werktage) erscheint die AR-Option im Profil.
 
-**Ehrliche Einschätzung:** AR-Produktansichten sind kein Selbstläufer. Der Initialaufwand für hochwertige Fotos liegt bei 2 bis 4 Stunden pro Produkt. Für ein Café mit 20 Gerichten bedeutet das einen ganzen Arbeitstag. Ob sich der Aufwand lohnt, hängt davon ab, wie stark Ihre Kunden vor dem Besuch recherchieren — bei hochpreisigen Produkten (Möbel, Küchen, Handwerksleistungen) ist die Wahrscheinlichkeit deutlich höher als bei Alltagsprodukten.
+> **Ehrliche Einschätzung:** AR-Produktansichten sind kein Selbstläufer. Der Initialaufwand für hochwertige Fotos liegt bei 2 bis 4 Stunden pro Produkt. Für ein Café mit 20 Gerichten bedeutet das einen ganzen Arbeitstag. Ob sich der Aufwand lohnt, hängt davon ab, wie stark Ihre Kunden vor dem Besuch recherchieren — bei hochpreisigen Produkten (Möbel, Küchen, Handwerksleistungen) ist die Wahrscheinlichkeit deutlich höher als bei Alltagsprodukten.
+
+<table>
+  <caption>Google My Business Coburg: Welches Feature lohnt sich für welche Branche?</caption>
+  <thead>
+    <tr>
+      <th>Feature</th>
+      <th>Beste Branche</th>
+      <th>Aufwand (einmalig)</th>
+      <th>Erwarteter Effekt</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>KI-Bewertungsmanagement</td>
+      <td>Alle Branchen</td>
+      <td>5 Minuten Aktivierung</td>
+      <td>80 % weniger Zeitaufwand pro Antwort</td>
+    </tr>
+    <tr>
+      <td>AR-Produktansichten</td>
+      <td>Einzelhandel, Gastronomie</td>
+      <td>2–4 Stunden pro Produkt</td>
+      <td>15–25 % höhere Klickrate</td>
+    </tr>
+    <tr>
+      <td>Automatisierte Öffnungszeiten</td>
+      <td>Alle mit variablen Zeiten</td>
+      <td>10–15 Minuten</td>
+      <td>Keine falschen Angaben mehr</td>
+    </tr>
+  </tbody>
+</table>
 
 ![AR-Produktansicht auf dem Smartphone — virtuelles Produkt im eigenen Raum betrachten](/images/blog/google-my-business-coburg-ar-produktansicht.webp)
 
@@ -99,7 +134,9 @@ Die Einrichtung von AR-Ansichten erfolgt über das Google-Unternehmensprofil-Das
 
 Das dritte Update adressiert eines der häufigsten Ärgernisse im lokalen Online-Marketing: falsche Öffnungszeiten.
 
-76 Prozent der Nutzer, die ein Geschäft wegen falscher Öffnungszeiten verschlossen vorfinden, besuchen es nicht erneut (ServiceNow/Wakefield Research, 2025). In Coburg, wo viele inhabergeführte Geschäfte individuelle Öffnungszeiten haben — etwa verkürzte Zeiten am Mittwochnachmittag oder Saisonänderungen zum Samba-Festival — ist das ein besonders relevantes Problem.
+Automatisierte Öffnungszeiten sind eine neue Funktion im Google Unternehmensprofil, die Ihre Geschäftszeiten automatisch mit Kassensystemen, Kalendern und Feiertags-Datenbanken synchronisiert. Die Funktion adressiert eines der häufigsten Ärgernisse im lokalen Online-Marketing: falsche Öffnungszeiten.
+
+76 Prozent der Nutzer, die ein Geschäft wegen falscher Öffnungszeiten verschlossen vorfinden, besuchen es nicht erneut ([ServiceNow/Wakefield Research, 2025](https://www.servicenow.com/research/)). In Coburg, wo viele inhabergeführte Geschäfte individuelle Öffnungszeiten haben — etwa verkürzte Zeiten am Mittwochnachmittag oder Saisonänderungen zum Samba-Festival — ist das ein besonders relevantes Problem.
 
 ### Was ist neu?
 
@@ -125,6 +162,7 @@ Danach läuft die Synchronisation im Hintergrund. Manuelle Korrekturen sind jede
 Die folgende Tabelle fasst die wichtigsten Unterschiede zwischen den bisherigen und den neuen Funktionen zusammen.
 
 <table>
+  <caption>Google My Business: Funktionsvergleich 2025 vs. 2026</caption>
   <thead>
     <tr>
       <th>Feature</th>
@@ -205,7 +243,7 @@ Wenn Sie diese Schritte nicht selbst umsetzen möchten, unterstützt Sie eine [p
 
 Von diesen drei Faktoren können Sie zwei aktiv beeinflussen — und genau das tun die neuen 2026-Features: Das Bewertungsmanagement stärkt die Bekanntheit, vollständige Produktdarstellungen (inklusive AR) erhöhen die Relevanz, und aktuelle Öffnungszeiten signalisieren Google, dass Ihr Profil gepflegt und vertrauenswürdig ist.
 
-Lokale SEO geht allerdings über das Google-Profil hinaus. Ihre Website, die Einträge in Branchenverzeichnissen und die technische Optimierung Ihrer Seite spielen ebenfalls eine Rolle. Wer die [KI-gestützten Funktionen](/leistungen/ki-beratung) der neuen Google-Tools mit einer durchdachten Website-Strategie kombiniert, schöpft das volle Potenzial aus.
+Lokale SEO geht allerdings über das Google-Profil hinaus. Ihre Website, die Einträge in Branchenverzeichnissen und die technische Optimierung Ihrer Seite spielen ebenfalls eine Rolle. Eine ausführliche Einführung in die [Grundlagen der lokalen Suchmaschinenoptimierung für Coburg](/blog/local-seo-coburg-google-business-profile) finden Sie in unserem Grundlagenartikel. Wer zusätzlich die [KI-gestützten Funktionen](/leistungen/ki-beratung) der neuen Google-Tools mit einer [sprachoptimierten Website](/blog/voice-search-seo-coburg-sprachsuche-optimierung) kombiniert, schöpft das volle Potenzial aus.
 
 ## Häufig gestellte Fragen zu Google My Business in Coburg
 

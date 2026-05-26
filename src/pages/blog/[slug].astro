@@ -5,7 +5,7 @@ import JsonLd from '@components/seo/JsonLd.astro';
 import CTA from '@components/ui/CTA.astro';
 import PageSummary from '@components/ui/PageSummary.astro';
 import { buildSeoMeta } from '@utils/seo';
-import { buildBlogPosting, buildFaqPage } from '@utils/schema';
+import { buildBlogPosting, buildFaqPage, buildPerson } from '@utils/schema';
 import { SITE } from '@data/site';
 
 export async function getStaticPaths() {
@@ -57,6 +57,7 @@ const formattedUpdateDate = post.data.updatedDate?.toLocaleDateString('de-DE', {
   articleModifiedTime={post.data.updatedDate?.toISOString()}
 >
   <JsonLd schema={blogPostingSchema} />
+  <JsonLd schema={buildPerson()} />
   {post.data.faqs.length > 0 && <JsonLd schema={buildFaqPage(post.data.faqs)} />}
 
   <article class="section">
