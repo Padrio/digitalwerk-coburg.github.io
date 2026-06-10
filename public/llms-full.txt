@@ -2,7 +2,7 @@
 
 > Digitale Lösungen. Solide gebaut.
 
-Digitalwerk Coburg ist ein Freelancer-Unternehmen für Webdesign, Webentwicklung, SEO und KI-Beratung mit Sitz in Coburg, Oberfranken (Bayern). Gegründet 2024 von Pascal Krason, Fachinformatiker für Anwendungsentwicklung mit über 10 Jahren Berufserfahrung in der Softwareentwicklung, unter anderem bei CHECK24.
+Digitalwerk Coburg ist ein Freelancer-Unternehmen für Webdesign, Webentwicklung, SEO und KI-Beratung mit Sitz in Lichtenfels, Oberfranken (Bayern). Gegründet 2024 von Pascal Krason, Fachinformatiker für Anwendungsentwicklung mit über 10 Jahren Berufserfahrung in der Softwareentwicklung, unter anderem bei CHECK24.
 
 Die Zielgruppe sind Geschäftsinhaber, Handwerker, Praxen, Gastronomen und mittelständische Unternehmen in der Region Coburg, Oberfranken und dem angrenzenden Südthüringen. Digitalwerk bietet persönliche Beratung und individuelle Umsetzung — keine Baukastensysteme, keine Massenware.
 
@@ -64,10 +64,11 @@ Verständliche Erklärungen digitaler Fachbegriffe: Webdesign, SEO, CMS, Respons
 
 - Name: Pascal Krason
 - Unternehmen: Digitalwerk Coburg
+- Rechtsträger: Knorr & Markus Digitaldienstleistungen GbR
 - E-Mail: hallo@digitalwerk-coburg.de
-- Telefon: +49 (0) 174 660 3656
-- Adresse: Von-Mayer-Straße 25, 96450 Coburg, Bayern
-- Region: Coburg, Oberfranken, Bayern (Einzugsgebiet ca. 50 km)
+- Telefon: +49 1579 2699700
+- Adresse: Andreas-Werner-Str. 2, 96215 Lichtenfels, Bayern
+- Region: Coburg und Umgebung, Oberfranken, Bayern (Einzugsgebiet ca. 50 km)
 - Website: https://digitalwerk-coburg.de
 - Erstberatung: Kostenlos und unverbindlich — https://digitalwerk-coburg.de/kontakt
 

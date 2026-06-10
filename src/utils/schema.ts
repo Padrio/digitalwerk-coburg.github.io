@@ -73,6 +73,7 @@ export function buildLocalBusiness(): WithContext<LocalBusiness> {
     '@type': ['LocalBusiness', 'ProfessionalService'] as unknown as 'LocalBusiness',
     '@id': ID_ORGANIZATION,
     name: SITE.name,
+    legalName: SITE.legal.companyName,
     description: SITE.description,
     url: SITE.url,
     email: SITE.email,
@@ -90,8 +91,8 @@ export function buildLocalBusiness(): WithContext<LocalBusiness> {
     },
     geo: {
       '@type': 'GeoCoordinates',
-      latitude: 50.26121,
-      longitude: 10.96280,
+      latitude: SITE.geo.latitude,
+      longitude: SITE.geo.longitude,
     },
     founder: { '@id': ID_PERSON } as unknown as Person,
     areaServed: [

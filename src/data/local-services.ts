@@ -169,7 +169,7 @@ export const localServices: LocalServiceData[] = [
       {
         question: 'Wo sitzt Digitalwerk Coburg genau?',
         answer:
-          'Digitalwerk sitzt in Coburg, Von-Mayer-Straße 25 (96450). Persönliche Treffen sind im Büro oder bei Ihnen vor Ort möglich — innerhalb von Coburg ohne Anfahrtspauschale, im Umkreis von 50 km zu fairen Konditionen.',
+          'Digitalwerk sitzt in Lichtenfels, Andreas-Werner-Str. 2 (96215). Persönliche Treffen sind im Büro oder bei Ihnen vor Ort möglich — in Coburg und Umgebung ohne Anfahrtspauschale, im Umkreis von 50 km zu fairen Konditionen.',
       },
       {
         question: 'Brauche ich einen Webdesigner aus Coburg oder reicht eine Agentur aus München?',

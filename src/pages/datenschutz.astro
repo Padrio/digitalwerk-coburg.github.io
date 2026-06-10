@@ -88,10 +88,11 @@ const seo = buildSeoMeta({
         Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:
       </p>
       <p class="mt-4">
-        {SITE.owner.name}<br />
-        {SITE.name}<br />
+        {SITE.legal.companyName}<br />
+        Vertreten durch die Gesellschafter {SITE.legal.representatives.join(' und ')}<br />
         {SITE.address.street}<br />
-        {SITE.address.zip} {SITE.address.city}<br /><br />
+        {SITE.address.zip} {SITE.address.city}<br />
+        {SITE.address.countryName}<br /><br />
         Telefon: {SITE.phone}<br />
         E-Mail: <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
       </p>
@@ -133,10 +134,36 @@ const seo = buildSeoMeta({
 
       <h3 class="mt-6">Cookies</h3>
       <p>
-        Diese Website verwendet ausschließlich technisch notwendige Cookies, die für den Betrieb der
-        Website erforderlich sind. Eine Einwilligung ist hierfür nicht erforderlich. Technisch
-        notwendige Cookies werden gelöscht, sobald Sie Ihren Browser schließen (Session-Cookies) oder
-        nach Ablauf einer definierten Speicherdauer.
+        Diese Website verwendet technisch notwendige Cookies, die für den Betrieb der Website
+        erforderlich sind, sowie Cookies des Analysedienstes Microsoft Clarity (siehe Abschnitt
+        „Microsoft Clarity"). Technisch notwendige Cookies werden gelöscht, sobald Sie Ihren
+        Browser schließen (Session-Cookies) oder nach Ablauf einer definierten Speicherdauer.
+        Die von Clarity gesetzten Cookies (u.&thinsp;a. _clck und _clsk) dienen der Analyse des
+        Nutzerverhaltens und haben eine Speicherdauer von bis zu zwölf Monaten.
+      </p>
+
+      <h3 class="mt-6">Microsoft Clarity</h3>
+      <p>
+        Diese Website nutzt Microsoft Clarity, einen Webanalysedienst der Microsoft Ireland
+        Operations Limited (One Microsoft Place, South County Business Park, Leopardstown,
+        Dublin 18, Irland). Clarity erfasst, wie Sie unsere Website nutzen — etwa Mausbewegungen,
+        Klicks und Scrollverhalten — und erstellt daraus Heatmaps und Sitzungsaufzeichnungen
+        (Session-Replays), um die Benutzerfreundlichkeit unserer Website zu verbessern. Dabei
+        werden unter anderem Geräte- und Browserinformationen, gekürzte IP-Adressen sowie
+        Interaktionsdaten verarbeitet.
+      </p>
+      <p class="mt-4">
+        Clarity setzt Cookies (u.&thinsp;a. _clck und _clsk), mit denen Ihr Browser über mehrere
+        Seitenaufrufe hinweg wiedererkannt wird. Die Daten können an Server der Microsoft
+        Corporation in den USA übertragen werden. Microsoft ist nach dem EU-US Data Privacy
+        Framework zertifiziert; die Übermittlung in die USA erfolgt auf dieser Grundlage.
+      </p>
+      <p class="mt-4">
+        Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Unser berechtigtes
+        Interesse liegt in der Analyse und Verbesserung unseres Online-Angebots. Sie können der
+        Verarbeitung jederzeit widersprechen (Art. 21 DSGVO). Weitere Informationen finden Sie in
+        der Datenschutzerklärung von Microsoft:
+        <a href="https://privacy.microsoft.com/de-de/privacystatement" target="_blank" rel="noopener noreferrer">https://privacy.microsoft.com/de-de/privacystatement</a>.
       </p>
 
       <h2 class="mt-10">5. Ihre Rechte</h2>
@@ -168,7 +195,7 @@ const seo = buildSeoMeta({
       </p>
 
       <p class="mt-10 text-small text-neutral-600">
-        Stand: März 2026
+        Stand: Juni 2026
       </p>
     </div>
   </section>
