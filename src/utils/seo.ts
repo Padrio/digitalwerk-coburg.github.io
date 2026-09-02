@@ -2,7 +2,10 @@
 // SEO helpers – meta tags & breadcrumb generation
 // ---------------------------------------------------------------------------
 
-const SITE_NAME = 'Digitalwerk Coburg';
+import { SITE } from '@data/site';
+import { localServices } from '@data/local-services';
+
+const SITE_NAME = SITE.name;
 
 export interface SeoMeta {
   title: string;
@@ -58,6 +61,15 @@ const LABEL_MAP: Record<string, string> = {
   wissen: 'Wissen',
   impressum: 'Impressum',
   datenschutz: 'Datenschutz',
+  // Regionale Landingpages ("webdesign-coburg" -> "Webdesign Coburg").
+  // Abgeleitet aus local-services.ts, damit neue Städte automatisch korrekte
+  // Breadcrumb-Labels bekommen statt des kleingeschriebenen Fallbacks.
+  ...Object.fromEntries(
+    localServices.map((ls) => [
+      `${ls.service}-${ls.citySlug}`,
+      `${ls.serviceLabel} ${ls.city}`,
+    ])
+  ),
 };
 
 /**

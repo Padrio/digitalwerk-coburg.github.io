@@ -1,12 +1,19 @@
 ---
 import PageLayout from '@layouts/PageLayout.astro';
 import { buildSeoMeta } from '@utils/seo';
+import { buildContactPage } from '@utils/schema';
+import JsonLd from '@components/seo/JsonLd.astro';
 import { SITE } from '@data/site';
-import ContactForm from '@components/ui/ContactForm.astro';
 import Hero from '@components/sections/Hero.astro';
 
-import { Mail, Phone, MapPin, Clock } from 'lucide-astro';
+import { Mail, Phone, MapPin, Clock, MessageCircle } from 'lucide-astro';
 import NetworkPattern from '@components/decorative/NetworkPattern.astro';
+
+// Gleiche Normalisierung wie in WhatsAppButton.astro
+const whatsappNumber = SITE.phone.replace(/[\s()+-]/g, '').replace(/^0/, '49');
+const whatsappHref = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+  'Hallo Digitalwerk, ich interessiere mich für...'
+)}`;
 
 const seo = buildSeoMeta({
   title: 'Kontakt',
@@ -21,6 +28,8 @@ const seo = buildSeoMeta({
   ogImage={seo.ogImage}
   ogType={seo.ogType}
 >
+  <JsonLd schema={buildContactPage()} />
+
   {/* 1. Hero */}
   <Hero
     variant="centered"
@@ -37,16 +46,85 @@ const seo = buildSeoMeta({
     <NetworkPattern variant="dark" class="absolute -right-20 bottom-0 h-[400px] w-[400px] opacity-20" />
     <div class="container relative z-10">
       <div class="grid gap-12 lg:grid-cols-2">
-        {/* Left: Contact Form */}
+        {/* Left: Direct contact channels */}
         <div>
           <h2 class="mb-2 font-display text-2xl font-bold text-primary">
             Schreiben Sie mir
           </h2>
           <p class="mb-8 text-neutral-600 leading-relaxed">
-            Füllen Sie das Formular aus und ich melde mich innerhalb von 24 Stunden
-            bei Ihnen. Alle Felder mit * sind Pflichtfelder.
+            Wählen Sie den Weg, der Ihnen am liebsten ist. Ich melde mich
+            innerhalb von 24 Stunden bei Ihnen — kostenlos und unverbindlich.
           </p>
-          <ContactForm />
+
+          <ul class="flex flex-col gap-4">
+            <li>
+              <a
+                href={`mailto:${SITE.email}?subject=${encodeURIComponent('Anfrage über digitalwerk-coburg.de')}`}
+                class="group flex items-start gap-4 rounded-[var(--radius-card)] border border-neutral-200 bg-white p-6 no-underline transition-colors duration-200 hover:border-accent"
+              >
+                <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent">
+                  <Mail class="h-6 w-6" />
+                </span>
+                <span class="block">
+                  <span class="block font-display text-lg font-semibold text-primary">
+                    E-Mail schreiben
+                  </span>
+                  <span class="mt-1 block text-small text-neutral-600 leading-relaxed">
+                    Beschreiben Sie Ihr Vorhaben in Ruhe — ideal für konkrete
+                    Projektanfragen.
+                  </span>
+                  <span class="mt-2 block font-display text-small font-medium text-accent">
+                    {SITE.email}
+                  </span>
+                </span>
+              </a>
+            </li>
+
+            <li>
+              <a
+                href={`tel:${SITE.phoneE164}`}
+                class="group flex items-start gap-4 rounded-[var(--radius-card)] border border-neutral-200 bg-white p-6 no-underline transition-colors duration-200 hover:border-accent"
+              >
+                <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent">
+                  <Phone class="h-6 w-6" />
+                </span>
+                <span class="block">
+                  <span class="block font-display text-lg font-semibold text-primary">
+                    Anrufen
+                  </span>
+                  <span class="mt-1 block text-small text-neutral-600 leading-relaxed">
+                    Montag bis Freitag, 9 bis 18 Uhr. Für schnelle Fragen der
+                    kürzeste Weg.
+                  </span>
+                  <span class="mt-2 block font-display text-small font-medium text-accent">
+                    {SITE.phone}
+                  </span>
+                </span>
+              </a>
+            </li>
+
+            <li>
+              <a
+                href={whatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group flex items-start gap-4 rounded-[var(--radius-card)] border border-neutral-200 bg-white p-6 no-underline transition-colors duration-200 hover:border-accent"
+              >
+                <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent">
+                  <MessageCircle class="h-6 w-6" />
+                </span>
+                <span class="block">
+                  <span class="block font-display text-lg font-semibold text-primary">
+                    WhatsApp
+                  </span>
+                  <span class="mt-1 block text-small text-neutral-600 leading-relaxed">
+                    Unkompliziert und direkt. Öffnet WhatsApp in einem neuen
+                    Fenster.
+                  </span>
+                </span>
+              </a>
+            </li>
+          </ul>
         </div>
 
         {/* Right: Contact info */}
@@ -131,19 +209,6 @@ const seo = buildSeoMeta({
             </p>
           </div>
 
-          {/* Calendly placeholder */}
-          <div class="card p-6">
-            <h3 class="font-display text-sm font-semibold text-primary">
-              Erstgespräch direkt buchen
-            </h3>
-            <p class="mt-2 text-small text-neutral-600 leading-relaxed">
-              Sie möchten direkt einen Termin vereinbaren? Demnächst können Sie hier
-              bequem online einen passenden Zeitslot für ein 30-minütiges Erstgespräch
-              auswählen. Bis dahin schreiben Sie mir einfach eine Nachricht über das
-              Formular oder per E-Mail &ndash; ich melde mich zeitnah mit
-              Terminvorschlägen.
-            </p>
-          </div>
         </div>
       </div>
     </div>

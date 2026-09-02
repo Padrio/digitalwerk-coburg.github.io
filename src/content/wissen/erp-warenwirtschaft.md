@@ -2,7 +2,7 @@
 title: "ERP und Warenwirtschaft: Definition, Funktionen und KI-Integration"
 description: "ERP- und Warenwirtschaftssysteme bündeln Auftrag, Lager, Rechnung und Buchhaltung in einer Software. So unterscheiden sie sich — und so hilft KI."
 summary: "Ein Warenwirtschaftssystem verwaltet alle kaufmännischen Prozesse eines Betriebs in einer zentralen Datenbank: Angebote, Aufträge, Lager, Rechnungen und Mahnwesen. Moderne Systeme integrieren KI für Belegerkennung, Buchungsvorschläge und automatische Rechnungsstellung — und sind ab 9 Euro pro Nutzer und Monat verfügbar."
-category: "Digitalisierung"
+category: "digitalisierung"
 related: ["dsgvo-website"]
 pubDate: 2026-05-18
 faqs:

@@ -3,16 +3,14 @@ import PageLayout from '@layouts/PageLayout.astro';
 import { buildSeoMeta } from '@utils/seo';
 import { services } from '@data/services';
 import { processSteps } from '@data/process-steps';
-import { testimonials } from '@data/testimonials';
 import { globalFaqs } from '@data/faqs';
 import JsonLd from '@components/seo/JsonLd.astro';
-import { buildPerson } from '@utils/schema';
+import { buildPerson, buildFaqPage } from '@utils/schema';
 
 import Hero from '@components/sections/Hero.astro';
 import TrustBar from '@components/sections/TrustBar.astro';
 import ServiceCard from '@components/sections/ServiceCard.astro';
 import ProcessTimeline from '@components/sections/ProcessTimeline.astro';
-import TestimonialCard from '@components/sections/TestimonialCard.astro';
 import LocalSection from '@components/sections/LocalSection.astro';
 import FAQ from '@components/sections/FAQ.astro';
 import CTA from '@components/ui/CTA.astro';
@@ -24,9 +22,12 @@ import IsometricBlocks from '@components/decorative/IsometricBlocks.astro';
 import GridPattern from '@components/decorative/GridPattern.astro';
 
 const seo = buildSeoMeta({
-  title: 'Webdesign & Webentwicklung Coburg',
+  // Bewusst NICHT "Webdesign Coburg"/"Webentwicklung Coburg": diese Head-Terms
+  // gehören /webdesign-coburg bzw. /webentwicklung-coburg. Die Startseite ist
+  // Marken- und Verteilerseite, sonst kannibalisiert sie die Landingpages.
+  title: 'Digitalpartner für den Mittelstand in Oberfranken',
   description:
-    'Webdesign, Webentwicklung, SEO und KI-Beratung aus Coburg. Pascal Krason — Fachinformatiker mit 10+ Jahren Erfahrung. Kostenloses Erstgespräch.',
+    'Webdesign, Webentwicklung, SEO und KI-Beratung für Unternehmen in Coburg, Bamberg, Kronach und Lichtenfels. Pascal Krason — Fachinformatiker mit 10+ Jahren Erfahrung. Kostenloses Erstgespräch.',
 });
 
 const iconMap: Record<string, any> = {
@@ -36,10 +37,6 @@ const iconMap: Record<string, any> = {
   search: Search,
 };
 
-// Toggle: Testimonial-Sektion ist temporär ausgeblendet, bis echte
-// dritt-verifizierte Bewertungen (z.B. via ProvenExpert oder Google) vorliegen.
-// Auf true setzen, wenn die testimonials-Daten ersetzt sind.
-const SHOW_TESTIMONIALS = false;
 ---
 
 <PageLayout
@@ -53,7 +50,7 @@ const SHOW_TESTIMONIALS = false;
   <Hero
     variant="centered"
     badge="Webdesign · Webentwicklung · SEO"
-    headline="Websites und Web-Apps, die wirklich funktionieren."
+    headline="Websites und Web-Apps für den Mittelstand in Oberfranken"
     subheadline="Ich helfe Unternehmen in Coburg und Oberfranken, online sichtbar zu werden und digital zu wachsen — persönlich, ohne Agentur-Overhead und mit fester Ansprechperson über die gesamte Projektlaufzeit."
     primaryCta={{ text: 'Erstgespräch vereinbaren', href: '/kontakt' }}
     secondaryCta={{ text: 'Leistungen entdecken', href: '/leistungen' }}
@@ -153,38 +150,6 @@ const SHOW_TESTIMONIALS = false;
     </div>
   </section>
 
-  {/* 6. Testimonials — temporär ausgeblendet via SHOW_TESTIMONIALS-Toggle, bis echte Reviews vorliegen */}
-  {SHOW_TESTIMONIALS && (
-    <section class="section relative bg-neutral-100 overflow-hidden">
-      <GridPattern variant="dots" class="absolute inset-0" />
-      <div class="container relative z-10">
-        <div class="mx-auto max-w-3xl text-center">
-          <span class="section-label justify-center">Kundenstimmen</span>
-          <h2>Was meine Kunden sagen</h2>
-          <p class="mt-4 text-lg text-neutral-600 leading-relaxed">
-            Zufriedene Kunden sind die beste Referenz. Hier erfahren Sie, wie die
-            Zusammenarbeit mit Digitalwerk Coburg in der Praxis aussieht.
-          </p>
-        </div>
-
-        <div class="mt-12 grid gap-6 md:grid-cols-3">
-          {testimonials.map((t, i) => (
-            <Reveal delay={i * 120}>
-              <TestimonialCard
-                name={t.name}
-                role={t.role}
-                company={t.company}
-                quote={t.quote}
-                rating={t.rating}
-                initials={t.initials}
-              />
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  )}
-
   {/* 7. LocalSection */}
   <LocalSection />
 
@@ -203,4 +168,5 @@ const SHOW_TESTIMONIALS = false;
 
   {/* Person JSON-LD */}
   <JsonLd schema={buildPerson()} />
+  <JsonLd schema={buildFaqPage(globalFaqs)} />
 </PageLayout>

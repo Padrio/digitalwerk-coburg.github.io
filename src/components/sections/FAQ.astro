@@ -1,6 +1,6 @@
 ---
-import JsonLd from '@components/seo/JsonLd.astro';
-
+// Reine Darstellung. Das FAQPage-Schema liefert die einbindende Seite via
+// buildFaqPage() – sonst entstehen zwei FAQPage-Blöcke pro Seite.
 interface FAQItem {
   question: string;
   answer: string;
@@ -12,23 +12,7 @@ interface Props {
 }
 
 const { items, title } = Astro.props;
-
-// Generate FAQPage structured data
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: items.map((item) => ({
-    '@type': 'Question',
-    name: item.question,
-    acceptedAnswer: {
-      '@type': 'Answer',
-      text: item.answer,
-    },
-  })),
-};
 ---
-
-<JsonLd schema={faqSchema} />
 
 <div class="faq">
   {title && (

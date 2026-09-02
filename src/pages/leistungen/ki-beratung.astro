@@ -10,6 +10,7 @@ import Hero from '@components/sections/Hero.astro';
 import FAQ from '@components/sections/FAQ.astro';
 import PricingTiers from '@components/sections/PricingTiers.astro';
 import CTA from '@components/ui/CTA.astro';
+import RelatedContent from '@components/sections/RelatedContent.astro';
 import { CheckCircle, Lock, Server, Building2 } from 'lucide-astro';
 import GridPattern from '@components/decorative/GridPattern.astro';
 
@@ -291,6 +292,8 @@ const dsgvoIconMap: Record<string, any> = {
   </section>
 
   <!-- CTA -->
+  <RelatedContent hub="ki-beratung" intro="Was KI im Mittelstand heute leistet — und welche Regeln 2026 gelten." />
+
   <CTA
     headline="Ist KI für Ihr Unternehmen sinnvoll?"
     subline="Im kostenlosen Erstgespräch klären wir in 30 Minuten, ob ein KI-Audit, eine Pilotumsetzung oder eine längerfristige Begleitung zu Ihrer Situation passt. Ergebnisoffen, ohne Verkaufsdruck."

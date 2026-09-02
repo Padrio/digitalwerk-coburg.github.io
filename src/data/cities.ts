@@ -1,5 +1,11 @@
 // ---------------------------------------------------------------------------
-// Cities – regional landing pages (Phase 2 stub)
+// Cities – Servicegebiete und regionale Landingpages
+//
+// Single Source of Truth für:
+//   - die Ortsliste der Startseite (LocalSection)
+//   - `areaServed` im LocalBusiness-Schema
+// Welche Landingpages je Ort existieren, steht in `local-services.ts`
+// (dort `city` + `citySlug` + `service`) — hier bewusst nicht dupliziert.
 // ---------------------------------------------------------------------------
 
 export interface City {
@@ -7,6 +13,7 @@ export interface City {
   slug: string;
   region: string;
   description: string;
+  /** true = es existieren Landingpages für diesen Ort (siehe local-services.ts) */
   isActive: boolean;
 }
 
@@ -51,14 +58,40 @@ export const cities: City[] = [
       'Webentwicklung und SEO für Unternehmen in Sonneberg – direkt an der bayerisch-thüringischen Grenze.',
     isActive: false,
   },
+  {
+    name: 'Hildburghausen',
+    slug: 'hildburghausen',
+    region: 'Südthüringen',
+    description: 'Servicegebiet im südthüringischen Grenzraum.',
+    isActive: false,
+  },
+  {
+    name: 'Kulmbach',
+    slug: 'kulmbach',
+    region: 'Oberfranken',
+    description: 'Servicegebiet im nördlichen Oberfranken.',
+    isActive: false,
+  },
+  {
+    name: 'Bayreuth',
+    slug: 'bayreuth',
+    region: 'Oberfranken',
+    description: 'Servicegebiet im östlichen Oberfranken.',
+    isActive: false,
+  },
 ];
 
-// Utility: get only active cities
+/** Alle Orte, die als Servicegebiet beworben werden (inkl. ohne Landingpage). */
+export function getServedCities(): City[] {
+  return cities;
+}
+
+/** Nur Orte, für die Landingpages existieren. */
 export function getActiveCities(): City[] {
   return cities.filter((c) => c.isActive);
 }
 
-// Utility: look up a city by slug
+/** Einen Ort per Slug nachschlagen. */
 export function getCityBySlug(slug: string): City | undefined {
   return cities.find((c) => c.slug === slug);
 }

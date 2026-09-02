@@ -1,16 +1,17 @@
 ---
 import GridPattern from '@components/decorative/GridPattern.astro';
+import { getServedCities } from '@data/cities';
+import {
+  getLocalServicesGroupedByCity,
+  localServicePath,
+} from '@data/local-services';
 
-const servedAreas = [
-  'Coburg',
-  'Bamberg',
-  'Kronach',
-  'Lichtenfels',
-  'Sonneberg',
-  'Hildburghausen',
-  'Kulmbach',
-  'Bayreuth',
-];
+// Orte mit eigenen Landingpages – Quelle: local-services.ts
+const cityGroups = getLocalServicesGroupedByCity();
+const linkedSlugs = new Set(cityGroups.map((g) => g.citySlug));
+
+// Übrige Servicegebiete ohne eigene Seite – Quelle: cities.ts
+const furtherAreas = getServedCities().filter((c) => !linkedSlugs.has(c.slug));
 ---
 
 <section class="section relative bg-neutral-100 overflow-hidden">
@@ -38,29 +39,48 @@ const servedAreas = [
     </div>
 
     {/* Served areas */}
-    <div class="mx-auto mt-12 max-w-2xl">
-      <h3 class="mb-5 text-center font-display text-lg font-semibold text-primary">
+    <div class="mx-auto mt-12 max-w-3xl">
+      <h3 class="mb-6 text-center font-display text-lg font-semibold text-primary">
         Wo ich aktiv bin
       </h3>
-      <div class="flex flex-wrap items-center justify-center gap-3">
-        {servedAreas.map((area) => (
-          <span class="inline-flex items-center gap-1.5 rounded-full border border-neutral-300 bg-white px-4 py-1.5 font-display text-small font-medium text-primary">
-            <svg
-              class="h-3.5 w-3.5 text-accent"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-              aria-hidden="true"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
-                clip-rule="evenodd"
-              />
-            </svg>
-            {area}
-          </span>
+
+      <ul class="space-y-4">
+        {cityGroups.map((group) => (
+          <li class="flex flex-col items-center gap-2 sm:flex-row sm:items-baseline sm:justify-center sm:gap-4">
+            <span class="min-w-[7rem] font-display text-small font-semibold text-primary sm:text-right">
+              {group.city}
+            </span>
+            <span class="flex flex-wrap justify-center gap-2 sm:justify-start">
+              {group.services.map((service) => (
+                <a
+                  href={localServicePath(service)}
+                  class="inline-flex items-center gap-1.5 rounded-full border border-neutral-300 bg-white px-4 py-1.5 font-display text-small font-medium text-primary no-underline transition-colors duration-200 hover:border-accent hover:text-accent"
+                >
+                  <svg
+                    class="h-3.5 w-3.5 text-accent"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  {service.serviceLabel} {service.city}
+                </a>
+              ))}
+            </span>
+          </li>
         ))}
-      </div>
+      </ul>
+
+      {furtherAreas.length > 0 && (
+        <p class="mt-8 text-center text-small text-neutral-600">
+          Außerdem im Einzugsgebiet: {furtherAreas.map((c) => c.name).join(', ')}.
+        </p>
+      )}
     </div>
   </div>
 </section>

@@ -1,0 +1,68 @@
+---
+import PageLayout from '@layouts/PageLayout.astro';
+import { buildSeoMeta } from '@utils/seo';
+import Hero from '@components/sections/Hero.astro';
+import { services } from '@data/services';
+
+const seo = buildSeoMeta({
+  title: 'Seite nicht gefunden',
+  description:
+    'Diese Seite existiert nicht (mehr). Hier finden Sie die wichtigsten Bereiche von Digitalwerk Coburg.',
+  noIndex: true,
+});
+---
+
+<PageLayout
+  title={seo.title}
+  description={seo.description}
+  noIndex={seo.noIndex}
+  ogImage={seo.ogImage}
+  showBreadcrumbs={false}
+>
+  <Hero
+    variant="centered"
+    badge="Fehler 404"
+    headline="Diese Seite gibt es nicht"
+    subheadline="Möglicherweise hat sich die Adresse geändert oder es hat sich ein Tippfehler eingeschlichen. Über die folgenden Wege kommen Sie weiter."
+    primaryCta={{ text: 'Zur Startseite', href: '/' }}
+    secondaryCta={{ text: 'Kontakt aufnehmen', href: '/kontakt' }}
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="mx-auto max-w-3xl">
+        <h2 class="text-center">Häufig gesucht</h2>
+        <ul class="mt-8 grid gap-4 sm:grid-cols-2">
+          {services.map((service) => (
+            <li>
+              <a
+                href={service.href}
+                class="block rounded-[var(--radius-card)] border border-neutral-200 bg-white p-5 no-underline transition-colors duration-200 hover:border-accent"
+              >
+                <span class="font-display text-lg font-semibold text-primary">
+                  {service.shortTitle}
+                </span>
+              </a>
+            </li>
+          ))}
+          <li>
+            <a
+              href="/blog"
+              class="block rounded-[var(--radius-card)] border border-neutral-200 bg-white p-5 no-underline transition-colors duration-200 hover:border-accent"
+            >
+              <span class="font-display text-lg font-semibold text-primary">Blog</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href="/wissen"
+              class="block rounded-[var(--radius-card)] border border-neutral-200 bg-white p-5 no-underline transition-colors duration-200 hover:border-accent"
+            >
+              <span class="font-display text-lg font-semibold text-primary">Wissen</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</PageLayout>

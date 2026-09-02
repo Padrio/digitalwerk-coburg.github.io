@@ -8,7 +8,6 @@ export interface Industry {
   icon: string;
   challenge: string;
   solutions: string[];
-  href: string;
 }
 
 export const industries: Industry[] = [
@@ -24,7 +23,6 @@ export const industries: Industry[] = [
       'Google Business Profil optimieren für mehr Sichtbarkeit in Maps-Ergebnissen',
       'Einfaches Kontaktformular und Rückrufservice für schnelle Kundenanfragen',
     ],
-    href: '/branchen/handwerk',
   },
   {
     id: 'gastronomie',
@@ -38,7 +36,6 @@ export const industries: Industry[] = [
       'Lokale SEO-Optimierung für „Restaurant Coburg" und ähnliche Suchbegriffe',
       'Social-Media-Anbindung für Tagesgerichte und Events',
     ],
-    href: '/branchen/gastronomie',
   },
   {
     id: 'praxen',
@@ -52,7 +49,6 @@ export const industries: Industry[] = [
       'Barrierefreies Webdesign nach WCAG-Richtlinien',
       'Patientenfreundliche Inhalte mit klarer Sprache und schneller Ladezeit',
     ],
-    href: '/branchen/praxen',
   },
   {
     id: 'mittelstand',
@@ -66,7 +62,6 @@ export const industries: Industry[] = [
       'Schnittstellen-Entwicklung für bestehende ERP- und CRM-Systeme',
       'Schrittweise Modernisierung der digitalen Infrastruktur ohne Betriebsunterbrechung',
     ],
-    href: '/branchen/mittelstand',
   },
   {
     id: 'startups',
@@ -80,6 +75,5 @@ export const industries: Industry[] = [
       'Flexible, skalierbare Technik, die mit Ihrem Unternehmen wachsen kann',
       'KI-gestützte Tools für Marketing, Kundenservice und Prozessautomatisierung',
     ],
-    href: '/branchen/startups',
   },
 ];

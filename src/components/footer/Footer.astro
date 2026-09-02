@@ -2,10 +2,16 @@
 import { footerNav } from '@data/navigation';
 import { services } from '@data/services';
 import { SITE } from '@data/site';
+import {
+  getLocalServicesGroupedByCity,
+  localServicePath,
+} from '@data/local-services';
 
 const leistungenGroup = footerNav.find((g) => g.category === 'Leistungen');
 const unternehmenGroup = footerNav.find((g) => g.category === 'Unternehmen');
 const currentYear = new Date().getFullYear();
+// Alle regionalen Landingpages – Quelle: local-services.ts
+const localServiceGroups = getLocalServicesGroupedByCity();
 ---
 
 <footer class="relative overflow-hidden" style="background: linear-gradient(135deg, #0a1128 0%, #0f1d3d 100%);">
@@ -65,30 +71,25 @@ const currentYear = new Date().getFullYear();
           Vor Ort
         </h3>
         <ul class="space-y-3">
-          <li>
-            <a
-              href="/webdesign-coburg"
-              class="text-sm text-neutral-300 no-underline transition-colors duration-200 hover:text-white"
-            >
-              Webdesign Coburg
-            </a>
-          </li>
-          <li>
-            <a
-              href="/webentwicklung-coburg"
-              class="text-sm text-neutral-300 no-underline transition-colors duration-200 hover:text-white"
-            >
-              Webentwicklung Coburg
-            </a>
-          </li>
-          <li>
-            <a
-              href="/seo-coburg"
-              class="text-sm text-neutral-300 no-underline transition-colors duration-200 hover:text-white"
-            >
-              SEO Coburg
-            </a>
-          </li>
+          {localServiceGroups.map((group) => (
+            <li>
+              <span class="mb-1.5 block font-display text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500">
+                {group.city}
+              </span>
+              <ul class="space-y-2">
+                {group.services.map((service) => (
+                  <li>
+                    <a
+                      href={localServicePath(service)}
+                      class="text-sm text-neutral-300 no-underline transition-colors duration-200 hover:text-white"
+                    >
+                      {service.serviceLabel} {service.city}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))}
         </ul>
       </div>
 

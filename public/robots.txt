@@ -21,3 +21,7 @@ User-agent: Applebot-Extended
 Allow: /
 
 Sitemap: https://digitalwerk-coburg.de/sitemap-index.xml
+
+# Strukturierte Kurzfassung für LLMs
+# https://digitalwerk-coburg.de/llms.txt
+# https://digitalwerk-coburg.de/llms-full.txt

@@ -19,6 +19,17 @@ interface Props {
 }
 
 const { data } = Astro.props;
+
+// Rollenbezeichnung je Leistung. Vorher stand hier fest "Webdesigner aus
+// Coburg" – auf allen 9 Landingpages, also auch auf /seo-bamberg und
+// /webentwicklung-coburg. Formulierung bewusst "für <Stadt>", nicht "aus
+// <Stadt>": der Firmensitz ist Lichtenfels, "aus Bamberg" wäre unzutreffend.
+const roleLabels: Record<LocalServiceData['service'], string> = {
+  webdesign: 'Webdesigner',
+  webentwicklung: 'Webentwickler',
+  seo: 'SEO-Partner',
+};
+const roleLabel = roleLabels[data.service];
 ---
 
 {/* 1. Hero */}
@@ -64,7 +75,7 @@ const { data } = Astro.props;
   <div class="container relative z-10">
     <div class="mx-auto max-w-3xl text-center">
       <span class="section-label justify-center">Warum Digitalwerk Coburg</span>
-      <h2>Was Sie von einem Webdesigner aus Coburg erwarten dürfen</h2>
+      <h2>Was Sie von Ihrem {roleLabel} für {data.city} erwarten dürfen</h2>
     </div>
 
     <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

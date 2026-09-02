@@ -1,4 +1,11 @@
 ---
+// Anzeige-Labels für die Kategorie-Slugs aus content.config.ts
+const CATEGORY_LABELS: Record<string, string> = {
+  webdesign: 'Webdesign',
+  seo: 'SEO',
+  recht: 'Recht & Datenschutz',
+  digitalisierung: 'Digitalisierung',
+};
 import { getCollection } from 'astro:content';
 import PageLayout from '@layouts/PageLayout.astro';
 import { buildSeoMeta } from '@utils/seo';
@@ -40,7 +47,7 @@ const categories = [...new Set(entries.map((e) => e.data.category))].sort((a, b)
             const categoryEntries = entries.filter((e) => e.data.category === category);
             return (
               <div class="mb-12">
-                <h2 class="mb-6">{category}</h2>
+                <h2 class="mb-6">{CATEGORY_LABELS[category] ?? category}</h2>
                 <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                   {categoryEntries.map((entry) => (
                     <a

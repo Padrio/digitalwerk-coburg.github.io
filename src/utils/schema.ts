@@ -16,6 +16,7 @@ import type {
 } from 'schema-dts';
 
 import { SITE } from '@data/site';
+import { getServedCities } from '@data/cities';
 
 // ---------------------------------------------------------------------------
 // Types used as function inputs
@@ -80,7 +81,7 @@ export function buildLocalBusiness(): WithContext<LocalBusiness> {
     telephone: SITE.phoneE164,
     foundingDate: '2024',
     logo: `${SITE.url}/favicon.svg`,
-    image: `${SITE.url}/og-image.webp`,
+    image: `${SITE.url}/og-image.jpg`,
     address: {
       '@type': 'PostalAddress',
       streetAddress: SITE.address.street,
@@ -95,16 +96,11 @@ export function buildLocalBusiness(): WithContext<LocalBusiness> {
       longitude: SITE.geo.longitude,
     },
     founder: { '@id': ID_PERSON } as unknown as Person,
+    // Servicegebiete – Quelle: src/data/cities.ts (dieselbe Liste rendert
+    // die Startseite). Bewusst nicht hier dupliziert.
     areaServed: [
-      { '@type': 'City', name: 'Coburg' },
-      { '@type': 'City', name: 'Bamberg' },
-      { '@type': 'City', name: 'Kronach' },
-      { '@type': 'City', name: 'Lichtenfels' },
-      { '@type': 'City', name: 'Sonneberg' },
-      { '@type': 'City', name: 'Kulmbach' },
-      { '@type': 'City', name: 'Bayreuth' },
-      { '@type': 'City', name: 'Hildburghausen' },
-      { '@type': 'AdministrativeArea', name: 'Oberfranken' },
+      ...getServedCities().map((c) => ({ '@type': 'City' as const, name: c.name })),
+      { '@type': 'AdministrativeArea' as const, name: SITE.address.region },
     ],
     openingHoursSpecification: [
       {
@@ -195,6 +191,32 @@ export function buildProfilePage(modifiedDate?: Date): WithContext<ProfilePage> 
     mainEntity: { '@id': ID_PERSON } as unknown as Person,
     ...(modifiedDate ? { dateModified: modifiedDate.toISOString() } : {}),
   } as unknown as WithContext<ProfilePage>;
+}
+
+/**
+ * ContactPage schema for /kontakt.
+ * Verweist per @id auf die Organisation statt sie zu duplizieren.
+ */
+export function buildContactPage(): Record<string, unknown> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    url: `${SITE.url}/kontakt`,
+    name: `Kontakt – ${SITE.name}`,
+    isPartOf: { '@id': ID_WEBSITE },
+    about: { '@id': ID_ORGANIZATION },
+    mainEntity: {
+      '@id': ID_ORGANIZATION,
+      contactPoint: {
+        '@type': 'ContactPoint',
+        contactType: 'customer service',
+        email: SITE.email,
+        telephone: SITE.phoneE164,
+        areaServed: 'DE',
+        availableLanguage: ['de'],
+      },
+    },
+  };
 }
 
 /**

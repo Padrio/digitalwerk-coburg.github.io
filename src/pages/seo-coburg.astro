@@ -5,7 +5,6 @@ import { getLocalServiceBySlug } from '@data/local-services';
 import {
   buildLocalService,
   buildFaqPage,
-  buildBreadcrumbList,
 } from '@utils/schema';
 import JsonLd from '@components/seo/JsonLd.astro';
 import LocalServicePage from '@components/sections/LocalServicePage.astro';
@@ -35,12 +34,6 @@ const seo = buildSeoMeta({
     })}
   />
   <JsonLd schema={buildFaqPage(data.faqs)} />
-  <JsonLd
-    schema={buildBreadcrumbList([
-      { label: 'Startseite', href: '/' },
-      { label: `${data.serviceLabel} ${data.city}`, href: `/${data.service}-${data.citySlug}` },
-    ])}
-  />
 
   <LocalServicePage data={data} />
 </PageLayout>

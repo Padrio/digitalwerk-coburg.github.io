@@ -10,6 +10,7 @@ import Hero from '@components/sections/Hero.astro';
 import FAQ from '@components/sections/FAQ.astro';
 import PricingTiers from '@components/sections/PricingTiers.astro';
 import CTA from '@components/ui/CTA.astro';
+import RelatedContent from '@components/sections/RelatedContent.astro';
 import { CheckCircle, Code2, Database, Zap } from 'lucide-astro';
 import GridPattern from '@components/decorative/GridPattern.astro';
 
@@ -224,6 +225,8 @@ const stackIconMap: Record<string, any> = {
   </section>
 
   <!-- CTA -->
+  <RelatedContent hub="webentwicklung" intro="Praxisbeispiele und Grundlagen zu Automatisierung, Schnittstellen und Warenwirtschaft." />
+
   <CTA
     headline="Bereit für Ihre individuelle Webanwendung?"
     subline="Im kostenlosen Erstgespräch klären wir in 30 Minuten, ob individuelle Entwicklung wirklich der richtige Weg ist — oder ob ein Standard-Tool ausreicht. Ergebnisoffen."

@@ -33,8 +33,9 @@ const { title, description, canonical, noIndex, ogImage, ogType, articlePublishe
     <slot name="head" />
     <ClientRouter />
     <script>
-      import Clarity from '@microsoft/clarity';
-      Clarity.init('wu9eyqoa50');
+      // Analyse-Dienst nur bei vorliegender Zustimmung (siehe CookieBanner).
+      import { loadAnalyticsIfConsented } from '@utils/consent';
+      loadAnalyticsIfConsented();
     </script>
   </head>
   <body class="min-h-screen flex flex-col">

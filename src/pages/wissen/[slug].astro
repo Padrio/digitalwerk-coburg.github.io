@@ -9,7 +9,6 @@ import { buildSeoMeta } from '@utils/seo';
 import {
   buildDefinedTerm,
   buildFaqPage,
-  buildBreadcrumbList,
 } from '@utils/schema';
 import { SITE } from '@data/site';
 
@@ -45,18 +44,16 @@ const relatedEntries = entry.data.related.length > 0
   description={seo.description}
   ogImage={seo.ogImage}
   ogType={seo.ogType}
+  breadcrumbs={[
+    { label: 'Startseite', href: '/' },
+    { label: 'Wissen', href: '/wissen' },
+    { label: entry.data.title, href: `/wissen/${entry.id}` },
+  ]}
 >
   <JsonLd schema={definedTermSchema} />
   {entry.data.faqs && entry.data.faqs.length > 0 && (
     <JsonLd schema={buildFaqPage(entry.data.faqs)} />
   )}
-  <JsonLd
-    schema={buildBreadcrumbList([
-      { label: 'Startseite', href: '/' },
-      { label: 'Wissen', href: '/wissen' },
-      { label: entry.data.title, href: `/wissen/${entry.id}` },
-    ])}
-  />
 
   <article class="section">
     <div class="container">

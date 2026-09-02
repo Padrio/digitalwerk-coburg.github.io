@@ -1,44 +1,88 @@
 ---
 /**
- * Minimal cookie banner for technically necessary cookies only.
- * Uses localStorage to remember dismissal.
+ * Consent-Banner für den Analysedienst Microsoft Clarity.
+ *
+ * Clarity setzt Cookies (_clck/_clsk) und zeichnet Sitzungen auf; es ist damit
+ * nicht "technisch notwendig". Der Dienst startet deshalb erst nach aktiver
+ * Zustimmung. Ablehnen ist gleichwertig sichtbar, die Entscheidung lässt sich
+ * jederzeit über den Link am Ende der Datenschutzerklärung widerrufen.
  */
 ---
 
 <div
   id="cookie-banner"
   class="fixed inset-x-0 bottom-0 z-50 hidden"
-  role="alert"
+  role="dialog"
+  aria-labelledby="cookie-banner-text"
+  aria-modal="false"
 >
-  <div class="bg-neutral-100 border-t border-neutral-300 px-4 py-3">
-    <div class="mx-auto flex max-w-[var(--spacing-container)] flex-col items-center justify-between gap-3 sm:flex-row">
-      <p class="text-small text-neutral-900 text-center sm:text-left">
-        Diese Website verwendet ausschlie&szlig;lich technisch notwendige Cookies.
+  <div class="border-t border-neutral-300 bg-neutral-100 px-4 py-4">
+    <div class="mx-auto flex max-w-[var(--spacing-container)] flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <p id="cookie-banner-text" class="text-small leading-relaxed text-neutral-900">
+        Neben technisch notwendigen Cookies möchten wir Microsoft Clarity
+        einsetzen, um die Nutzung dieser Website anonymisiert auszuwerten. Das
+        ist für den Betrieb nicht erforderlich und erfolgt nur mit Ihrer
+        Zustimmung.{' '}
+        <a href="/datenschutz" class="font-medium text-accent underline">
+          Details in der Datenschutzerklärung
+        </a>.
       </p>
-      <button
-        id="cookie-dismiss"
-        type="button"
-        class="shrink-0 cursor-pointer rounded-[var(--radius-btn)] bg-neutral-900 px-5 py-2 text-small font-semibold text-white transition-colors duration-200 hover:bg-primary-light"
-      >
-        Verstanden
-      </button>
+      <div class="flex shrink-0 gap-3">
+        <button
+          id="cookie-decline"
+          type="button"
+          class="cursor-pointer rounded-[var(--radius-btn)] border border-neutral-400 bg-white px-5 py-2 text-small font-semibold text-neutral-900 transition-colors duration-200 hover:border-neutral-900"
+        >
+          Ablehnen
+        </button>
+        <button
+          id="cookie-accept"
+          type="button"
+          class="cursor-pointer rounded-[var(--radius-btn)] bg-neutral-900 px-5 py-2 text-small font-semibold text-white transition-colors duration-200 hover:bg-primary-light"
+        >
+          Zustimmen
+        </button>
+      </div>
     </div>
   </div>
 </div>
 
 <script>
-  const STORAGE_KEY = "dw-cookie-dismissed";
-  const banner = document.getElementById("cookie-banner");
-  const dismissBtn = document.getElementById("cookie-dismiss");
+  import { CONSENT_KEY, loadAnalytics } from '@utils/consent';
 
-  if (banner && !localStorage.getItem(STORAGE_KEY)) {
-    banner.classList.remove("hidden");
-    banner.classList.add("block");
+  const banner = document.getElementById('cookie-banner');
+
+  function hide() {
+    banner?.classList.add('hidden');
+    banner?.classList.remove('block');
   }
 
-  dismissBtn?.addEventListener("click", () => {
-    localStorage.setItem(STORAGE_KEY, "true");
-    banner?.classList.add("hidden");
-    banner?.classList.remove("block");
+  function show() {
+    banner?.classList.remove('hidden');
+    banner?.classList.add('block');
+  }
+
+  // Nur fragen, wenn noch keine Entscheidung vorliegt.
+  if (banner && !localStorage.getItem(CONSENT_KEY)) show();
+
+  document.getElementById('cookie-accept')?.addEventListener('click', () => {
+    localStorage.setItem(CONSENT_KEY, 'granted');
+    hide();
+    loadAnalytics();
+  });
+
+  document.getElementById('cookie-decline')?.addEventListener('click', () => {
+    localStorage.setItem(CONSENT_KEY, 'denied');
+    hide();
+  });
+
+  // Widerruf / erneute Abfrage über <a href="#consent-widerrufen">
+  document.addEventListener('click', (event) => {
+    const target = event.target as HTMLElement | null;
+    const trigger = target?.closest('a[href="#consent-widerrufen"]');
+    if (!trigger) return;
+    event.preventDefault();
+    localStorage.removeItem(CONSENT_KEY);
+    show();
   });
 </script>

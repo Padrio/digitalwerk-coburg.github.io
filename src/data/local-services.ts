@@ -1259,3 +1259,40 @@ export const localServices: LocalServiceData[] = [
 export function getLocalServiceBySlug(slug: string): LocalServiceData | undefined {
   return localServices.find((ls) => `${ls.service}-${ls.citySlug}` === slug);
 }
+
+/** Alle Landingpages eines Ortes (per citySlug), in Datei-Reihenfolge. */
+export function getLocalServicesForCity(citySlug: string): LocalServiceData[] {
+  return localServices.filter((ls) => ls.citySlug === citySlug);
+}
+
+/**
+ * Alle Landingpages nach Ort gruppiert — Quelle für interne Verlinkung
+ * (Startseite, Footer). Reihenfolge folgt der Datei.
+ */
+export function getLocalServicesGroupedByCity(): {
+  city: string;
+  citySlug: string;
+  services: LocalServiceData[];
+}[] {
+  const order: string[] = [];
+  const map = new Map<string, LocalServiceData[]>();
+
+  for (const ls of localServices) {
+    if (!map.has(ls.citySlug)) {
+      map.set(ls.citySlug, []);
+      order.push(ls.citySlug);
+    }
+    map.get(ls.citySlug)!.push(ls);
+  }
+
+  return order.map((citySlug) => ({
+    city: map.get(citySlug)![0].city,
+    citySlug,
+    services: map.get(citySlug)!,
+  }));
+}
+
+/** Pfad einer Landingpage, z. B. "/webdesign-coburg". */
+export function localServicePath(ls: LocalServiceData): string {
+  return `/${ls.service}-${ls.citySlug}`;
+}

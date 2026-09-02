@@ -25,7 +25,9 @@ const wissen = defineCollection({
     title: z.string(),
     description: z.string(),
     summary: z.string().optional(),
-    category: z.string(),
+    // Fester Wertebereich: sonst landen frei geschriebene Kategorien
+    // ungefiltert als Überschrift auf /wissen (vorher: "recht" neben "Digitalisierung").
+    category: z.enum(['webdesign', 'seo', 'recht', 'digitalisierung']),
     related: z.array(z.string()).default([]),
     pubDate: z.coerce.date().optional(),
     updatedDate: z.coerce.date().optional(),
