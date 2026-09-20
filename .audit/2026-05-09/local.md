@@ -69,7 +69,7 @@ Google's consent wall blocked direct Maps API verification from this environment
 - Name: Digitalwerk Coburg
 - Address: Von-Mayer-Straße 25, 96450 Coburg
 - Phone: +49 (0) 174 660 3656
-- Email: hallo@digitalwerk-coburg.de
+- Email: hello@digitalwerk-coburg.de
 
 | Source | Name | Street | Postal/City | Phone | Match |
 |--------|------|--------|-------------|-------|-------|
@@ -148,7 +148,7 @@ Google's consent wall blocked direct Maps API verification from this environment
 | name | Yes | "Digitalwerk Coburg" | PASS |
 | description | Yes | 89 chars | PASS |
 | url | Yes | https://digitalwerk-coburg.de | PASS |
-| email | Yes | hallo@digitalwerk-coburg.de | PASS |
+| email | Yes | hello@digitalwerk-coburg.de | PASS |
 | telephone | Yes | "+49 (0) 174 660 3656" | MINOR — not E.164 format |
 | foundingDate | Yes | "2024" | PASS |
 | logo | Yes | /favicon.svg (SVG) | MINOR — Google prefers PNG/JPG for logo rich results |

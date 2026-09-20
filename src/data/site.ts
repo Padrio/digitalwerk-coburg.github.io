@@ -74,7 +74,7 @@ export const SITE: SiteConfig = {
   tagline: 'Websites und Web-Apps, die wirklich funktionieren.',
   description:
     'Pascal Krason — Webentwickler aus Coburg. Webdesign, Webentwicklung, SEO und KI-Beratung für den Mittelstand in Oberfranken. Persönlich, lokal, ergebnisorientiert.',
-  email: 'hallo@digitalwerk-coburg.de',
+  email: 'hello@digitalwerk-coburg.de',
   phone: '+49 1579 2699700',
   phoneE164: '+4915792699700',
   address: {
